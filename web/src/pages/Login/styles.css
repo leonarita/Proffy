@@ -1,6 +1,7 @@
 #page-login .banner {
     background-color: var(--color-primary);
     color: var(--color-text-in-primary);
+    background-image: url(../../assets/images/success-background.svg);
     width: 100%;
     height: 77vh;
 
@@ -44,7 +45,7 @@
 #page-login .form .input-block-1 input {
     width: 100%;
     height: 5.6rem;
-    margin-top: 0.8rem;
+    margin-top: 2.4rem;
     border-radius: 0;
     border-top-left-radius: 0.8rem;
     border-top-right-radius: 0.8rem;

@@ -1,6 +1,7 @@
 #page-forget-password .banner {
     background-color: var(--color-primary);
     color: var(--color-text-in-primary);
+    background-image: url(../../assets/images/success-background.svg);
     width: 100%;
     height: 77vh;
 
