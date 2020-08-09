@@ -18,7 +18,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
          
             <div className="top-bar-container">
          
-                <Link to="/">
+                <Link to="/main">
                     <img src={backIcon} alt="Voltar"/>
                 </Link>
          

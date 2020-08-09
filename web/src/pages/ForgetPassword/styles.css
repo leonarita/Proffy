@@ -1,0 +1,46 @@
+#page-forget-password .banner {
+    background-color: var(--color-primary);
+    color: var(--color-text-in-primary);
+    width: 100%;
+    height: 77vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3rem;
+}
+
+#page-forget-password .banner .logo-container img {
+    height: 10rem;
+}
+
+#page-forget-password .banner .logo-container {
+    margin-bottom: 3.2rem;
+}
+
+#page-forget-password .banner .logo-container h2 {
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 4.6rem;
+    margin-bottom: 0.8rem;
+}
+
+@media (min-width: 700px) {
+
+    #page-forget-password {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #page-forget-password .form {
+        align-self: center;
+        margin: 0 12rem;
+    }    
+
+    #page-forget-password .banner {
+        height: 100vh;
+        width: 54vw;
+    }
+}
+
+

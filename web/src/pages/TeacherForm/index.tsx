@@ -48,7 +48,7 @@ function TeacherForm() {
         api.post('classes', { name, avatar, whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
             .then(() => { 
                 alert('Cadastro realizado com sucesso') 
-                history.push('/')
+                history.push('/main')
             })
             .catch(() => { alert('Erro no cadastro') })
 
