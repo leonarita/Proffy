@@ -10,6 +10,7 @@ export interface Teacher {
     cost: number,
     id: number,
     name: string,
+    surname: string,
     subject: string,
     whatsapp: string
 }
@@ -30,7 +31,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
             <header>
                 <img src={teacher.avatar} alt={teacher.name}/>
                 <div>
-                    <strong> {teacher.name} </strong>
+                    <strong> {teacher.name} {teacher.surname} </strong>
                     <span> {teacher.subject} </span>
                 </div>
             </header>
@@ -42,7 +43,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
             <footer>
                 <p>
                     Preço/hora
-                    <strong> {teacher.cost} </strong>
+                    <strong> {Intl.NumberFormat('pt-BR', { style:'currency', currency:"BRL" }).format(teacher.cost)} </strong>
                 </p>
 
                 <a target="_blank" rel="noopener noreferrer" href={`https://wa.me/${teacher.whatsapp}`} onClick={createNewConnection}>

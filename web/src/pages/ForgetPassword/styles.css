@@ -26,6 +26,69 @@
     margin-bottom: 0.8rem;
 }
 
+#page-forget-password .form {
+    padding: 3rem 5rem;
+}
+
+#page-forget-password .help strong {
+    font: 700 3.6rem Archivo;
+    line-height: 4.2rem;
+}
+
+#page-forget-password .help p {
+    max-width: 30rem;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    margin-top: 2.4rem;
+}
+
+#page-forget-password .help .input-block {
+    position: relative;
+}
+
+#page-forget-password .help .input-block input {
+    width: 100%;
+    height: 5.6rem;
+    margin-top: 2rem;
+    border-radius: 0;
+    border-radius: 0.8rem;
+    background: var(--color-input-background);
+    border: 1px solid var(--color-line-in-white);
+    outline: 0;
+    padding: 0 1.6rem;
+    font: 1.6rem Poppins;
+}
+
+#page-forget-password .help .input-block:focus-within::after {
+    width: calc(100% - 3.2rem);
+    height: 2px;
+    content: '';
+    background: var(--color-primary-light);
+    position: absolute;
+    left: 1.6rem;
+    right: 1.6rem;
+    bottom: 0;
+}
+
+#page-forget-password .help button {
+    width: 100%;
+    height: 5.6rem;
+    margin-top: 3.4rem;
+    border-radius: 0;
+    border-radius: 0.8rem;
+    background: var(--color-secundary);
+    color: var(--color-line-in-white);
+    border: 1px solid var(--color-line-in-white);
+    outline: 0;
+    padding: 0 1.6rem;
+    font: 1.6rem Poppins;
+    cursor: pointer;
+}
+
+#page-forget-password .help button:hover {
+    background: var(--color-secundary-dark);
+}
+
 @media (min-width: 700px) {
 
     #page-forget-password {
@@ -34,9 +97,14 @@
     }
 
     #page-forget-password .form {
-        align-self: center;
         margin: 0 12rem;
     }    
+
+    #page-forget-password .form .help {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 
     #page-forget-password .banner {
         height: 100vh;

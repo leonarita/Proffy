@@ -10,6 +10,38 @@
     background: var(--color-primary);
 }
 
+.profile a {
+    margin-top: 4rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    height: 6rem;
+    border-radius: 50%;
+}
+
+.profile p {
+    margin-left: 2rem;
+    text-decoration: none;
+    font: 1.6rem Archivo;
+    color: #FFF;
+}
+
+.logoff button {
+    margin-top: 4rem;
+    background-color: var(--color-primary);
+    border: 0;
+    width: 6rem;
+    height: 6rem;
+    cursor: pointer;
+}
+
+.logoff img {
+    color: #FFF;
+}
+
 .logo-container img {
     height: 10rem;
 }
@@ -97,9 +129,20 @@
         max-width: 1100px;
 
         display: grid;
-        grid-template-rows: 350px 1fr;
+        grid-template-rows: 1fr 350px 1fr;
         grid-template-columns: 2fr 1fr 1fr;
-        grid-template-areas: "logo hero hero" "buttons buttons total";
+        grid-template-areas:"profile nothing logoff" "logo hero hero" "buttons buttons total";
+    }
+
+    .profile {
+        grid-area: profile;
+        margin-left: 2rem;
+    }
+
+    .logoff {
+        grid-area: logoff;
+        display: flex;
+        justify-items: end;
     }
 
     .logo-container {

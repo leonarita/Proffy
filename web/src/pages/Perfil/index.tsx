@@ -14,12 +14,13 @@ interface ScheduleItem {
     from: string
 }
 
-function TeacherForm() {
+function Perfil() {
 
     const history = useHistory()
 
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
+    const [email, setEmail] = useState('')
     const [avatar, setAvatar] = useState('')
     const [whatsapp, setWhatsapp] = useState('')
     const [bio, setBio] = useState('')
@@ -37,6 +38,7 @@ function TeacherForm() {
             setName(response.data.name)
             setSurname(response.data.surname)
             setAvatar(response.data.avatar)
+            setEmail(response.data.email)
             setBio(response.data.bio)
             setWhatsapp(response.data.whatsapp)
             setSubject(response.data.subject)
@@ -104,7 +106,7 @@ function TeacherForm() {
 
         e.preventDefault()
 
-        const userId = localStorage.getItem('USER_ID')
+        const userId = sessionStorage.getItem('USER_ID')
 
         api.put(`classes/${userId}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
             .then(() => { 
@@ -112,14 +114,24 @@ function TeacherForm() {
                 history.push('/main')
             })
             .catch(() => { alert('Erro no cadastro') })
+
+        console.log({
+            whatsapp, bio, subject, cost, scheduleItems
+        })
     }
 
     return (
         
         <div id="page-teacher-form" className="container">
 
-            <PageHeader title="Que incrível que você quer dar aulas." 
-                description="O primeiro passo é preencher esse formulário de inscrição"/>
+            <PageHeader>
+                <div className="header-top">
+                    <img className="photo" src={avatar} alt={name}/>
+
+                    <strong> {name} {surname}  </strong>
+                    <h2> {subject} </h2>
+                </div>
+            </PageHeader>
 
             <main>
 
@@ -128,16 +140,17 @@ function TeacherForm() {
                     <fieldset>
                         <legend> Seus dados </legend>
 
+                        <div className="names">
+                            <Input name="name" label="Nome" value={name}
+                                onChange={(e) => { setName(e.target.value) }} />
+
+                            <Input name="surname" label="Sobrenome" value={surname}
+                                onChange={(e) => { setSurname(e.target.value) }} />
+                        </div>
+
                         <div className="header">
-                            <div className="person">
-                                <img src={avatar} 
-                                alt={name}/>
-
-                                <strong>
-                                    {name} {surname} 
-                                </strong>
-
-                            </div>
+                            <Input name="email" label="E-mail" value={email} className="input-01"
+                                onChange={(e) => { setEmail(e.target.value) }} />
 
                             <Input name="whatsapp" label="WhatsApp" value={whatsapp} placeholder="(  ) _ ____ ____" 
                                 onChange={(e) => { setWhatsapp(e.target.value) }} />
@@ -200,6 +213,8 @@ function TeacherForm() {
                                     <Input name="to" label="Até" type="time" value={scheduleItem.to}
                                     onChange={e => setScheduleItemValue(index, 'to', e.target.value)}></Input>
 
+                                    <button type="button"> Excluir horário </button>
+
                                 </div>
                             )
                         }) }
@@ -224,4 +239,4 @@ function TeacherForm() {
     )
 }
 
-export default TeacherForm
+export default Perfil

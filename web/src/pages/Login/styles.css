@@ -82,6 +82,13 @@
     bottom: 0;
 }
 
+#page-login .form .error-message {
+    color: red;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
 #page-login .form button {
     width: 100%;
     height: 5.6rem;

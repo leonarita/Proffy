@@ -3,6 +3,38 @@
     height: 100vh;
 }
 
+#page-teacher-form .page-header {
+    background-image: url(../../assets/images/success-background.svg);
+}
+
+#page-teacher-form .page-header .header-top {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+}
+
+#page-teacher-form .page-header .header-top .photo {
+    border-radius: 50%;
+    width: 14rem;
+    display: flex;
+    align-self: center;
+    margin-bottom: 2rem;
+}
+
+#page-teacher-form .page-header .header-top strong,
+#page-teacher-form .page-header .header-top h2 {
+    margin-bottom: 0rem;
+    align-self: center;
+    justify-content: center;
+    color: #FFF;
+}
+
+#page-teacher-form .page-header .header-top h2 {
+    margin-bottom: 2rem;
+    font-weight: normal;
+}
+
 #page-teacher-form .page-header .header-content {
     margin-bottom: 6.4rem;
 }
@@ -26,31 +58,30 @@
     margin-top: 6.4rem;
 }
 
+#page-teacher-form main fieldset .names {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    margin-bottom: 4rem
+}
+
+#page-teacher-form main fieldset .names .input-block + .input-block {
+    margin-top: 0;
+}
+
 #page-teacher-form main fieldset .header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 4rem;
 }
 
-#page-teacher-form main fieldset .header .person {
-    display: flex;
-    align-items: center;
-}
-
-#page-teacher-form main fieldset .header .person img {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-}
-
-#page-teacher-form main fieldset .header .person strong {
-    margin-left: 2rem;
-    font: 700 2.4rem Poppins;
-    color: #000;
-}
-
 #page-teacher-form main fieldset .header .input-block {
+    margin-top: 1.4rem;
     width: 35%;
+}
+
+#page-teacher-form main fieldset .header .input-01 {
+    width: 170%;
 }
 
 #page-teacher-form main fieldset legend {
@@ -78,6 +109,15 @@
     display: grid;
     grid-template-columns: 3fr 2fr;
     column-gap: 3rem;
+}
+
+#page-teacher-form main fieldset .schedule-item button {
+    background: none;
+    border: 0;
+    color: red;
+    font: 700 1.3rem Archivo;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
 #page-teacher-form main fieldset legend button:hover {

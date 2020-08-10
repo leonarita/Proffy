@@ -1,17 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect, FormEvent } from 'react';
+import { Link, useHistory } from 'react-router-dom'
 import './styles.css'
 
 import logoImg from '../../assets/images/logo.svg'
 import landingImg from '../../assets/images/landing.svg'
 import studyIcon from '../../assets/images/icons/study.svg'
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg'
+import logoffIcon from '../../assets/images/icons/logoff.svg'
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg'
 import api from '../../services/api';
+import { logout } from '../../services/token';
 
 function Landing() {
 
+    const [name, setName] = useState('')
+    const [surname, setSurname] = useState('')
+    const [avatar, setAvatar] = useState('')
+
     const [totalConnections, setTotalConnections] =  useState(0)
+    const history = useHistory()
+
+    useEffect(() => {
+
+        const userId = sessionStorage.getItem('USER_ID')
+
+        api.get(`users/${userId}`).then(response => {
+
+            setName(response.data.name)
+            setSurname(response.data.surname)
+            setAvatar(response.data.avatar)
+        })
+
+    }, [])
 
     useEffect(() => {
         api.get('connections').then(response => {
@@ -20,11 +40,31 @@ function Landing() {
         })
     }, [])
 
+    function handleLogoff(e: FormEvent) {
+        e.preventDefault()
+
+        logout()
+        history.push("/")
+    }
+
     return (
 
         <div id="page-landing">
 
             <div id="page-landing-content" className="container">
+
+                <div className="profile">
+                    <a href="/perfil">
+                        <img src={avatar} alt={name}/>
+                        <p> {name} {surname} </p>
+                    </a>
+                </div>
+
+                <div className="logoff">
+                    <button onClick={handleLogoff}>
+                        <img src={logoffIcon} alt="Logoff"/>
+                    </button>
+                </div>
 
                 <div className="logo-container">
                     <img src={logoImg} alt="Proffy"/>
