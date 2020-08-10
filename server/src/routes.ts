@@ -13,6 +13,7 @@ const user = new User()
 
 routes.post('/users', user.createUser)
 routes.post('/login', user.authenticate)
+routes.post('/forgot_password', user.forgetPassword)
 
 // As rotas abaixo necessitam de token
 
