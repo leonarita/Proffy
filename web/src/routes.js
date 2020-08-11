@@ -33,7 +33,7 @@ function Routes() {
 
                 <PrivateRoute path="/main" component={Landing}  />
                 <PrivateRoute path="/perfil" component={Perfil} />
-                <PrivateRoute path="/study" component={TeacherList} />
+                <PrivateRoute path="/study/:page?" component={TeacherList} />
                 <PrivateRoute path="/give-classes" component={TeacherForm} />
 
                 <Route path='*'>

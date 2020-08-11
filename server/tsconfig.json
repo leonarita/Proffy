@@ -3,6 +3,7 @@
 
     "target": "es2017",                        
     "module": "commonjs",   
+    "suppressImplicitAnyIndexErrors": true,
     // "lib": [],                             /* Specify library files to be included in the compilation. */
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */

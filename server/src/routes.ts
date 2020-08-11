@@ -35,6 +35,7 @@ routes.use(authMiddleware).post('/profile/:id', upload.single('image'), classesC
 routes.use(authMiddleware).post('/classes/:id', classesController.create)
 routes.use(authMiddleware).get('/classes/:user_id', classesController.getClasses)
 routes.use(authMiddleware).get('/classes', classesController.index)
+routes.use(authMiddleware).get('/classesPag', classesController.indexPaginate)
 routes.use(authMiddleware).delete('/classes/:id', classesController.deleteClasses)
 
 routes.use(authMiddleware).get('/users/:user_id', userController.getDataUser)

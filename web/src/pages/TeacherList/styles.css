@@ -43,6 +43,37 @@
     text-align: center;
 }
 
+#page-teacher-list main .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+#page-teacher-list main .actions button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#page-teacher-list main .actions button:hover {
+    opacity: 0.7;
+}
+
+#page-teacher-list main .actions button[disabled] {
+    opacity: 0.5;
+    cursor: default;
+}
+
+#page-teacher-list main .actions button[disabled]:hover {
+    opacity: 0.5;
+}
+
 @media(min-width: 700px) {
 
     #page-teacher-list {

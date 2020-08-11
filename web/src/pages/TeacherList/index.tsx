@@ -16,6 +16,8 @@ function TeacherList() {
     const [week_day, setWeekDay] = useState('')
     const [time, setTime] = useState('')
 
+    const [page, setPage] = useState(1)
+
     const [isLoadedData, setIsLoadedData] = useState(false)
 
     const history = useHistory()
@@ -23,9 +25,14 @@ function TeacherList() {
     async function searchTeachers(e: FormEvent) {
         e.preventDefault()
 
+        loadTeachers()
+    }
+
+    const loadTeachers = async (page=1) => {
+
         try {
 
-            const response = await api.get('classes', {
+            const response = await api.get(`classesPag?page=${page}`, {
                 params: {
                     subject,
                     week_day,
@@ -34,11 +41,31 @@ function TeacherList() {
             })
 
             setIsLoadedData(true)
+            setPage(page)
+
+            console.log(response)
+            
             setTeachers(response.data)
         } catch (err) {
             logout()
             history.push("/")
         }
+    }
+
+    function prevPage () {
+
+        if (page === 1)
+            return
+        
+        loadTeachers(page - 1)
+    }
+
+    function nextPage () {
+
+        if (teachers.length < 5)
+            return
+        
+        loadTeachers(page + 1)
     }
 
     return (
@@ -89,8 +116,12 @@ function TeacherList() {
                         teachers.map((teacher: Teacher) => { return <TeacherItem key={teacher.id} teacher={teacher} /> })
                         : <p className="no-results"> Nenhum professor encontrado com a sua pesquisa. </p> 
                     ) 
-                    
                 }
+
+                <div className="actions">
+                    <button disabled={page === 1} onClick={prevPage}> Anterior </button>
+                    <button disabled={teachers.length < 5} onClick={nextPage}> Próximo </button>
+                </div>
             </main>
 
         </div>
