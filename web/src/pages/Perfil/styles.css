@@ -17,6 +17,7 @@
 #page-teacher-form .page-header .header-top .photo {
     border-radius: 50%;
     width: 14rem;
+    height: 14rem;
     display: flex;
     align-self: center;
     margin-bottom: 2rem;
@@ -119,6 +120,9 @@
     font: 700 1.3rem Archivo;
     cursor: pointer;
     transition: color 0.2s;
+    display: flex;
+    justify-self: end;
+    margin-top: 1rem;
 }
 
 #page-teacher-form main fieldset legend button:hover {

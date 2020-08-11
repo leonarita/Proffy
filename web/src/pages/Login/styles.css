@@ -148,6 +148,14 @@ footer .register {
     font: 1.6rem Poppins;
 }
 
+footer .register p {
+    color: var(--color-text-complement);
+}
+
+footer .register a {
+    text-decoration: none;
+}
+
 footer .free {
     color: var(--color-text-complement);
     font: 1.4rem Poppins;

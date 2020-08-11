@@ -95,11 +95,17 @@ export default class ClassesController {
         const { id } = request.params
     
         try {
-
-            await db('users').where('id', id).update({
-                avatar: request.file.filename,
-                name, surname
-            })
+            if (request.file) {
+                await db('users').where('id', id).update({
+                    avatar: request.file.filename,
+                    name, surname
+                })
+             }
+             else {
+                await db('users').where('id', id).update({
+                    name, surname
+                })
+             }
         
             return response.status(201).send()
         }

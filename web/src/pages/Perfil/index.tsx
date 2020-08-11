@@ -132,8 +132,7 @@ function Perfil() {
 
             api.post(`classes/${userId}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
             .then(() => { 
-                alert('Cadastro realizado com sucesso') 
-                history.push('/main')
+                history.push("/success-profile")
             })
             .catch(() => { alert('Erro no cadastro') })
 

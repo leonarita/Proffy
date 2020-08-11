@@ -19,6 +19,7 @@
 
 .profile img {
     height: 6rem;
+    width: 6rem;
     border-radius: 50%;
 }
 
@@ -26,7 +27,7 @@
     margin-left: 2rem;
     text-decoration: none;
     font: 1.6rem Archivo;
-    color: #FFF;
+    color: #FFF !important;
 }
 
 .logoff button {

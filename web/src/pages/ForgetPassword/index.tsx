@@ -30,12 +30,23 @@ function ForgetPassword() {
     function handleResetPassword(e: FormEvent) {
         e.preventDefault()
 
-        api.post("forgot_password", { email })
-        history.push("/")
+        try {
+            api.post("forgot_password", { email })
+            history.push("success-password")
+        }
+        catch(err) {
+        }
     }
 
     return (
         <div id="page-forget-password">
+
+            <div className="banner">
+                <div className="logo-container">
+                    <img src={logoImg} alt="Proffy"/>
+                    <h2> Sua plataforma de <br/> estudos online </h2>
+                </div>
+            </div>
             
             <div className="form">
 
@@ -57,16 +68,8 @@ function ForgetPassword() {
                     </form>
                 </div>
                 
-
             </div>
-            
-            <div className="banner">
-                <div className="logo-container">
-                    <img src={logoImg} alt="Proffy"/>
-                    <h2> Sua plataforma de <br/> estudos online </h2>
-                </div>
-            </div>
-
+        
         </div>
     )
 }

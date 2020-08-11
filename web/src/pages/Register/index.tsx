@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react'
+import React, { useState, FormEvent, useEffect } from 'react'
 import './styles.css'
 
 import logoImg from '../../assets/images/logo.svg'
@@ -16,9 +16,8 @@ function Register() {
 
     const history = useHistory()
 
-    async function handleLogin(e: FormEvent) {
-        e.preventDefault()
-
+    useEffect(() => {
+        
         try {
             if(hasTokenLocalStorage() > 0) {
                 const token = getTokenLocalStorage()
@@ -38,22 +37,29 @@ function Register() {
         catch (err) {
             return
         }
+    }, [])
 
-        if (!email || !password || !name || !surname) {
-            return
+    async function handleLogin(e: FormEvent) {
+        e.preventDefault()
+
+        try {
+            await api.post("/users", { name, surname, email, password });
+            history.push("/success-register")
         } 
-        else {
-            
-            try {
-                await api.post("/users", { name, surname, email, password });
-                history.push("/");
-            } catch (err) {
-            }
-          }
+        catch (err) {
+            console.log(err)
+        }
     }
 
     return (
         <div id="page-register">
+
+            <div className="banner">
+                <div className="logo-container">
+                    <img src={logoImg} alt="Proffy"/>
+                    <h2> Sua plataforma de <br/> estudos online </h2>
+                </div>
+            </div>
 
             <div className="form">
 
@@ -90,14 +96,6 @@ function Register() {
                 </div>
 
             </div>
-            
-            <div className="banner">
-                <div className="logo-container">
-                    <img src={logoImg} alt="Proffy"/>
-                    <h2> Sua plataforma de <br/> estudos online </h2>
-                </div>
-            </div>
-
         </div>
     )
 }

@@ -125,9 +125,11 @@
     #page-register {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-areas: "form header";
     }
 
     #page-register .form {
+        grid-area: form;
         margin: 0 12rem;
     }
 
@@ -138,6 +140,7 @@
     }
 
     #page-register .banner {
+        grid-area: header;
         height: 100vh;
         width: 54vw;
     }
