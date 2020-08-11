@@ -21,12 +21,17 @@ export default class UserController {
         const hash = await bcrypt.hash(password, 10)
 
         try {
-
-            if (await db('users').where('email', email).select('*'))
+            if (await db('users').where('email', email).select('*').first())
                 return response.status(400).send({ error: 'User already exists' })
     
             const insertedUser = await db('users').insert({ 
-                name, surname, email, password: hash, avatar: '', whatsapp: '', bio: ''
+                name, surname, email, password: hash, avatar: 'avatar.jpg', whatsapp: '', bio: ''
+            })
+
+            await db('classes').insert({
+                subject: '',
+                cost: 0.0,
+                user_id : insertedUser[0]
             })
         
             return response.json(insertedUser)
@@ -72,6 +77,7 @@ export default class UserController {
             .select('users.*', 'classes.*').first()
         
         data_user.password = undefined
+        data_user.avatar = `http://localhost:3333/uploads/${data_user.avatar}`
 
         return response.json(data_user)
     }

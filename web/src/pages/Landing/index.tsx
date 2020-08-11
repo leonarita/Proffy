@@ -24,20 +24,23 @@ function Landing() {
 
         const userId = sessionStorage.getItem('USER_ID')
 
-        api.get(`users/${userId}`).then(response => {
+        try {
+            api.get(`users/${userId}`).then(response => {
 
-            setName(response.data.name)
-            setSurname(response.data.surname)
-            setAvatar(response.data.avatar)
-        })
+                setName(response.data.name)
+                setSurname(response.data.surname)
+                setAvatar(response.data.avatar)
+            })
 
-    }, [])
+            api.get('connections').then(response => {
+                const { total } = response.data
+                setTotalConnections(total)
+            })
+        } catch (err) {
+            logout()
+            history.push("/")
+        }
 
-    useEffect(() => {
-        api.get('connections').then(response => {
-            const { total } = response.data
-            setTotalConnections(total)
-        })
     }, [])
 
     function handleLogoff(e: FormEvent) {

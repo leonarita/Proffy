@@ -7,6 +7,7 @@ import Textarea from '../../components/Textarea';
 import Select from '../../components/Select';
 import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
+import { logout } from '../../services/token';
 
 interface ScheduleItem {
     week_day: number,
@@ -30,34 +31,39 @@ function TeacherForm() {
 
     useEffect(() => {
 
-        const userId = sessionStorage.getItem('USER_ID')
+        try {
+            const userId = sessionStorage.getItem('USER_ID')
 
-        api.get(`users/${userId}`).then(response => {
+            api.get(`users/${userId}`).then(response => {
 
-            setName(response.data.name)
-            setSurname(response.data.surname)
-            setAvatar(response.data.avatar)
-            setBio(response.data.bio)
-            setWhatsapp(response.data.whatsapp)
-            setSubject(response.data.subject)
-            setCost(response.data.cost)
-        })
-
-        api.get(`classes/${userId}`).then(response => {
-
-            response.data.map((d: ScheduleItem) => {
-                d.from = convertMinutesToHours(d.from)
-                d.to = convertMinutesToHours(d.to)
+                setName(response.data.name)
+                setSurname(response.data.surname)
+                setAvatar(response.data.avatar)
+                setBio(response.data.bio)
+                setWhatsapp(response.data.whatsapp)
+                setSubject(response.data.subject)
+                setCost(response.data.cost)
             })
 
-            setScheduleItems(scheduleItems => scheduleItems.concat(response.data))
+            api.get(`classes/${userId}`).then(response => {
 
-        }).catch(() => console.log('Ocorreu erro'))
+                response.data.map((d: ScheduleItem) => {
+                    d.from = convertMinutesToHours(d.from)
+                    d.to = convertMinutesToHours(d.to)
+                })
 
-        if(scheduleItems.length > 1) {
-            scheduleItems.filter((d: ScheduleItem) => {
-                return
-            })
+                setScheduleItems(scheduleItems => scheduleItems.concat(response.data))
+
+            }).catch(() => console.log('Ocorreu erro'))
+
+            if(scheduleItems.length > 1) {
+                scheduleItems.filter((d: ScheduleItem) => {
+                    return
+                })
+            }
+        } catch (err) {
+            logout()
+            history.push("/")
         }
         
     }, [])

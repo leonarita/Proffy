@@ -29,7 +29,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
         <article className="teacher-item">
 
             <header>
-                <img src={teacher.avatar} alt={teacher.name}/>
+                <img src={`http://localhost:3333/uploads/${teacher.avatar}`} alt={teacher.name}/>
                 <div>
                     <strong> {teacher.name} {teacher.surname} </strong>
                     <span> {teacher.subject} </span>

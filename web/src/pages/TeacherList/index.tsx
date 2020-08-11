@@ -5,6 +5,8 @@ import TeacherItem, { Teacher } from '../../components/TeacherItem';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
 import api from '../../services/api';
+import { logout } from '../../services/token';
+import { useHistory } from 'react-router-dom';
 
 function TeacherList() {
 
@@ -16,19 +18,27 @@ function TeacherList() {
 
     const [isLoadedData, setIsLoadedData] = useState(false)
 
+    const history = useHistory()
+
     async function searchTeachers(e: FormEvent) {
         e.preventDefault()
 
-        const response = await api.get('classes', {
-            params: {
-                subject,
-                week_day,
-                time
-            }
-        })
+        try {
 
-        setIsLoadedData(true)
-        setTeachers(response.data)
+            const response = await api.get('classes', {
+                params: {
+                    subject,
+                    week_day,
+                    time
+                }
+            })
+
+            setIsLoadedData(true)
+            setTeachers(response.data)
+        } catch (err) {
+            logout()
+            history.push("/")
+        }
     }
 
     return (

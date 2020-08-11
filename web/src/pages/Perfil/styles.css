@@ -62,7 +62,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
-    margin-bottom: 4rem
+    margin-bottom: 2rem;
+    margin-top: 4rem;
 }
 
 #page-teacher-form main fieldset .names .input-block + .input-block {

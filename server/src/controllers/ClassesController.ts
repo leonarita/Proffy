@@ -1,6 +1,7 @@
 import db from '../database/connection'
 import convertHourToMinutes from '../utils/convertHourToMinutes'
 import { Request, Response } from 'express'
+
 interface ScheduleItem {
     week_day: number,
     from: string,
@@ -37,37 +38,39 @@ export default class ClassesController {
             .where('classes.subject', '=', subject)
             .join('users', 'classes.user_id', '=', 'users.id')
             .select(['classes.*', 'users.*'])
-
+        
         return response.json(classes)
     }
 
     async create (request: Request, response: Response) {
     
-        const { id } = request.params
         const { whatsapp, bio, subject, cost, schedule } = request.body
+        const { id } = request.params
     
         const trx = await db.transaction()
-        
-        try {
     
-            await trx('users').where('id', '=', Number(id)).update({
+        try {
+
+            await trx('users').where('id', id).update({
                 whatsapp, bio
             })
         
-            const insertedClassesids = await trx('classes').insert({
-                subject, cost, user_id: Number(id)
+            await trx('classes').where('user_id', id).update({
+                subject, cost
             })
         
-            const class_id = insertedClassesids[0]
+            const classes = await trx('classes').where('user_id', id).select('id').first()
         
             const classSchedule = schedule.map((scheduleItem: ScheduleItem) => {
                 return {
-                    class_id,
+                    class_id: classes.id,
                     week_day: scheduleItem.week_day,
                     from: convertHourToMinutes(scheduleItem.from),
                     to: convertHourToMinutes(scheduleItem.to),
                 }
             })
+
+            await trx('class_schedule').where('class_id', classes.id).delete()
         
             await trx('class_schedule').insert(classSchedule)
         
@@ -86,15 +89,54 @@ export default class ClassesController {
         }
     }
 
+    async updateUser (request: Request, response: Response) {
+    
+        const { name, surname } = request.body
+        const { id } = request.params
+    
+        try {
+
+            await db('users').where('id', id).update({
+                avatar: request.file.filename,
+                name, surname
+            })
+        
+            return response.status(201).send()
+        }
+        catch (err) {
+
+            console.log(err)
+    
+            return response.status(400).json({
+                error: 'Unexpected error while creating new class'
+            })
+        }
+    }
+
     async getClasses(request: Request, response: Response) {
 
         const { user_id } = request.params
 
 	    const data = await db('classes').where('classes.user_id', user_id)
             .join('class_schedule', 'class_schedule.class_id', '=', 'classes.id')
-            .select(['class_schedule.week_day', 'class_schedule.from', 'class_schedule.to'])
+            .select(['class_schedule.*'])
 
         return response.json(data)
+    }
+
+    async deleteClasses(request: Request, response: Response) {
+
+        const { id } = request.params
+
+        try {
+
+            await db('class_schedule').where('id', id).delete()
+
+            return response.send()
+        }
+        catch (err) {
+            return response.json({ error: "Error" })
+        }
     }
 
 }

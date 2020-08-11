@@ -7,8 +7,11 @@ import Textarea from '../../components/Textarea';
 import Select from '../../components/Select';
 import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
+import { logout } from '../../services/token';
+import Dropzone from '../../components/Dropzone';
 
 interface ScheduleItem {
+    id: number, 
     week_day: number,
     to: string,
     from: string
@@ -21,7 +24,8 @@ function Perfil() {
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
     const [email, setEmail] = useState('')
-    const [avatar, setAvatar] = useState('')
+    const [avatar, setAvatar] = useState<File>()
+    const [photo, setPhoto] = useState('')
     const [whatsapp, setWhatsapp] = useState('')
     const [bio, setBio] = useState('')
     const [subject, setSubject] = useState('')
@@ -31,35 +35,41 @@ function Perfil() {
 
     useEffect(() => {
 
-        const userId = sessionStorage.getItem('USER_ID')
+        try {
 
-        api.get(`users/${userId}`).then(response => {
+            const userId = sessionStorage.getItem('USER_ID')
 
-            setName(response.data.name)
-            setSurname(response.data.surname)
-            setAvatar(response.data.avatar)
-            setEmail(response.data.email)
-            setBio(response.data.bio)
-            setWhatsapp(response.data.whatsapp)
-            setSubject(response.data.subject)
-            setCost(response.data.cost)
-        })
+            api.get(`users/${userId}`).then(response => {
 
-        api.get(`classes/${userId}`).then(response => {
-
-            response.data.map((d: ScheduleItem) => {
-                d.from = convertMinutesToHours(d.from)
-                d.to = convertMinutesToHours(d.to)
+                setName(response.data.name)
+                setSurname(response.data.surname)
+                setPhoto(response.data.avatar)
+                setEmail(response.data.email)
+                setBio(response.data.bio)
+                setWhatsapp(response.data.whatsapp)
+                setSubject(response.data.subject)
+                setCost(response.data.cost)
             })
 
-            setScheduleItems(scheduleItems => scheduleItems.concat(response.data))
+            api.get(`classes/${userId}`).then(response => {
 
-        }).catch(() => console.log('Ocorreu erro'))
+                response.data.map((d: ScheduleItem) => {
+                    d.from = convertMinutesToHours(d.from)
+                    d.to = convertMinutesToHours(d.to)
+                })
 
-        if(scheduleItems.length > 1) {
-            scheduleItems.filter((d: ScheduleItem) => {
-                return
-            })
+                setScheduleItems(scheduleItems => scheduleItems.concat(response.data))
+
+            }).catch(() => console.log('Ocorreu erro'))
+
+            if(scheduleItems.length > 1) {
+                scheduleItems.filter((d: ScheduleItem) => {
+                    return
+                })
+            }
+        } catch (err) {
+            logout()
+            history.push("/")
         }
         
     }, [])
@@ -85,9 +95,9 @@ function Perfil() {
     function addNewScheduleItem () {
 
         if (scheduleItems.length > 0)
-            setScheduleItems([...scheduleItems, { week_day: 0, from: '', to: '' }])
+            setScheduleItems([...scheduleItems, { id: -1, week_day: 0, from: '', to: '' }])
         else
-            setScheduleItems([{ week_day: 0, from: '', to: '' }])
+            setScheduleItems([{ id: -1, week_day: 0, from: '', to: '' }])
     }
 
     function setScheduleItemValue(position: number, field: string, value: string) {
@@ -108,16 +118,28 @@ function Perfil() {
 
         const userId = sessionStorage.getItem('USER_ID')
 
-        api.put(`classes/${userId}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
+        console.log(avatar)
+
+        const data = new FormData()
+
+        data.append('name', name)
+        data.append('surname', surname)
+
+        if (avatar)
+            data.append('image', avatar)
+        
+        api.post(`profile/${userId}`, data).then(() => {
+
+            api.post(`classes/${userId}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
             .then(() => { 
                 alert('Cadastro realizado com sucesso') 
                 history.push('/main')
             })
             .catch(() => { alert('Erro no cadastro') })
 
-        console.log({
-            whatsapp, bio, subject, cost, scheduleItems
         })
+        .catch(() => { alert('Erro na atualização') })
+        
     }
 
     return (
@@ -126,9 +148,9 @@ function Perfil() {
 
             <PageHeader>
                 <div className="header-top">
-                    <img className="photo" src={avatar} alt={name}/>
+                    <img className="photo" src={photo} alt={name}/>
 
-                    <strong> {name} {surname}  </strong>
+                    <strong> {name} {surname} </strong>
                     <h2> {subject} </h2>
                 </div>
             </PageHeader>
@@ -140,7 +162,10 @@ function Perfil() {
                     <fieldset>
                         <legend> Seus dados </legend>
 
+                        <Dropzone onFileUploaded={setAvatar} />
+
                         <div className="names">
+                            
                             <Input name="name" label="Nome" value={name}
                                 onChange={(e) => { setName(e.target.value) }} />
 
@@ -192,7 +217,7 @@ function Perfil() {
 
                         { scheduleItems.map((scheduleItem, index) => {
                             return (
-                                <div key={scheduleItem.week_day} className="schedule-item">
+                                <div key={scheduleItem.id} className="schedule-item">
 
                                     <Select name="week_day" label="Dia da semana" value={scheduleItem.week_day}
                                     onChange={e => setScheduleItemValue(index, 'week_day', e.target.value)}
@@ -213,7 +238,12 @@ function Perfil() {
                                     <Input name="to" label="Até" type="time" value={scheduleItem.to}
                                     onChange={e => setScheduleItemValue(index, 'to', e.target.value)}></Input>
 
-                                    <button type="button"> Excluir horário </button>
+                                    <button type="button" onClick={() => {
+                                        api.delete(`classes/${scheduleItem.id}`)
+                                        window.location.reload();
+                                    }}> 
+                                        Excluir horário 
+                                    </button>
 
                                 </div>
                             )
