@@ -8,12 +8,8 @@ import Select from '../../components/Select';
 import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../../services/token';
-
-interface ScheduleItem {
-    week_day: number,
-    to: string,
-    from: string
-}
+import { ScheduleItem } from '../../hooks/Data';
+import ConvertMinutesToHours from '../../hooks/ConvertMinutesToHours'
 
 function TeacherForm() {
 
@@ -48,8 +44,8 @@ function TeacherForm() {
             api.get(`classes/${userId}`).then(response => {
 
                 response.data.map((d: ScheduleItem) => {
-                    d.from = convertMinutesToHours(d.from)
-                    d.to = convertMinutesToHours(d.to)
+                    d.from = ConvertMinutesToHours(d.from)
+                    d.to = ConvertMinutesToHours(d.to)
                 })
 
                 setScheduleItems(scheduleItems => scheduleItems.concat(response.data))
@@ -67,24 +63,6 @@ function TeacherForm() {
         }
         
     }, [])
-
-    function convertMinutesToHours(time: string) {
-        const timeNumber = parseInt(time)
-        const hours = timeNumber / 60
-        const minutes = timeNumber - (hours * 60)
-
-        if (hours < 10 && minutes < 10) {
-            return `0${hours}:0${minutes}`.toString()
-        }
-        else if (minutes < 10) {
-            return `${hours}:0${minutes}`.toString()
-        }
-        else if (hours < 10) {
-            return `0${hours}:${minutes}`.toString()
-        }
-         
-        return `${hours}:${minutes}`.toString()
-    }
 
     function addNewScheduleItem () {
 

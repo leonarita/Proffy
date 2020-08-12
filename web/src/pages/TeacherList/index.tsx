@@ -42,8 +42,6 @@ function TeacherList() {
 
             setIsLoadedData(true)
             setPage(page)
-
-            console.log(response)
             
             setTeachers(response.data)
         } catch (err) {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default interface Data {
+export interface Data {
 
     id: string,
     name: string,
@@ -18,4 +18,10 @@ export default interface Data {
         from: string,
         to: string
     }]
+}
+
+export interface ScheduleItem {
+    week_day: number,
+    to: string,
+    from: string
 }

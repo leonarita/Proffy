@@ -40,6 +40,55 @@
     line-height: 2.8rem;
 }
 
+.teacher-item .hours {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.teacher-item .hours .hour {
+    background: #FAFAFC;
+    border: 1px solid #E6E6F0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 8vw;
+    margin-left: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.teacher-item .hours .hour p {
+    left: 13.11%;
+    right: 70.49%;
+    top: 11.76%;
+    bottom: 73.53%;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    color: #9C98A6;
+}
+
+.teacher-item .hours .hour h4 {
+    left: 13.11%;
+    right: 52.46%;
+    top: 26.47%;
+    bottom: 54.41%;
+
+    font-family: Archivo;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 26px;
+
+    color: #6A6180;
+}
+
+.teacher-item .hours .hour h4 + p {
+    margin-top: 1rem;
+}
+
 .teacher-item footer {
     padding: 3.2rem 2rem;
     background: var(--color-box-footer);

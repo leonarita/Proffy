@@ -3,20 +3,29 @@ import { Request, Response } from 'express'
 
 export default class FavoritesController {
 
-    async create(request: Request, response: Response) {
+    async handleToggleFavorit(request: Request, response: Response) {
         const { user_id } = request.params
         const { proffy_id } = request.body
 
-        await db('favorites').insert({ user_id, proffy_id })
-        return response.send()
-    }
+        const trx = await db.transaction()
 
-    async delete(request: Request, response: Response) {
-        const { user_id } = request.params
-        const { proffy_id } = request.body
+        try {
+            const [data] = await trx('favorites').where('user_id', user_id).where('proffy_id', proffy_id).count()
+            console.log(data['count(*)'])
 
-        await db('favorites').where("user_id", user_id).where("proffy_id", proffy_id).delete()
-        return response.send()
+            if (data['count(*)'] === 0) {
+                await trx('favorites').insert({ user_id, proffy_id })
+            }
+            else
+                await trx('favorites').where("user_id", user_id).where("proffy_id", proffy_id).delete()
+
+            await trx.commit()
+            return response.send()
+        }
+        catch (err) {
+            await trx.rollback()
+            return response.status(401).json({ error: err })
+        }
     }
 
     async findAll(request: Request, response: Response) {
@@ -30,6 +39,8 @@ export default class FavoritesController {
                 .select("users.*", "classes.*")
                 .join("users", "users.id", "=", "favorites.proffy_id")
                 .join("classes", "classes.user_id", "=", "users.id")
+
+            await trx.commit()
 
             return response.json(proffysIds)
         }

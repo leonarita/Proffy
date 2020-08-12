@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.css'
 
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg'
 import api from '../../services/api';
+import { ScheduleItem } from '../../hooks/Data';
+import ConvertMinutesToHours from '../../hooks/ConvertMinutesToHours'
 
 export interface Teacher {
     avatar: string,
@@ -21,8 +23,24 @@ interface TeacherItemProps {
 
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
 
+    const [scheduleItems, setScheduleItems] = useState<ScheduleItem[]>([])
+
+    const weekdays = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta']
+
+    useEffect(() => {
+        try {
+
+            api.get(`/classes/${teacher.id}`).then((response) => {
+                setScheduleItems(response.data)
+            })
+        }
+        catch (err) {
+        }
+    }, [])
+
     function createNewConnection() {
         api.post('connections', { user_id: teacher.id })
+        console.log(scheduleItems)
     }
 
     return (
@@ -39,6 +57,35 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
             <p>
                 {teacher.bio}
             </p>
+
+            <div className="hours">
+
+                { weekdays.map((weekday: string, index: number) => {
+
+                    var to="", from=""
+
+                    scheduleItems.map((schedule) => {
+
+                        if (schedule.week_day === index+1) {
+                            to = ConvertMinutesToHours(schedule.to)
+                            from = ConvertMinutesToHours(schedule.from)
+                        }
+                    })
+
+                    return (
+                        <div key={index} className="hour">
+                            <p> Dia </p>
+                            <h4> {weekday} </h4>
+                            <p> Horário </p>
+
+                            <h4> {from} - {to} </h4>
+
+                        </div>
+                    )
+
+                }) }
+
+            </div>
 
             <footer>
                 <p>
