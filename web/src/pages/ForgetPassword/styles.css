@@ -13,6 +13,8 @@
 
 #page-forget-password .banner .logo-container img {
     height: 10rem;
+    margin-top: 20rem;
+    width: 30rem;
 }
 
 #page-forget-password .banner .logo-container {
@@ -112,6 +114,11 @@
         grid-area: header;
         height: 100vh;
         width: 54vw;
+    }
+
+    #page-forget-password .banner .logo-container img {
+        margin: 0;
+        width: auto;
     }
 }
 

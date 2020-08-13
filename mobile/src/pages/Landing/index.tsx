@@ -1,7 +1,8 @@
 import React, { Component, useState, useEffect } from 'react'
 import { Text, View, Image, TouchableOpacity } from 'react-native'
 import styles from './styles'
-import { useNavigation } from '@react-navigation/native'
+import { AntDesign } from '@expo/vector-icons';
+import { useNavigation, useRoute, Link } from '@react-navigation/native'
 import { RectButton } from 'react-native-gesture-handler'
 
 import landingImg from '../../assets/images/landing.png'
@@ -9,14 +10,28 @@ import studyIcon from '../../assets/images/icons/study.png'
 import giveClassesIcon from '../../assets/images/icons/give-classes.png'
 import heartIcon from '../../assets/images/icons/heart.png'
 import api from '../../services/api'
+import { getToken, getId, logout } from '../../services/token'
 
 function Landing() {
 
     const { navigate } = useNavigation()
 
     const [totalConnections, setTotalConnections] =  useState(0)
+    const [name, setName] = useState('')
+    const [surname, setSurname] = useState('')
+    const [avatar, setAvatar] = useState('')
+
+    console.log(getToken())
 
     useEffect(() => {
+
+        api.get(`users/${getId()}`).then(response => {
+
+            setName(response.data.name)
+            setSurname(response.data.surname)
+            setAvatar(response.data.avatar)
+        })
+
         api.get('connections').then(response => {
             const { total } = response.data
             setTotalConnections(total)
@@ -32,8 +47,27 @@ function Landing() {
         navigate('Study')
     }
 
+    function handleLogout() {
+        logout()
+        navigate("Login")
+    }
+
     return (
         <View style={styles.container} >
+
+            <View style={styles.userData}>
+                <View style={styles.data}>
+                    <Image source={{uri: avatar}} style={styles.photo} />
+                    <Link to="">
+                        <Text style={styles.name}>{name} {surname}</Text>
+                    </Link>
+                </View>
+
+                <RectButton onPress={handleLogout}>
+                    <AntDesign name="logout" size={24} color="white" />
+                </RectButton>
+            </View>
+
             <Image source={landingImg} style={styles.banner} />
 
             <Text style={styles.title} > 

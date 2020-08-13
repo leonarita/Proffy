@@ -87,7 +87,9 @@ export default class ClassesController {
         .limit(5)
         .offset((<number>page-1)*5)
 
-        response.header('X-Total-Count', count['count(*)'])
+        response.setHeader('X-Total-Count', count['count(*)'])
+        //response.header('X-Total-Count', count['count(*)'])
+
         return response.json(classes)
     }
 

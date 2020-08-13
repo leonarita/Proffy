@@ -72,14 +72,14 @@
 }
 
 #page-teacher-form main fieldset .header {
-    display: flex;
-    justify-content: space-between;
+    display: block;
     margin-bottom: 4rem;
 }
 
 #page-teacher-form main fieldset .header .input-block {
     margin-top: 1.4rem;
     width: 35%;
+    margin-top: 4rem;
 }
 
 #page-teacher-form main fieldset .header .input-01 {
@@ -196,6 +196,17 @@
 
     #page-teacher-form main fieldset {
         padding: 0 6.4rem;
+    }
+    
+    #page-teacher-form main fieldset .header {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0;
+        margin-bottom: 4rem;
+    }
+
+    #page-teacher-form main fieldset .header .input-block {
+        margin-top: 0;
     }
 
     #page-teacher-form main .schedule-item {

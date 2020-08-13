@@ -44,7 +44,7 @@ export default class UserController {
             .select('users.*', 'classes.*').first()
         
         data_user.password = undefined
-        data_user.avatar = `http://localhost:3333/uploads/${data_user.avatar}`
+        data_user.avatar = `http://192.168.15.12:3333/uploads/${data_user.avatar}`
 
         return response.json(data_user)
     }

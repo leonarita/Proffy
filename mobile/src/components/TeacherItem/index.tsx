@@ -1,6 +1,8 @@
 import React, { Component, useState } from 'react'
 import { Text, View, Image, Linking } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
+import 'intl'
+import 'intl/locale-data/jsonp/pt-BR'
 
 import styles from './styles'
 import { RectButton } from 'react-native-gesture-handler'
@@ -8,6 +10,7 @@ import heartOutlineIcon from '../../assets/images/icons/heart-outline.png'
 import unFavoriteIcon from '../../assets/images/icons/unfavorite.png'
 import whatsappIcon from '../../assets/images/icons/whatsapp.png'
 import api from '../../services/api'
+import { useFocusEffect } from '@react-navigation/native'
 
 export interface Teacher {
     avatar: string,
@@ -63,7 +66,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
         <View style={styles.container}>
 
             <View style={styles.profile}>
-                <Image style={styles.avatar} source={{ uri:teacher.avatar }} />
+                <Image style={styles.avatar} source={{ uri: `http://192.168.15.12:3333/uploads/${teacher.avatar}` }} />
 
                 <View style={styles.profileInfo}>
                     <Text style={styles.name}>{teacher.name}</Text>
@@ -78,7 +81,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
             <View style={styles.footer}>
                 <Text style={styles.price}>
                     Preço-hora {'  '}
-                    <Text style={styles.priceValue}>R$ {teacher.cost}</Text>
+                    <Text style={styles.priceValue}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(teacher.cost)}</Text>
                 </Text>
 
                 <View style={styles.buttonsContainer}>

@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react'
-import { Text, View, Picker } from 'react-native'
+import { Text, View, Picker, FlatList } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
@@ -14,17 +14,21 @@ import { useFocusEffect } from '@react-navigation/native'
 function TeacherList() {
 
     const [isFiltersVisible, setIsFiltersVisible] = useState(false)
-    const [teachers, setTeachers] = useState([])
+    const [teachers, setTeachers] = useState<Teacher[]>([])
 
     const [favorites, setFavorites] = useState<number[]>([])
 
     const [subject, setSubject] = useState('')
     const [week_day, setWeekDay] = useState('')
     const [time, setTime] = useState<Date>(new Date())
+    const [timeString, setTimeString] = useState('')
 
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
     const [isLoadedData, setIsLoadedData] = useState(false)
+    const [total, setTotal] = useState(0)
+    const [page, setPage] = useState(1)
+    const [loading, setLoading] = useState(false)
 
     useFocusEffect(() => loadFavorites())
 
@@ -47,9 +51,9 @@ function TeacherList() {
     async function handleFiltersSubmit() {
         loadFavorites()
 
-        const timeString = `${time.getHours()}:${time.getMinutes()}`.toString()
+        setTimeString(`${time.getHours()}:${time.getMinutes()}`.toString())
 
-        const response = await api.get('classes', {
+        const response = await api.get('classesPag', {
             params: {
                 subject,
                 week_day,
@@ -57,9 +61,44 @@ function TeacherList() {
             }
         })
 
+        setTotal(response.headers['x-total-count'])
+        setPage(page+1)
+
         setIsLoadedData(true)
         setIsFiltersVisible(false)
         setTeachers(response.data)
+    }
+
+    async function loadTeachers() {
+
+        if (loading) {
+            return
+        }
+
+        if (total > 0 && teachers.length === total) {
+            return
+        }
+        
+        setLoading(true)
+
+        try {
+
+            const response = await api.get(`classesPag?page=${page}`, {
+                params: {
+                    subject,
+                    week_day,
+                    time: timeString
+                }
+            })
+
+            setTeachers([...teachers, ...response.data])
+
+            setIsLoadedData(true)
+            setPage(page+1)
+            setLoading(false)
+            
+        } catch (err) {
+        }
     }
 
     return (
@@ -135,17 +174,26 @@ function TeacherList() {
             { !isLoadedData ? <Text></Text> 
             : 
                 (teachers.length > 0 ? 
-
+/*
                     <ScrollView style={styles.teacherList} contentContainerStyle={{paddingHorizontal: 16, paddingBottom: 16}}>
                         { teachers.map((teacher: Teacher) => (<TeacherItem key={teacher.id} teacher={teacher} favorited={favorites.includes(teacher.id)} />) ) }
                     </ScrollView>
+*/
+                <FlatList data={teachers} style={styles.teacherList} keyExtractor={(teacher) => String(teacher.id)} 
+                    onEndReachedThreshold={0.2} onEndReached={loadTeachers} //showsVerticalScrollIndicator={false} 
+
+                    renderItem={({ item: teacher }) => (
+                        <TeacherItem key={teacher.id} teacher={teacher} favorited={favorites.includes(teacher.id)} />
+                    )}
+                />
+
                 :
 
                 <Text style={styles.noResults}>Nenhum professor encontrado com a sua pesquisa.</Text>
+                
                 ) 
             }
 
-            
         </View>
     )
 }

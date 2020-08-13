@@ -11,6 +11,34 @@ const styles = StyleSheet.create({
         padding: 40
     },
 
+    data: {
+        flexDirection: "row"
+    },
+
+    userData: {
+        marginTop: 10,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignContent: "center"
+    },
+
+    photo: {
+        width: 50,
+        height: 50,
+        borderRadius: 50
+    },
+
+    name: {
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        color: '#D4C2FF',
+        textAlign: "center",
+        marginHorizontal: 20,
+        alignContent: "center",
+        alignSelf: "center",
+    },
+
     banner: {
         width: '100%',
         resizeMode: 'contain'
@@ -21,7 +49,7 @@ const styles = StyleSheet.create({
         color: '#FFF',
         fontSize: 20,
         lineHeight: 30,
-        marginTop: 80
+        marginTop: 30
     },
 
     titleBold: {
@@ -30,7 +58,7 @@ const styles = StyleSheet.create({
 
     buttonsContainer: {
         flexDirection: "row",
-        marginTop: 40,
+        marginTop: 30,
         justifyContent: "space-between"
     },
 
@@ -63,7 +91,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         lineHeight: 20,
         maxWidth: 140,
-        marginTop: 40
+        marginTop: 30
     }
 })
 
