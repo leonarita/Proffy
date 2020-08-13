@@ -1,4 +1,4 @@
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from '@react-native-community/async-storage'
 
 export const isAuthenticated = () => AsyncStorage.getItem('TOKEN') !== null;
 

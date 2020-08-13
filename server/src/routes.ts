@@ -91,5 +91,6 @@ routes.use(authMiddleware).post('/favorites/:user_id', favoritesController.handl
 
 // [MOBILE] Depois de retornar os favoritos, chamar o get /classes/:id
 routes.use(authMiddleware).get('/favorites/:user_id', favoritesController.findAll)
+routes.use(authMiddleware).get('/favoritesAll/:user_id', favoritesController.findAllComplete)
 
 export default routes

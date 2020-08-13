@@ -10,6 +10,7 @@ import { ScrollView, TextInput, BorderlessButton, RectButton } from 'react-nativ
 import api from '../../services/api'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useFocusEffect } from '@react-navigation/native'
+import { getId } from '../../services/token';
 
 function TeacherList() {
 
@@ -30,14 +31,26 @@ function TeacherList() {
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
 
-    useFocusEffect(() => loadFavorites())
+    //useFocusEffect(() => loadFavorites())
 
     function loadFavorites() {
+        /*
         AsyncStorage.getItem('favorites').then(response => {
             if(response) {
                 const favoritedTeachers = JSON.parse(response)
                 const favoritedTeachersIds = favoritedTeachers.map((teacher: Teacher) => {
                     return teacher.id
+                })
+                setFavorites(favoritedTeachersIds)
+            }
+        })
+        */
+
+        api.get(`favorites/${getId()}`).then(response => {
+
+            if(response) {
+                const favoritedTeachersIds = response.data.map((data: any) => {
+                    return data['proffy_id']
                 })
                 setFavorites(favoritedTeachersIds)
             }

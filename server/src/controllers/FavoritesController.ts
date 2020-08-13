@@ -35,6 +35,38 @@ export default class FavoritesController {
 
         try {
 
+/*
+            const proffysIds = await trx('favorites').where("favorites.user_id", user_id)
+                .select("users.*", "classes.*")
+                .join("users", "users.id", "=", "favorites.proffy_id")
+                .join("classes", "classes.user_id", "=", "users.id")
+*/
+            const proffysIds = await trx('favorites').where("favorites.user_id", user_id)
+                .select("favorites.proffy_id")
+
+            await trx.commit()
+
+            return response.json(proffysIds)
+        }
+        catch (err) {
+            await trx.rollback()
+
+            console.log(err)
+    
+            return response.status(400).json({
+                error: 'Unexpected error while finding favorites'
+            })
+        }
+    }
+
+    async findAllComplete(request: Request, response: Response) {
+        const { user_id } = request.params
+
+        const trx = await db.transaction()
+
+        try {
+
+
             const proffysIds = await trx('favorites').where("favorites.user_id", user_id)
                 .select("users.*", "classes.*")
                 .join("users", "users.id", "=", "favorites.proffy_id")

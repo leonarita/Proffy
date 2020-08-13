@@ -10,6 +10,7 @@ import ForgetPassword from '../pages/ForgetPassword';
 import SuccessPassword from '../pages/SuccessPassword';
 import SuccessRegister from '../pages/SuccessRegister';
 import SuccessProfile from '../pages/SuccessProfile';
+import Profile from '../pages/Profile';
 
 // Navegação em pilha
 
@@ -25,6 +26,8 @@ function AppStack() {
                 <Screen name="Landing" component={Landing} />
                 <Screen name="GiveClasses" component={GiveClasses} />
                 <Screen name="Study" component={StudyTabs} />
+
+                <Screen name="Profile" component={Profile} />
 
                 <Screen name="SuccessPassword" component={SuccessPassword} />
                 <Screen name="SuccessRegister" component={SuccessRegister} />

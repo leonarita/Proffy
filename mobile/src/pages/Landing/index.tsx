@@ -58,7 +58,7 @@ function Landing() {
             <View style={styles.userData}>
                 <View style={styles.data}>
                     <Image source={{uri: avatar}} style={styles.photo} />
-                    <Link to="">
+                    <Link to="/Profile">
                         <Text style={styles.name}>{name} {surname}</Text>
                     </Link>
                 </View>
