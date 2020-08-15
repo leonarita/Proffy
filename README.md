@@ -138,6 +138,13 @@ Leonardo Narita
 - Instagram: @leo_narita
 
 
-
+<!--
+- socket.io, socket.io-client
+- mongoose, mongoose-paginate
+- typeorm, date-fns
+- react-native-maps, expo-location
+- Styled-Components
+- Prettier, ESLint, EditorConfig
+-->
 
 
