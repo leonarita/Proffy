@@ -1,6 +1,8 @@
 # Projeto "Proffy"
 
 <br>
+Projeto cujo objetivo é facilitar a integração entre professores e estudantes.
+<br>
 
 
 ## Projeto desenvolvido no evento Next Level Week 2.0 fornecido pela empresa RocketSeat.
@@ -9,9 +11,6 @@ Nessa semana, foi desenvolvido uma aplicação full stack integrando backend (co
 <br>
 <br>
 A linguagem de programação utilizada foi o **`Typescript`**.
-<br>
-<br>
-Projeto cujo objetivo é facilitar a integração entre professores e estudantes.
 
 <br>
 <img src="/.github/photo.png">
@@ -71,7 +70,9 @@ Para o mobile, foram utilizadas ferramentas como `axios`, `react-native-maps`, `
   
 <br>
 
-### 4. To Do
+### 4. Roadmap
+
+As seguintes issues estão pendentes no projeto: 
 
 1. Devido à redundância dos códigos, realizar refatoração;
 2. Terminar layout web;
@@ -85,4 +86,50 @@ Para o mobile, foram utilizadas ferramentas como `axios`, `react-native-maps`, `
 1. [Layout Versão 1.0](https://www.notion.so/Layout-Proffy-3d5f45f54ec54ef9b2103565b7cce4e1)
 2. [Layout Versão 2.0](https://www.notion.so/Layout-dos-desafios-Proffy-b65b509655194c02b3b4c9d4c74b78b4)
 3. [Desafios](https://www.notion.so/Vers-o-2-0-Proffy-eefca1b981694cd0a895613bc6235970)
+
+<br>
+
+## Configuração para desenvolvimento
+
+Para instalar, é necessário que tenha o `Node` e o `Git` instalados na sua máquina. Após a configuração, pode-se rodar o seguinte comando no terminal `git bash`:
+
+```
+git clone https://github.com/leonarita/Proffy
+```
+
+Após isso, você terá o repositório em sua máquina. Agora é necessário instalar o react-native-expo:
+
+```
+npm install -g expo-cli
+```
+
+Agora basta instalar as dependências do projeto com o seguinte comando nas pasta `server`, `web` e `mobile`:
+
+```
+npm install         
+    [ou]        
+yarn
+```
+
+<br>
+
+## Contribuição
+
+1. Faça o fork do projeto (https://github.com/leonarita/Proffy/fork);
+2. Crie uma branch para sua modificação (git checkout -b feature/fooBar);
+3. Faça o commit (git commit -am 'Add some fooBar');
+4. Push (git push origin feature/fooBar);
+5. Crie um novo Pull Request.
+
+<br>
+
+## Contato
+
+Leonardo Narita 
+- Email: leo_narita@hotmail.com
+- Instagram: @leo_narita
+
+
+
+
 
