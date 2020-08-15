@@ -21,7 +21,7 @@ A linguagem de programação utilizada foi o **`Typescript`**.
 Para o backend, foram utilizadas ferramentas como `express`, `knex`, `SQLite3`, `cors`, `multer`, `nodemailer`, `jsonwebtoken`, `bcryptjs` e `celebrate`. 
 <br>
 <br>
-No backend houve aplicação de testes unitários com `jest`.
+No backend, houve aplicação de TDD em testes unitários com `jest`.
 <br>
 <br>
 Foram feitas as seguintes funcionalidades:
@@ -40,11 +40,13 @@ Foram feitas as seguintes funcionalidades:
 
 ### 2. Frontend
 
+Para o frontend, foram utilizadas ferramentas como `axios`, `react-icons` `react-router-dom`, `react-dropzone`, `intl` e `yup`. 
+<br>
+<br>
 No desenvolvimento do frontend, foi utilizada a metodologia `mobile-first`.
 <br>
-Para o frontend, foram utilizadas ferramentas como `axios`, `react-icons` `react-router-dom`, `react-dropzone`. 
 <br>
-<br>Possui oito telas: 
+Possui oito telas: 
   1. Tela de login;
   2. Tela inicial;
   3. Tela de cadastro;
@@ -60,9 +62,10 @@ Para o frontend, foram utilizadas ferramentas como `axios`, `react-icons` `react
 
 Foi utilizando o React-Native com o `Expo` para a criação da aplicação mobile.
 <br>
-Para o mobile, foram utilizadas ferramentas como `axios`, `react-native-maps`, `expo-location`, `expo-image-picker`. 
+Para o mobile, foram utilizadas ferramentas como `axios`, `expo-image-picker`, `intl` e `yup`. 
 <br>
-<br>Além do Splash Screen, possui oito telas: 
+<br>
+Além do Splash Screen, possui oito telas: 
   1. Tela de login;
   2. Tela inicial;
   3. Tela de cadastro;
