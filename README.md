@@ -60,9 +60,10 @@ Possui oito telas:
 
 ### 3. Mobile
 
-Foi utilizando o React-Native com o `Expo` para a criação da aplicação mobile.
+Para o mobile, foram utilizadas ferramentas como `axios`, `expo-image-picker`, `expo-mail-composer`, `intl` e `yup`. 
 <br>
-Para o mobile, foram utilizadas ferramentas como `axios`, `expo-image-picker`, `intl` e `yup`. 
+<br>
+Foi utilizando o React-Native com o `Expo` para a criação da aplicação mobile.
 <br>
 <br>
 Além do Splash Screen, possui oito telas: 
