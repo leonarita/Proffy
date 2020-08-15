@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\leo_n\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-paper
+  C:\Program Files\nodejs\node.exe C:\Users\leo_n\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add styled-components
 
 PATH: 
   C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\leo_n\bin;C:\Program Files\Microsoft MPI\Bin;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn;C:\Program Files\Microsoft SQL Server\140\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn;C:\Program Files\Microsoft SQL Server\140\DTS\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn;C:\Program Files\MongoDB\Server\4.2\bin;C:\Program Files\Java\jdk-12.0.1\bin;C:\Program Files\nodejs;C:\Program Files (x86)\Brackets\command;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\PuTTY;C:\ProgramData\chocolatey\bin;C:\Program Files\Microsoft MPI\Bin;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn;C:\Program Files\Microsoft SQL Server\140\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn;C:\Program Files\Microsoft SQL Server\140\DTS\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn;C:\Program Files\MongoDB\Server\4.2\bin;C:\Program Files\Java\jdk-12.0.1\bin;C:\Program Files\nodejs;C:\Program Files (x86)\Brackets\command;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\PuTTY;C:\ProgramData\chocolatey\bin;C:\Users\leo_n\AppData\Roaming\npm;C:\Users\leo_n\AppData\Local\Programs\Microsoft VS Code\bin
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\leo_n\Documents\_Projetos\FullStack\Proffy\mobile\node_modules\@babel\generator\node_modules\.bin'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\leo_n\Documents\_Projetos\FullStack\Proffy\mobile\node_modules\@babel\compat-data\node_modules\.bin'
 
 npm manifest: 
   {
@@ -29,6 +29,7 @@ npm manifest:
     "dependencies": {
       "@expo-google-fonts/archivo": "^0.1.0",
       "@expo-google-fonts/poppins": "^0.1.0",
+      "@expo/vector-icons": "^10.2.0",
       "@react-native-community/async-storage": "~1.11.0",
       "@react-native-community/datetimepicker": "2.4.0",
       "@react-native-community/masked-view": "0.1.10",
@@ -37,14 +38,18 @@ npm manifest:
       "@react-navigation/stack": "^5.9.0",
       "axios": "^0.19.2",
       "expo": "~38.0.8",
+      "expo-file-system": "^9.1.0",
       "expo-font": "~8.2.1",
+      "expo-image-picker": "^8.4.0",
       "expo-status-bar": "^1.0.2",
+      "intl": "^1.2.5",
       "react": "~16.11.0",
       "react-dom": "~16.11.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
       "react-native-date-picker": "^3.1.0",
       "react-native-gesture-handler": "~1.6.0",
       "react-native-modal-datetime-picker": "^8.9.1",
+      "react-native-paper": "^4.0.1",
       "react-native-reanimated": "~1.9.0",
       "react-native-safe-area-context": "~3.0.7",
       "react-native-screens": "~2.9.0",
@@ -1041,6 +1046,14 @@ Lockfile:
       lodash "^4.17.19"
       to-fast-properties "^2.0.0"
   
+  "@callstack/react-theme-provider@^3.0.5":
+    version "3.0.5"
+    resolved "https://registry.yarnpkg.com/@callstack/react-theme-provider/-/react-theme-provider-3.0.5.tgz#a173e455e9603c9c45357a3b6ace1273086527ca"
+    integrity sha512-Iec+ybWN0FvNj87sD3oWo/49edGUP0UOSdMnzCJEFJIDYr992ECIuOV89burAAh2/ibPCxgLiK6dmgv2mO/8Tg==
+    dependencies:
+      deepmerge "^3.2.0"
+      hoist-non-react-statics "^3.3.0"
+  
   "@cnakazawa/watch@^1.0.3":
     version "1.0.4"
     resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -1082,7 +1095,7 @@ Lockfile:
       xcode "^3.0.0"
       xml-js "^1.6.11"
   
-  "@expo/vector-icons@^10.0.2":
+  "@expo/vector-icons@^10.0.2", "@expo/vector-icons@^10.2.0":
     version "10.2.0"
     resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-10.2.0.tgz#3c70656683a6a873e18efc00bc61fc160a80dc55"
     integrity sha512-dYe0SW/xbzWRtWG7i1pc3QPMGMbdReVgP02XlwMkS4srAAjF0cZQVa3ZgZ6qzxI+OzKudpDXZRmENNth/b263g==
@@ -2576,6 +2589,13 @@ Lockfile:
     dependencies:
       fbjs "1.0.0"
   
+  expo-file-system@^9.1.0:
+    version "9.1.0"
+    resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-9.1.0.tgz#1ca5f069e4992b2c86fb12c4df6d0b8e70ba2a4e"
+    integrity sha512-kzjKZZ7WnswR39D7wgiMdztJYFy+Dig94pfpmw58G9MScxbLdjRy+5htNcvDfel4SlRBTzo6QDHzEBg6g0YdOg==
+    dependencies:
+      uuid "^3.4.0"
+  
   expo-file-system@~9.0.1:
     version "9.0.1"
     resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-9.0.1.tgz#50a6a0b29fbc45413de9f7d38c0695503bf03d7e"
@@ -2590,6 +2610,14 @@ Lockfile:
     dependencies:
       fbjs "1.0.0"
       fontfaceobserver "^2.1.0"
+  
+  expo-image-picker@^8.4.0:
+    version "8.4.0"
+    resolved "https://registry.yarnpkg.com/expo-image-picker/-/expo-image-picker-8.4.0.tgz#b4a7c06411f1b190cb6fb695a3cdf0fb8f29dfb2"
+    integrity sha512-XvBNxC5ZXJN9Vsvr+QFk9PYJW1PP7YoPqprFfoBeg1/eBtCAEjgqdQ2o/Ak1RQoCqwg8SEKxxHtQpGogZZCx5g==
+    dependencies:
+      expo-permissions "~9.1.0"
+      uuid "7.0.2"
   
   expo-keep-awake@~8.2.1:
     version "8.2.1"
@@ -2623,6 +2651,11 @@ Lockfile:
     version "9.0.1"
     resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-9.0.1.tgz#dc10b58654bbe39bbbed5827369942b01b08055e"
     integrity sha512-CosJgy8XQRN/OFG2JTQDcFxz3XTGi27coCMym/hVXWtQfk0z6PwdRG5IXHfLGuSckwIcgmirrwm2+Zc0X3MmNg==
+  
+  expo-permissions@~9.1.0:
+    version "9.1.0"
+    resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-9.1.0.tgz#b830a9e8100d5650a874122b432a65ab1dfdf4c1"
+    integrity sha512-nNF8voeRSzMCIJzt27dmpHHm70ZiZh528GJJzHd9qX9aIgrN2j0WsrFI31p7Q8uPUI8HDCBbF7JmvO91GmFrhQ==
   
   expo-splash-screen@^0.5.0:
     version "0.5.0"
@@ -3076,6 +3109,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
     integrity sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw==
   
+  hoist-non-react-statics@^3.3.0:
+    version "3.3.2"
+    resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
+    integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
+    dependencies:
+      react-is "^16.7.0"
+  
   http-errors@~1.7.2:
     version "1.7.3"
     resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.7.3.tgz#6c619e4f9c60308c38519498c14fbb10aacebb06"
@@ -3168,6 +3208,11 @@ Lockfile:
       string-width "^2.1.0"
       strip-ansi "^4.0.0"
       through "^2.3.6"
+  
+  intl@^1.2.5:
+    version "1.2.5"
+    resolved "https://registry.yarnpkg.com/intl/-/intl-1.2.5.tgz#82244a2190c4e419f8371f5aa34daa3420e2abde"
+    integrity sha1-giRKIZDE5Bn4Nx9ao02qNCDiq94=
   
   invariant@^2.2.2, invariant@^2.2.4:
     version "2.2.4"
@@ -4564,7 +4609,7 @@ Lockfile:
       prop-types "^15.6.2"
       scheduler "^0.17.0"
   
-  react-is@^16.12.0, react-is@^16.13.0, react-is@^16.8.1, react-is@^16.8.4:
+  react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
     version "16.13.1"
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
     integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -4607,6 +4652,15 @@ Lockfile:
     dependencies:
       prop-types "^15.7.2"
   
+  react-native-paper@^4.0.1:
+    version "4.0.1"
+    resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.0.1.tgz#13d2272757fb738113582e900787f365cfa77c74"
+    integrity sha512-C1kHZ5sS3QU2XdmdHnLAzp88T+FWtkOa+43wYjBClevsDvi72aRf6H9PTs8GS69E8tlNHym3kbVcENgnDPMqhQ==
+    dependencies:
+      "@callstack/react-theme-provider" "^3.0.5"
+      color "^3.1.2"
+      react-native-safe-area-view "^0.14.9"
+  
   react-native-reanimated@~1.9.0:
     version "1.9.0"
     resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.9.0.tgz#38676c99dd585504fdc7331efb45e5f48ec7339a"
@@ -4618,6 +4672,13 @@ Lockfile:
     version "3.0.7"
     resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.0.7.tgz#0f53de7a30d626d82936000f3f6db374ecc4b800"
     integrity sha512-dqhRTlIFe5+P1yxitj0C9XVUxLqOmjomeqzUSSY8sNOWVjtIhEY/fl4ZKYpAVnktd8dt3zl13XmJTmRmy3d0uA==
+  
+  react-native-safe-area-view@^0.14.9:
+    version "0.14.9"
+    resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.14.9.tgz#90ee8383037010d9a5055a97cf97e4c1da1f0c3d"
+    integrity sha512-WII/ulhpVyL/qbYb7vydq7dJAfZRBcEhg4/UWt6F6nAKpLa3gAceMOxBxI914ppwSP/TdUsandFy6lkJQE0z4A==
+    dependencies:
+      hoist-non-react-statics "^2.3.1"
   
   react-native-screens@~2.9.0:
     version "2.9.0"
@@ -5559,6 +5620,11 @@ Lockfile:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
     integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+  
+  uuid@7.0.2:
+    version "7.0.2"
+    resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.2.tgz#7ff5c203467e91f5e0d85cfcbaaf7d2ebbca9be6"
+    integrity sha512-vy9V/+pKG+5ZTYKf+VcphF5Oc6EFiu3W8Nv3P3zIh0EqVI80ZxOzuPfe9EHjkFNvf8+xuTHVeei4Drydlx4zjw==
   
   uuid@^3.3.2, uuid@^3.4.0:
     version "3.4.0"

@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, View, TextInput } from 'react-native'
 import { Checkbox } from 'react-native-paper';
 import styles from './styles'
 import { RectButton } from 'react-native-gesture-handler'
 import api from '../../services/api'
 import { useNavigation, Link } from '@react-navigation/native'
-import { setToken, setId } from '../../services/token'
+import { setToken, setId, loginAsyncStorage, getDataAsyncStorage, getToken, getId } from '../../services/token'
 import Header from '../../components/Header';
+import AsyncStorage from '@react-native-community/async-storage';
 
 function Login () {
 
@@ -15,6 +16,22 @@ function Login () {
     const [checked, setChecked] = useState(false)
 
     const { navigate } = useNavigation()
+
+    useEffect(() => {
+        
+        try {
+            getDataAsyncStorage()
+
+            AsyncStorage.getItem('USER_ID').then(response => {
+                if(response) {
+                    navigate('Landing')
+                }
+            })
+        }
+        catch {
+            return
+        }
+    }, [])
 
     async function handleLogin() {
 
@@ -27,6 +44,9 @@ function Login () {
 
             setToken(response.data.token)
             setId(response.data.data_user.id)
+
+            if (checked)
+                loginAsyncStorage(response.data.token, response.data.data_user.id)
 
             setEmail('')
             setPassword('')
@@ -46,7 +66,7 @@ function Login () {
                 <View style={styles.header}>
                     <Text style={styles.title}>Fazer login</Text>
 
-                    <Link to="" style={styles.createAccount}>
+                    <Link to="/CreateAccount" style={styles.createAccount}>
                         <Text style={styles.createAccountText}>
                             Criar uma conta
                         </Text>

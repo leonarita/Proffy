@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from 'react'
 import { Text, View, Image, TouchableOpacity } from 'react-native'
 import styles from './styles'
 import { AntDesign } from '@expo/vector-icons';
-import { useNavigation, useRoute, Link } from '@react-navigation/native'
+import { useNavigation, useRoute, Link, useFocusEffect } from '@react-navigation/native'
 import { RectButton } from 'react-native-gesture-handler'
 
 import landingImg from '../../assets/images/landing.png'
@@ -23,21 +23,28 @@ function Landing() {
 
     console.log(getToken())
 
-    useEffect(() => {
+    useFocusEffect(() => bringData())
 
-        api.get(`users/${getId()}`).then(response => {
+    function bringData() {
 
-            setName(response.data.name)
-            setSurname(response.data.surname)
-            setAvatar(response.data.avatar)
-        })
+        try {
+            api.get(`users/${getId()}`).then(response => {
 
-        api.get('connections').then(response => {
-            const { total } = response.data
-            setTotalConnections(total)
-        })
-    }, [])
+                setName(response.data.name)
+                setSurname(response.data.surname)
+                setAvatar(response.data.avatar)
+            })
 
+            api.get('connections').then(response => {
+                const { total } = response.data
+                setTotalConnections(total)
+            })
+        }
+        catch {
+            logout()
+            navigate("Login")
+        }
+    }
 
     function handleNavigationToGiveClassesPage() {
         navigate('GiveClasses')

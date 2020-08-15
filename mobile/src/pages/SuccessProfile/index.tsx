@@ -15,7 +15,7 @@ function SuccessProfile() {
                 <Text style={styles.title}>Cadastro salvo!</Text>
                 <Text style={styles.desc}>Tudo certo, seu cadastro está na lista de Proffys. Agora é só ficar de olho no seu WhatsApp.</Text>
 
-                <RectButton onPress={() => navigate("Login")} style={styles.submitButton}>
+                <RectButton onPress={() => navigate("Landing")} style={styles.submitButton}>
                     <Text style={styles.submitButtonText}>
                         Acessar
                     </Text>

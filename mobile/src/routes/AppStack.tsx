@@ -11,6 +11,7 @@ import SuccessPassword from '../pages/SuccessPassword';
 import SuccessRegister from '../pages/SuccessRegister';
 import SuccessProfile from '../pages/SuccessProfile';
 import Profile from '../pages/Profile';
+import CreateAccount from '../pages/CreateAccount';
 
 // Navegação em pilha
 
@@ -23,6 +24,7 @@ function AppStack() {
             <Navigator screenOptions={{ headerShown: false }}>
                 <Screen name="Login" component={Login} />
                 <Screen name="ForgetPassword" component={ForgetPassword} />
+                <Screen name="CreateAccount" component={CreateAccount} />
                 <Screen name="Landing" component={Landing} />
                 <Screen name="GiveClasses" component={GiveClasses} />
                 <Screen name="Study" component={StudyTabs} />

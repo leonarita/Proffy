@@ -31,7 +31,7 @@ function TeacherList() {
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
 
-    //useFocusEffect(() => loadFavorites())
+    useFocusEffect(() => loadFavorites())
 
     function loadFavorites() {
         /*

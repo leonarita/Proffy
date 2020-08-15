@@ -12,7 +12,10 @@ const styles = StyleSheet.create({
     },
 
     data: {
-        flexDirection: "row"
+        flexDirection: "row",
+        justifyContent: "center",
+        alignSelf: "center",
+        alignItems: "center"
     },
 
     userData: {
@@ -25,7 +28,8 @@ const styles = StyleSheet.create({
     photo: {
         width: 50,
         height: 50,
-        borderRadius: 50
+        borderRadius: 50,
+        marginRight: 13
     },
 
     name: {
