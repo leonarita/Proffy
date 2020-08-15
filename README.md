@@ -21,7 +21,7 @@ A linguagem de programação utilizada foi o **`Typescript`**.
 Para o backend, foram utilizadas ferramentas como `express`, `knex`, `SQLite3`, `cors`, `multer`, `nodemailer`, `jsonwebtoken`, `bcryptjs` e `celebrate`. 
 <br>
 <br>
-No backend houve aplicação de testes unitários com `jest`.
+No backend, houve aplicação de TDD em testes unitários com `jest`.
 <br>
 <br>
 Foram feitas as seguintes funcionalidades:
