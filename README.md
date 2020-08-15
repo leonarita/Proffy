@@ -4,6 +4,8 @@
 Projeto cujo objetivo é facilitar a integração entre professores e estudantes.
 <br>
 
+<img src="/.github/photo.png">
+<br>
 
 ## Projeto desenvolvido no evento Next Level Week 2.0 fornecido pela empresa RocketSeat.
 
@@ -12,8 +14,6 @@ Nessa semana, foi desenvolvido uma aplicação full stack integrando backend (co
 <br>
 A linguagem de programação utilizada foi o **`Typescript`**.
 
-<br>
-<img src="/.github/photo.png">
 <br>
 
 ### 1. Backend
