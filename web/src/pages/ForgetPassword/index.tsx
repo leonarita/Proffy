@@ -4,8 +4,16 @@ import './styles.css'
 import logoImg from '../../assets/images/logo.svg'
 import backIcon from '../../assets/images/icons/back.svg'
 import { Link, useHistory } from 'react-router-dom'
+import * as yup from 'yup';
 import { hasTokenLocalStorage, getTokenLocalStorage } from '../../services/token'
 import api from '../../services/api'
+
+const emailSchema = yup.object().shape({
+    email: yup
+        .string()
+        .email()
+        .required(),
+})
 
 function ForgetPassword() {
 
@@ -31,8 +39,17 @@ function ForgetPassword() {
         e.preventDefault()
 
         try {
-            api.post("forgot_password", { email })
-            history.push("success-password")
+
+            emailSchema.isValid({ email }).then(valid => {
+
+                if (valid) {
+                    api.post("forgot_password", { email })
+                    history.push("success-password")
+                }
+                else {
+                    console.log('Email invalido')
+                }
+            })
         }
         catch(err) {
         }

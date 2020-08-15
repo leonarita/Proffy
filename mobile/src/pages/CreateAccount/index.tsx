@@ -3,9 +3,16 @@ import { Text, View, TextInput, Image, KeyboardAvoidingView, Platform } from 're
 import styles from './styles'
 import { RectButton, BorderlessButton } from 'react-native-gesture-handler'
 import api from '../../services/api'
-import { useNavigation, Link, useFocusEffect } from '@react-navigation/native'
-import Header from '../../components/Header';
+import * as yup from 'yup';
+import { useNavigation } from '@react-navigation/native'
 import backIcon from '../../assets/images/icons/back.png'
+
+const userSchema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().required().min(8).max(25),
+    name: yup.string().required().min(3),
+    surname: yup.string().required()
+})
 
 function CreateAccount () {
 
@@ -25,8 +32,13 @@ function CreateAccount () {
             else {
 
                 try {
-                    api.post("/users", { name, surname, email, password }).then(() => {
-                        navigate("SuccessRegister")
+                    userSchema.isValid({ name, surname, email, password }).then(response => {
+
+                        if (response) {
+                            api.post("/users", { name, surname, email, password }).then(() => {
+                                navigate("SuccessRegister")
+                            })
+                        }
                     })
                 } 
                 catch (err) {

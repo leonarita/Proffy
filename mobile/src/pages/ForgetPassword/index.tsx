@@ -12,6 +12,14 @@ import { setToken } from '../../services/token'
 import Header from '../../components/Header';
 import PageHeader from '../../components/PageHeader';
 import backIcon from '../../assets/images/icons/back.png'
+import * as yup from 'yup';
+
+const emailSchema = yup.object().shape({
+    email: yup
+        .string()
+        .email()
+        .required(),
+})
 
 function ForgetPassword () {
 
@@ -21,14 +29,15 @@ function ForgetPassword () {
 
     async function handleRecoverPassword() {
 
-        if (!email) {
-            return
-        }
-
         try {
-            api.post("forgot_password", { email })
+            emailSchema.isValid({ email }).then(valid => {
 
-            navigate('SuccessPassword')
+                if (valid) {
+                    api.post("forgot_password", { email }).then(() => {
+                        navigate('SuccessPassword')
+                    })
+                }
+            })
         }
         catch (err) {
             console.log(err)

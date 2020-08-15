@@ -5,7 +5,15 @@ import logoImg from '../../assets/images/logo.svg'
 import backIcon from '../../assets/images/icons/back.svg'
 import { Link, useHistory } from 'react-router-dom'
 import api from '../../services/api'
+import * as yup from 'yup'
 import { hasTokenLocalStorage, getTokenLocalStorage } from '../../services/token'
+
+const userSchema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().required().min(8).max(25),
+    name: yup.string().required().min(3),
+    surname: yup.string().required()
+})
 
 function Register() {
 
@@ -39,12 +47,19 @@ function Register() {
         }
     }, [])
 
-    async function handleLogin(e: FormEvent) {
+    function handleLogin(e: FormEvent) {
         e.preventDefault()
 
         try {
-            await api.post("/users", { name, surname, email, password });
-            history.push("/success-register")
+
+            userSchema.isValid({ name, surname, email, password }).then(response => {
+
+                if (response) {
+                    api.post("/users", { name, surname, email, password }).then(() => {
+                        history.push("/success-register")
+                    })
+                }
+            })
         } 
         catch (err) {
             console.log(err)
