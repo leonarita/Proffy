@@ -1,6 +1,6 @@
 import db from '../database/connection'
-import convertHourToMinutes from '../utils/convertHourToMinutes'
 import { Request, Response } from 'express'
+const convertHourToMinutes = require('../utils/convertHourToMinutes')
 
 interface ScheduleItem {
     week_day: number,
