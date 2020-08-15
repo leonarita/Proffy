@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 import { Request, Response } from 'express'
+import { uuid } from 'uuidv4'
 import db from '../database/connection'
 import { MailtrapMailProvider } from '../providers/implementations/MailtrapMailProvider'
 const jwt = require('jsonwebtoken')
@@ -47,10 +48,15 @@ export default class UserController {
                 throw new Error("User don't exists.")
             }
 
-            const hash = await bcrypt.hash("123456", 10)
+            var password = uuid()
+            password = password.substr(0, 8)
+
+            const hash = await bcrypt.hash(password, 10)
             await db('users').where('email', email).update('password', hash)
 
             const mailProvider = new MailtrapMailProvider()
+
+            const body = `<p> Sua nova senha é: ${password} </p>`
 
             await mailProvider.sendMail({
                 to: {
@@ -61,8 +67,8 @@ export default class UserController {
                     name: 'Equipe do meu app',
                     email: 'equipe@meuapp.com'
                 },
-                subject: 'Restar senha da plataforma Proffy',
-                body: '<p> Sua nova senha é: 123456 </p>'
+                subject: 'Resetar senha da plataforma Proffy',
+                body,
             })
             
             return response.status(201).send()
