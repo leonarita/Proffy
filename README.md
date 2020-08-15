@@ -34,8 +34,7 @@ Foram feitas as seguintes funcionalidades:
   07. Envio de email (para resetar senha de usuário);
   08. Criptografia;
   09. Token (JWT);
-  10. Validação de dados;
-  11. Paginação.
+  10. Paginação.
 
 <br>
 
@@ -112,7 +111,7 @@ Agora basta instalar as dependências do projeto com o seguinte comando nas past
 
 ```
 npm install         
-    [ou]        
+[ou]        
 yarn
 ```
 
