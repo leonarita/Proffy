@@ -4,7 +4,7 @@ import { uuid } from 'uuidv4'
 import db from '../database/connection'
 import { MailtrapMailProvider } from '../providers/implementations/MailtrapMailProvider'
 const jwt = require('jsonwebtoken')
-const authConfig = require('../config/auth')
+const authConfig = require('../config/auth') 
 
 function generateToken (params = {}) {
     return jwt.sign(params, authConfig.secret, {
