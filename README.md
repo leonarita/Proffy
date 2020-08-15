@@ -42,7 +42,7 @@ Foram feitas as seguintes funcionalidades:
 
 No desenvolvimento do frontend, foi utilizada a metodologia `mobile-first`.
 <br>
-Para o frontend, foram utilizadas ferramentas como `axios`, `react-icons` `react-router-dom`, `react-dropzone`. 
+Para o frontend, foram utilizadas ferramentas como `axios`, `react-icons` `react-router-dom`, `react-dropzone`, `intl` e `yup`. 
 <br>
 <br>Possui oito telas: 
   1. Tela de login;
@@ -60,7 +60,7 @@ Para o frontend, foram utilizadas ferramentas como `axios`, `react-icons` `react
 
 Foi utilizando o React-Native com o `Expo` para a criação da aplicação mobile.
 <br>
-Para o mobile, foram utilizadas ferramentas como `axios`, `react-native-maps`, `expo-location`, `expo-image-picker`. 
+Para o mobile, foram utilizadas ferramentas como `axios`, `expo-image-picker`, `intl` e `yup`. 
 <br>
 <br>Além do Splash Screen, possui oito telas: 
   1. Tela de login;
