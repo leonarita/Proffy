@@ -38,6 +38,8 @@ Foram feitas as seguintes funcionalidades:
 
 ### 2. Frontend
 
+No desenvolvimento do frontend, foi utilizada a metodologia do `mobile-first`.
+<br>
 Para o frontend, foram utilizadas ferramentas como `axios`, `react-icons` `react-router-dom`, `react-dropzone`. 
 <br>
 <br>Possui oito telas: 
