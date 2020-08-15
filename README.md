@@ -7,9 +7,9 @@ Projeto cujo objetivo é facilitar a integração entre professores e estudantes
 <img src="/.github/photo.png">
 <br>
 
-## Projeto desenvolvido no evento Next Level Week 2.0 fornecido pela empresa RocketSeat.
+## Projeto desenvolvido no evento Next Level Week 2.0 fornecido pela empresa RocketSeat e extendindo com novas funcionalidades.
 
-Nessa semana, foi desenvolvido uma aplicação full stack integrando backend (com NodeJS), frontend (com ReactJS) e mobile (com React-Native). 
+Nesse projeto, foi desenvolvida uma aplicação full stack integrando backend (com NodeJS), frontend (com ReactJS) e mobile (com React-Native). 
 <br>
 <br>
 A linguagem de programação utilizada foi o **`Typescript`**.
@@ -38,7 +38,7 @@ Foram feitas as seguintes funcionalidades:
 
 ### 2. Frontend
 
-No desenvolvimento do frontend, foi utilizada a metodologia do `mobile-first`.
+No desenvolvimento do frontend, foi utilizada a metodologia `mobile-first`.
 <br>
 Para o frontend, foram utilizadas ferramentas como `axios`, `react-icons` `react-router-dom`, `react-dropzone`. 
 <br>
