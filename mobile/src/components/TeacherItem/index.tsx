@@ -1,8 +1,9 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { Text, View, Image, Linking } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
 import 'intl'
 import 'intl/locale-data/jsonp/pt-BR'
+import { Feather as Icon } from '@expo/vector-icons'
+import * as MailComposer from 'expo-mail-composer'
 
 import styles from './styles'
 import { RectButton } from 'react-native-gesture-handler'
@@ -20,7 +21,8 @@ export interface Teacher {
     id: number,
     name: string,
     subject: string,
-    whatsapp: string
+    whatsapp: string,
+    email: string
 }
 
 interface TeacherItemProps {
@@ -51,7 +53,6 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
                 })
             }
 
-            console.log(ok)
             setisFavorited(ok)
         })
     }
@@ -86,6 +87,16 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
         setisFavorited(!isFavorited)
     }
 
+    function sendMail() {
+        const message = `Olá, ${teacher.name}! Estou entrando em contato por causa da aula de ${teacher.subject}.`
+
+        MailComposer.composeAsync({
+          subject: `Interesse na aula de ${teacher.subject}`,
+          recipients: [teacher.email],
+          body: message,
+        })
+      }
+
     return (
 
         <View style={styles.container}>
@@ -118,6 +129,10 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
                     <RectButton style={styles.contactButton}>
                         <Image source={whatsappIcon} />
                         <Text style={styles.contactButtonText} onPress={handleLinkToWhatsapp}>Entrar em contato</Text>
+                    </RectButton>
+
+                    <RectButton onPress={sendMail} style={styles.mail}>
+                        <Icon name="mail" size={20} color="#FFF" />                       
                     </RectButton>
                 </View>
             </View>

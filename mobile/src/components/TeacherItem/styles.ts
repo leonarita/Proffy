@@ -85,6 +85,16 @@ const styles = StyleSheet.create({
         marginRight: 8
     },
 
+    mail: {
+        backgroundColor: '#54b6fe',
+        width: 56,
+        height: 56,
+        borderRadius: 8,
+        justifyContent: "center",
+        alignItems: "center",
+        marginRight: 8
+    },
+
     favorited: {    
         backgroundColor: '#e33d3d'
     },
@@ -97,7 +107,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        marginRight: 8
+        marginRight: 8,
+        paddingHorizontal: 20
     },
 
     contactButtonText: {
