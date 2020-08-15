@@ -59,7 +59,7 @@ Foi utilizando o React-Native com o `Expo` para a criação da aplicação mobil
 <br>
 Para o mobile, foram utilizadas ferramentas como `axios`, `react-native-maps`, `expo-location`, `expo-image-picker`. 
 <br>
-<br>Possui oito telas: 
+<br>Além do Splash Screen, possui oito telas: 
   1. Tela de login;
   2. Tela inicial;
   3. Tela de cadastro;
