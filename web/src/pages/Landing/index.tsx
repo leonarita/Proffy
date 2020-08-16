@@ -56,17 +56,19 @@ function Landing() {
 
             <div id="page-landing-content" className="container">
 
-                <div className="profile">
-                    <a href="/perfil">
-                        <img src={avatar} alt={name}/>
-                        <p> {name} {surname} </p>
-                    </a>
-                </div>
+                <div className="data">
+                    <div className="profile">
+                        <a href="/perfil">
+                            <img src={avatar} alt={name}/>
+                            <p> {name} {surname} </p>
+                        </a>
+                    </div>
 
-                <div className="logoff">
-                    <button onClick={handleLogoff}>
-                        <img src={sair} alt="Logoff"/>
-                    </button>
+                    <div className="logoff">
+                        <button onClick={handleLogoff}>
+                            <img src={sair} alt="Logoff"/>
+                        </button>
+                    </div>
                 </div>
 
                 <div className="logo-container">

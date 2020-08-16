@@ -10,6 +10,12 @@
     background: var(--color-primary);
 }
 
+#page-landing .data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .profile a {
     margin-top: 4rem;
     text-decoration: none;
@@ -91,6 +97,7 @@
 
 .buttons-container a img {
     width: 4rem;
+    margin-right: 2.4rem;
 }
 
 .buttons-container a.study {
@@ -99,6 +106,7 @@
 
 .buttons-container a.give-classes {
     background: var(--color-secundary);
+    margin-right: 0;
 }
 
 .buttons-container a.study:hover {
@@ -125,6 +133,12 @@
     margin-left: 0.8rem;
 }
 
+@media(max-width: 699px) {
+    :root {
+        font-size: 40%;
+    }
+}
+
 @media(min-width: 1100px) {
     #page-landing-content {
         max-width: 1100px;
@@ -132,18 +146,12 @@
         display: grid;
         grid-template-rows: 1fr 350px 1fr;
         grid-template-columns: 2fr 1fr 1fr;
-        grid-template-areas:"profile nothing logoff" "logo hero hero" "buttons buttons total";
+        grid-template-areas:"profile profile profile" "logo hero hero" "buttons buttons total";
     }
 
-    .profile {
+    .data {
         grid-area: profile;
         margin-left: 2rem;
-    }
-
-    .logoff {
-        grid-area: logoff;
-        display: flex;
-        justify-items: end;
     }
 
     .logo-container {
