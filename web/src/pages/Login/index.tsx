@@ -116,7 +116,7 @@ function Login() {
                         <a href="/register"> Cadastre-se </a>
                     </div>
 
-                    <p className="free"> É de graça <img src={purpleHeartIcon} alt="Coração roxo"/> </p>
+                    <p className="free"> É de graça &nbsp; <img src={purpleHeartIcon} alt="Coração roxo"/> </p>
                 </footer>
             </div>
 

@@ -216,34 +216,36 @@ function Perfil() {
 
                         { scheduleItems.map((scheduleItem, index) => {
                             return (
-                                <div key={scheduleItem.id} className="schedule-item">
+                                <div className="item">
+                                    <div key={scheduleItem.id} className="schedule-item">
 
-                                    <Select name="week_day" label="Dia da semana" value={scheduleItem.week_day}
-                                    onChange={e => setScheduleItemValue(index, 'week_day', e.target.value)}
-                                    
-                                        options={[
-                                        { value: '0', label: 'Domingo' },
-                                        { value: '1', label: 'Segunda-feira' },
-                                        { value: '2', label: 'Terça-feira' },
-                                        { value: '3', label: 'Quarta-feira' },
-                                        { value: '4', label: 'Quinta-feira' },
-                                        { value: '5', label: 'Sexta-feira' },
-                                        { value: '6', label: 'Sábado' }
-                                    ]} />
+                                        <Select name="week_day" label="Dia da semana" value={scheduleItem.week_day}
+                                        onChange={e => setScheduleItemValue(index, 'week_day', e.target.value)}
+                                        
+                                            options={[
+                                            { value: '0', label: 'Domingo' },
+                                            { value: '1', label: 'Segunda-feira' },
+                                            { value: '2', label: 'Terça-feira' },
+                                            { value: '3', label: 'Quarta-feira' },
+                                            { value: '4', label: 'Quinta-feira' },
+                                            { value: '5', label: 'Sexta-feira' },
+                                            { value: '6', label: 'Sábado' }
+                                        ]} />
 
-                                    <Input name="from" label="Das" type="time" value={scheduleItem.from}
-                                    onChange={e => setScheduleItemValue(index, 'from', e.target.value)}></Input>
+                                        <Input name="from" label="Das" type="time" value={scheduleItem.from}
+                                        onChange={e => setScheduleItemValue(index, 'from', e.target.value)}></Input>
 
-                                    <Input name="to" label="Até" type="time" value={scheduleItem.to}
-                                    onChange={e => setScheduleItemValue(index, 'to', e.target.value)}></Input>
+                                        <Input name="to" label="Até" type="time" value={scheduleItem.to}
+                                        onChange={e => setScheduleItemValue(index, 'to', e.target.value)}></Input>
+
+                                    </div>
 
                                     <button type="button" onClick={() => {
-                                        api.delete(`classes/${scheduleItem.id}`)
-                                        window.location.reload();
-                                    }}> 
-                                        Excluir horário 
+                                            api.delete(`classes/${scheduleItem.id}`)
+                                            window.location.reload();
+                                        }}> 
+                                            Excluir horário 
                                     </button>
-
                                 </div>
                             )
                         }) }

@@ -86,7 +86,12 @@
     width: 170%;
 }
 
-#page-teacher-form main fieldset legend {
+#page-teacher-form main fieldset .item {
+    display: flex;
+    flex-direction: column;
+}
+
+#page-teacher-form main fieldset .item .schedule-item legend {
     font: 700 2.4rem Archivo;
     color: var(--color-text-title);
     margin-bottom: 2.4rem;
@@ -98,7 +103,7 @@
     border-bottom: 1px solid var(--color-line-in-white);
 }
 
-#page-teacher-form main fieldset legend button {
+#page-teacher-form main fieldset .item .schedule-item legend button {
     background: none;
     border: 0;
     color: var(--color-primary);
@@ -113,7 +118,7 @@
     column-gap: 3rem;
 }
 
-#page-teacher-form main fieldset .schedule-item button {
+#page-teacher-form main fieldset .item button {
     background: none;
     border: 0;
     color: red;
@@ -122,7 +127,11 @@
     transition: color 0.2s;
     display: flex;
     justify-self: end;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 
 #page-teacher-form main fieldset legend button:hover {

@@ -6,7 +6,7 @@ import logoImg from '../../assets/images/logo.svg'
 import landingImg from '../../assets/images/landing.svg'
 import studyIcon from '../../assets/images/icons/study.svg'
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg'
-import logoffIcon from '../../assets/images/icons/logoff.svg'
+import sair from '../../assets/images/icons/Sair.svg'
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg'
 import api from '../../services/api';
 import { logout } from '../../services/token';
@@ -65,7 +65,7 @@ function Landing() {
 
                 <div className="logoff">
                     <button onClick={handleLogoff}>
-                        <img src={logoffIcon} alt="Logoff"/>
+                        <img src={sair} alt="Logoff"/>
                     </button>
                 </div>
 
