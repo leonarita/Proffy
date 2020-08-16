@@ -9,6 +9,7 @@ import landingImg from '../../assets/images/landing.png'
 import studyIcon from '../../assets/images/icons/study.png'
 import giveClassesIcon from '../../assets/images/icons/give-classes.png'
 import heartIcon from '../../assets/images/icons/heart.png'
+import sairIcon from '../../assets/images/icons/Sair.png'
 import api from '../../services/api'
 import { getToken, getId, logout } from '../../services/token'
 
@@ -62,42 +63,48 @@ function Landing() {
     return (
         <View style={styles.container} >
 
-            <View style={styles.userData}>
-                <View style={styles.data}>
-                    <Image source={{uri: avatar}} style={styles.photo} />
-                    <Link to="/Profile">
-                        <Text style={styles.name}>{name} {surname}</Text>
-                    </Link>
+            <View style={styles.top}>
+
+                <View style={styles.userData}>
+                    <View style={styles.data}>
+                        <Image source={{uri: avatar}} style={styles.photo} />
+                        <Link to="/Profile">
+                            <Text style={styles.name}>{name} {surname}</Text>
+                        </Link>
+                    </View>
+
+                    <RectButton onPress={handleLogout}>
+                        <Image source={sairIcon} style={styles.sair}/>
+                    </RectButton>
                 </View>
 
-                <RectButton onPress={handleLogout}>
-                    <AntDesign name="logout" size={24} color="white" />
-                </RectButton>
+                <Image source={landingImg} style={styles.banner} />
             </View>
 
-            <Image source={landingImg} style={styles.banner} />
+            <View style={styles.bottom}>
 
-            <Text style={styles.title} > 
-                Seja bem-vindo, {'\n'} 
-                <Text style={styles.titleBold}>O que deseja fazer?</Text>
-            </Text>
+                <Text style={styles.title} > 
+                    Seja bem-vindo, {'\n'} 
+                    <Text style={styles.titleBold}>O que deseja fazer?</Text>
+                </Text>
 
-            <View style={styles.buttonsContainer}>
-                <RectButton style={[styles.button, styles.buttonPrimary]} onPress={handleNavigationToStudyPages}>
-                    <Image source={studyIcon} />
-                    <Text style={styles.buttonText}>Estudar</Text>
-                </RectButton>
+                <View style={styles.buttonsContainer}>
+                    <RectButton style={[styles.button, styles.buttonPrimary]} onPress={handleNavigationToStudyPages}>
+                        <Image source={studyIcon} />
+                        <Text style={styles.buttonText}>Estudar</Text>
+                    </RectButton>
 
-                <RectButton style={[styles.button, styles.buttonSecondary]} onPress={handleNavigationToGiveClassesPage}>
-                    <Image source={giveClassesIcon} />
-                    <Text style={styles.buttonText}>Dar aulas</Text>
-                </RectButton>
+                    <RectButton style={[styles.button, styles.buttonSecondary]} onPress={handleNavigationToGiveClassesPage}>
+                        <Image source={giveClassesIcon} />
+                        <Text style={styles.buttonText}>Dar aulas</Text>
+                    </RectButton>
+                </View>
+
+                <Text style={styles.totalConnections}>
+                    Total de {totalConnections} conexões já realizadas {' '}
+                    <Image source={heartIcon} />
+                </Text>
             </View>
-
-            <Text style={styles.totalConnections}>
-                Total de {totalConnections} conexões já realizadas {' '}
-                <Image source={heartIcon} />
-            </Text>
         </View>
     )
 }

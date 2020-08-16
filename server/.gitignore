@@ -1,4 +1,5 @@
 node_modules
 uploads/*
 !uploads/avatar.jpg
-*.sqlite
+
+src/database/database.sqlite

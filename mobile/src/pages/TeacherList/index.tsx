@@ -194,6 +194,7 @@ function TeacherList() {
 */
                 <FlatList data={teachers} style={styles.teacherList} keyExtractor={(teacher) => String(teacher.id)} 
                     onEndReachedThreshold={0.2} onEndReached={loadTeachers} //showsVerticalScrollIndicator={false} 
+                    contentContainerStyle={{paddingHorizontal: 16, paddingBottom: 16}}
 
                     renderItem={({ item: teacher }) => (
                         <TeacherItem key={teacher.id} teacher={teacher} favorited={favorites.includes(teacher.id)} />

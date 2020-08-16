@@ -51,6 +51,40 @@ const styles = StyleSheet.create({
         color: '#6a6180'
     },
 
+    hhour: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginLeft: 50,
+        marginRight: 50,
+        marginBottom: 10,
+    },
+
+    headerHour: {
+        fontSize: 14,
+        lineHeight: 15,       
+        color: '#9C98A6',
+    },
+
+    hour: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        backgroundColor: '#E6E6F0',
+        borderRadius: 8,
+        marginLeft: 40,
+        marginRight: 40,
+        marginTop: 10,
+        padding: 10
+    },
+
+    data: {
+        fontWeight: "bold",
+        fontSize: 16,
+        lineHeight: 21,       
+        color: '#6A6180',
+    },
+
     footer: {
         backgroundColor: '#fafafc',
         padding: 24,

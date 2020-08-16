@@ -211,7 +211,7 @@ function Profile() {
                 </ImageBackground>
             </View>
 
-            <ScrollView style={styles.scroll}>
+            <ScrollView style={styles.scroll} contentContainerStyle={{paddingHorizontal: 16, paddingBottom: 16}}>
                 <View>
                     <View style={styles.container}>
                         <Text style={styles.title}>Seus dados</Text>

@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
 
     color: var(--color-text-in-primary);
     background: var(--color-primary);
@@ -14,6 +15,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    margin-bottom: 5rem;
 }
 
 .profile a {
@@ -54,7 +58,7 @@
 }
 
 .hero-image {
-    width: 100%;
+    width: 90%;
 }
 
 .logo-container {
@@ -76,7 +80,7 @@
 }
 
 .buttons-container a {
-    width: 30rem;
+    width: 26rem;
     height: 10.4rem;
     border-radius: 0.8rem;
     font: 700 2.0rem Archivo;
@@ -173,6 +177,7 @@
     .hero-image {
         grid-area: hero;
         justify-self: end;
+        width: 100%;
     }
 
     .buttons-container {
@@ -182,6 +187,7 @@
 
     .buttons-container a {
         font-size: 2.4rem;
+        width: 30rem;
     }
 
     .total-connections {

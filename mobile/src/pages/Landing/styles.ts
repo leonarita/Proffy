@@ -6,9 +6,12 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#8257E5',
         justifyContent: 'center',
-        padding: 40
+    },
+
+    top: {
+        backgroundColor: '#8257E5',
+        padding: 40,
     },
 
     data: {
@@ -50,7 +53,7 @@ const styles = StyleSheet.create({
 
     title: {    
         fontFamily: 'Poppins_400Regular',
-        color: '#FFF',
+        color: '#6A6180',
         fontSize: 20,
         lineHeight: 30,
         marginTop: 30
@@ -58,6 +61,16 @@ const styles = StyleSheet.create({
 
     titleBold: {
         fontFamily: 'Poppins_600SemiBold'
+    },
+
+    sair: {
+        height: 44,
+        width: 44
+    },
+
+    bottom: {
+        backgroundColor: '#E5E5E5',
+        paddingHorizontal: 40
     },
 
     buttonsContainer: {
@@ -91,11 +104,11 @@ const styles = StyleSheet.create({
 
     totalConnections: {
         fontFamily: 'Poppins_400Regular',
-        color: '#d4c2ff',
+        color: '#9C98A6',
         fontSize: 12,
         lineHeight: 20,
         maxWidth: 140,
-        marginTop: 30
+        marginTop: 20,
     }
 })
 

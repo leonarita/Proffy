@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
 
     photo: {
         borderRadius: 50,
-        height: 115,
-        width: 115,
+        height: 105,
+        width: 105,
         alignSelf: "center"
     },
 
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     },
 
     scroll: {
-        flex: 0.5
+        flex: 0.4,
+        marginTop: -20
     },
 
     container: {
@@ -68,7 +69,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#e6e6f0',
         borderRadius: 8,
-        marginBottom: 16,
         overflow: 'hidden'
     },
     

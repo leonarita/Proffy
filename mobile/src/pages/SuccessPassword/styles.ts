@@ -16,6 +16,15 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
 
+    done: {
+        height: 100,
+        width: 100,
+        display: "flex",
+        alignSelf: "center",
+        justifyContent: "center",
+        marginBottom: 20
+    },
+
     banner: {
         width: '60%',
         height: '30%',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, View, Image, Linking } from 'react-native'
 import 'intl'
 import 'intl/locale-data/jsonp/pt-BR'
@@ -25,6 +25,12 @@ export interface Teacher {
     email: string
 }
 
+interface ScheduleItem {
+    week_day: number,
+    to: string,
+    from: string
+}
+
 interface TeacherItemProps {
     teacher: Teacher,
     favorited: boolean
@@ -33,8 +39,22 @@ interface TeacherItemProps {
 const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
 
     const [isFavorited, setisFavorited] = useState(favorited)
+    const [scheduleItems, setScheduleItems] = useState<ScheduleItem[]>([])
+
+    const weekdays = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta']
 
     useFocusEffect(() => loadFavorites())
+
+    useEffect(() => {
+        try {
+
+            api.get(`/classes/${teacher.id}`).then((response) => {
+                setScheduleItems(response.data)
+            })
+        }
+        catch (err) {
+        }
+    }, [])
 
     function handleLinkToWhatsapp() {
         Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`)
@@ -91,11 +111,29 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
         const message = `Olá, ${teacher.name}! Estou entrando em contato por causa da aula de ${teacher.subject}.`
 
         MailComposer.composeAsync({
-          subject: `Interesse na aula de ${teacher.subject}`,
-          recipients: [teacher.email],
-          body: message,
+            subject: `Interesse na aula de ${teacher.subject}`,
+            recipients: [teacher.email],
+            body: message,
         })
-      }
+    }
+
+    function convertMinutesToHours(time: string) {
+        const timeNumber = parseInt(time)
+        const hours = timeNumber / 60
+        const minutes = timeNumber - (hours * 60)
+
+        if (hours < 10 && minutes < 10) {
+            return `0${hours}:0${minutes}`.toString()
+        }
+        else if (minutes < 10) {
+            return `${hours}:0${minutes}`.toString()
+        }
+        else if (hours < 10) {
+            return `0${hours}:${minutes}`.toString()
+        }
+         
+        return `${hours}:${minutes}`.toString()
+    }
 
     return (
 
@@ -113,6 +151,32 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
             <Text style={styles.bio}>
                 {teacher.bio}
             </Text>
+
+            <View style={styles.hhour}>
+                <Text style={styles.headerHour}>Dia</Text>
+                <Text style={styles.headerHour}>Horário</Text>
+            </View>
+
+            { weekdays.map((weekday: string, index: number) => {
+
+                var to="", from=""
+
+                scheduleItems.map((schedule) => {
+
+                    if (schedule.week_day === index+1) {
+                        to = convertMinutesToHours(schedule.to)
+                        from = convertMinutesToHours(schedule.from)
+                    }
+                })
+
+                return (
+                    <View key={index} style={styles.hour}>
+                        <Text style={styles.data}>{weekday}</Text>
+                        <Text style={styles.data}>{to} - {from}</Text>
+                    </View>
+                )
+
+            }) }
 
             <View style={styles.footer}>
                 <Text style={styles.price}>
