@@ -90,7 +90,7 @@ function TeacherForm() {
 
         const userId = localStorage.getItem('USER_ID')
 
-        api.put(`classes/${userId}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
+        api.post(`classes/${userId}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
             .then(() => { 
                 history.push("/success-profile")
             })
