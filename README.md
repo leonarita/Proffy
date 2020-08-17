@@ -91,9 +91,9 @@ As seguintes issues estão pendentes no projeto:
 
 ### 5. Referências
 
-1. [Layout Versão 1.0](https://www.notion.so/Layout-Proffy-3d5f45f54ec54ef9b2103565b7cce4e1)
-2. [Layout Versão 2.0](https://www.notion.so/Layout-dos-desafios-Proffy-b65b509655194c02b3b4c9d4c74b78b4)
-3. [Desafios](https://www.notion.so/Vers-o-2-0-Proffy-eefca1b981694cd0a895613bc6235970)
+- [Layout Versão 1.0](https://www.notion.so/Layout-Proffy-3d5f45f54ec54ef9b2103565b7cce4e1)
+- [Layout Versão 2.0](https://www.notion.so/Layout-dos-desafios-Proffy-b65b509655194c02b3b4c9d4c74b78b4)
+- [Desafios](https://www.notion.so/Vers-o-2-0-Proffy-eefca1b981694cd0a895613bc6235970)
 
 <br>
 
