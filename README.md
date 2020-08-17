@@ -83,8 +83,8 @@ Além do Splash Screen, possui oito telas:
 As seguintes issues estão pendentes no projeto: 
 
 - [ ] Devido à redundância dos códigos, realizar refatoração;
-- [ ] Terminar layout web;
-- [ ] Terminar layout mobile;
+- [x] Terminar layout web;
+- [x] Terminar layout mobile;
 - [x] Terminar responsividade web (mas sempre pode melhorar né haha).
 
 <br>
