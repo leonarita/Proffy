@@ -34,17 +34,6 @@ function TeacherList() {
     useFocusEffect(() => loadFavorites())
 
     function loadFavorites() {
-        /*
-        AsyncStorage.getItem('favorites').then(response => {
-            if(response) {
-                const favoritedTeachers = JSON.parse(response)
-                const favoritedTeachersIds = favoritedTeachers.map((teacher: Teacher) => {
-                    return teacher.id
-                })
-                setFavorites(favoritedTeachersIds)
-            }
-        })
-        */
 
         api.get(`favorites/${getId()}`).then(response => {
 
@@ -187,11 +176,7 @@ function TeacherList() {
             { !isLoadedData ? <Text></Text> 
             : 
                 (teachers.length > 0 ? 
-/*
-                    <ScrollView style={styles.teacherList} contentContainerStyle={{paddingHorizontal: 16, paddingBottom: 16}}>
-                        { teachers.map((teacher: Teacher) => (<TeacherItem key={teacher.id} teacher={teacher} favorited={favorites.includes(teacher.id)} />) ) }
-                    </ScrollView>
-*/
+
                 <FlatList data={teachers} style={styles.teacherList} keyExtractor={(teacher) => String(teacher.id)} 
                     onEndReachedThreshold={0.2} onEndReached={loadTeachers} //showsVerticalScrollIndicator={false} 
                     contentContainerStyle={{paddingHorizontal: 16, paddingBottom: 16}}

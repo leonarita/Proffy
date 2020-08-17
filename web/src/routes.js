@@ -9,14 +9,8 @@ import Register from './pages/Register';
 import Perfil from './pages/Perfil';
 import SucessMessageRegister from './pages/SucessMessageRegister'
 import SucessMessagePassword from './pages/SucessMessagePassword'
-import { isAuthenticated } from './services/token';
 import SucessMessageProfile from './pages/SucessMessageProfile';
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
-    
-    <Route {...rest} render={props => isAuthenticated() ? 
-      ( <Component {...props} /> ) : ( <Redirect to={{ pathname: "/", state: { from: props.location } }} /> ) } />
-);
+import PrivateRoute from "./routes/PrivateRoute";
 
 function Routes() {
 

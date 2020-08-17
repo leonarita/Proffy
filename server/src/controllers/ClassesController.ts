@@ -1,46 +1,9 @@
 import db from '../database/connection'
 import { Request, Response } from 'express'
+import ScheduleItem from '../data/ScheduleItem'
 const convertHourToMinutes = require('../utils/convertHourToMinutes')
 
-interface ScheduleItem {
-    week_day: number,
-    from: string,
-    to: string
-}
-
 export default class ClassesController {
-
-    async index(request: Request, response: Response) {
-
-        const filters = request.query
-
-        const subject = filters.subject as string
-        const week_day = filters.week_day as string
-        const time = filters.time as string
-
-        if(!filters.week_day || !filters.subject || !filters.time) {
-            return response.status(400).json({
-                error: 'Missing filters to search classes'
-            })
-        }
-
-        const timeInMinutes = convertHourToMinutes(time)
-
-        const classes = await db('classes')
-            .whereExists(function() {
-                this.select('class_schedule.*')
-                .from('class_schedule')
-                .whereRaw('`class_schedule`.`class_id` = `classes`.`id`')
-                .whereRaw('`class_schedule`.`week_day` = ??', [Number(week_day)])
-                .whereRaw('`class_schedule`.`from` <= ??', [timeInMinutes])
-                .whereRaw('`class_schedule`.`to` > ??', [timeInMinutes])
-            })
-        .where('classes.subject', '=', subject)
-        .join('users', 'classes.user_id', '=', 'users.id')
-        .select(['classes.*', 'users.*'])
-        
-        return response.json(classes)
-    }
 
     async indexPaginate (request: Request, response: Response) {
         const filters = request.query
@@ -87,6 +50,10 @@ export default class ClassesController {
         .limit(5)
         .offset((<number>page-1)*5)
 
+        classes.map((classe) => {
+            classe.password = undefined
+        })
+
         response.setHeader('X-Total-Count', count['count(*)'])
         //response.header('X-Total-Count', count['count(*)'])
 
@@ -131,36 +98,6 @@ export default class ClassesController {
         }
         catch (err) {
             await trx.rollback()
-
-            console.log(err)
-    
-            return response.status(400).json({
-                error: 'Unexpected error while creating new class'
-            })
-        }
-    }
-
-    async updateUser (request: Request, response: Response) {
-    
-        const { name, surname } = request.body
-        const { id } = request.params
-    
-        try {
-            if (request.file) {
-                await db('users').where('id', id).update({
-                    avatar: request.file.filename,
-                    name, surname
-                })
-             }
-             else {
-                await db('users').where('id', id).update({
-                    name, surname
-                })
-             }
-        
-            return response.status(201).send()
-        }
-        catch (err) {
 
             console.log(err)
     

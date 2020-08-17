@@ -78,30 +78,6 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
     }
 
     async function handleToggleFavorite() {
-        /*
-        const favorites = await AsyncStorage.getItem('favorites')
-
-        let favoritesArray = []
-
-        if (favorites)
-            favoritesArray = JSON.parse(favorites)
-
-        if (isFavorited) {
-            const favoriteIndex = favoritesArray.findIndex((teacherItem: Teacher) => {
-                return teacherItem.id === teacher.id
-            })
-
-            favoritesArray.splice(favoriteIndex, 1)
-            setisFavorited(false)
-        }
-        else {            
-            favoritesArray.push(teacher)
-
-            setisFavorited(true)
-        }
-
-        await AsyncStorage.setItem('favorites', JSON.stringify(favoritesArray))
-        */
 
         await api.post(`favorites/${getId()}`, { proffy_id: teacher.id })
         setisFavorited(!isFavorited)

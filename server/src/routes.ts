@@ -40,7 +40,7 @@ routes.get('/uploads/:img', (request: Request, response: Response) => {
 
 // As rotas abaixo necessitam de token
 
-routes.use(authMiddleware).post('/profile/:id', upload.single('image'), classesController.updateUser)
+routes.use(authMiddleware).post('/profile/:id', upload.single('image'), userController.updateUser)
 
 routes.use(authMiddleware).post('/classes/:id', celebrate({
 
@@ -79,7 +79,6 @@ routes.use(authMiddleware).get('/classesPag', celebrate({
 
 
 routes.use(authMiddleware).get('/classes/:user_id', classesController.getClasses)
-routes.use(authMiddleware).get('/classes', classesController.index)
 routes.use(authMiddleware).delete('/classes/:id', classesController.deleteClasses)
 
 routes.use(authMiddleware).get('/users/:user_id', userController.getDataUser)
@@ -88,8 +87,6 @@ routes.use(authMiddleware).post('/connections', connectionsController.create)
 routes.use(authMiddleware).get('/connections', connectionsController.index)
 
 routes.use(authMiddleware).post('/favorites/:user_id', favoritesController.handleToggleFavorit)
-
-// [MOBILE] Depois de retornar os favoritos, chamar o get /classes/:id
 routes.use(authMiddleware).get('/favorites/:user_id', favoritesController.findAll)
 routes.use(authMiddleware).get('/favoritesAll/:user_id', favoritesController.findAllComplete)
 

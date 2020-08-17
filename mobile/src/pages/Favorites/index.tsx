@@ -14,14 +14,6 @@ function Favorites() {
     const [favorites, setFavorites] = useState([])
 
     function loadFavorites() {
-        /*
-        AsyncStorage.getItem('favorites').then(response => {
-            if(response) {
-                const favoritedTeachers = JSON.parse(response)
-                setFavorites(favoritedTeachers)
-            }
-        })
-        */
 
         api.get(`favoritesAll/${getId()}`).then(response => {
 

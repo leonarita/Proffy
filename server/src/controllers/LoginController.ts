@@ -3,14 +3,7 @@ import { Request, Response } from 'express'
 import { uuid } from 'uuidv4'
 import db from '../database/connection'
 import { MailtrapMailProvider } from '../providers/implementations/MailtrapMailProvider'
-const jwt = require('jsonwebtoken')
-const authConfig = require('../config/auth') 
-
-function generateToken (params = {}) {
-    return jwt.sign(params, authConfig.secret, {
-        expiresIn:86400,
-    })
-}
+import generateToken from '../utils/generateToken'
 
 export default class UserController {
 

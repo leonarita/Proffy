@@ -67,14 +67,18 @@ export default class FavoritesController {
         try {
 
 
-            const proffysIds = await trx('favorites').where("favorites.user_id", user_id)
+            const proffys = await trx('favorites').where("favorites.user_id", user_id)
                 .select("users.*", "classes.*")
                 .join("users", "users.id", "=", "favorites.proffy_id")
                 .join("classes", "classes.user_id", "=", "users.id")
 
             await trx.commit()
 
-            return response.json(proffysIds)
+            proffys.map((proffy) => {
+                proffy.password = undefined
+            })
+
+            return response.json(proffys)
         }
         catch (err) {
             await trx.rollback()

@@ -49,4 +49,34 @@ export default class UserController {
         return response.json(data_user)
     }
 
+    async updateUser (request: Request, response: Response) {
+    
+        const { name, surname } = request.body
+        const { id } = request.params
+    
+        try {
+            if (request.file) {
+                await db('users').where('id', id).update({
+                    avatar: request.file.filename,
+                    name, surname
+                })
+             }
+             else {
+                await db('users').where('id', id).update({
+                    name, surname
+                })
+             }
+        
+            return response.status(201).send()
+        }
+        catch (err) {
+
+            console.log(err)
+    
+            return response.status(400).json({
+                error: 'Unexpected error while creating new class'
+            })
+        }
+    }
+
 }
