@@ -111,12 +111,36 @@ Após isso, você terá o repositório em sua máquina. Agora é necessário ins
 npm install -g expo-cli
 ```
 
-Agora basta instalar as dependências do projeto com o seguinte comando nas pasta `server`, `web` e `mobile`:
+Agora basta instalar as dependências do projeto com o seguinte comando nas pastas `server`, `web` e `mobile`:
 
 ```
 npm install         
 [ou]        
 yarn
+```
+
+O ultimo passo é criar a database do sqlite na pasta server com o seguinte comando:
+
+```
+npm knex:migrate
+[ou]
+yarn knex:migrate
+```
+
+Caso queira excluir a database, rode o seguinte comando na pasta server:
+
+```
+npm knex:migrate:rollback
+[ou]
+yarn knex:migrate:rollback
+```
+
+Para rodar teste com o `jest` na pasta server, siga esse comando:
+
+```
+npm test
+[ou]
+yarn test
 ```
 
 <br>
