@@ -85,7 +85,7 @@ As seguintes issues estão pendentes no projeto:
 - [ ] Devido à redundância dos códigos, realizar refatoração;
 - [ ] Terminar layout web;
 - [ ] Terminar layout mobile;
-- [ ] Terminar responsividade web.
+- [x] Terminar responsividade web (mas sempre pode melhorar né haha).
 
 <br>
 
