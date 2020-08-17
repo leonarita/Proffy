@@ -7,9 +7,7 @@ import Login from './pages/Login';
 import ForgetPassword from './pages/ForgetPassword';
 import Register from './pages/Register';
 import Perfil from './pages/Perfil';
-import SucessMessageRegister from './pages/SucessMessageRegister'
-import SucessMessagePassword from './pages/SucessMessagePassword'
-import SucessMessageProfile from './pages/SucessMessageProfile';
+import SuccessPage from './components/SucessPage';
 import PrivateRoute from "./routes/PrivateRoute";
 
 function Routes() {
@@ -21,9 +19,7 @@ function Routes() {
                 <Route path="/forget-password" component={ForgetPassword}/>
                 <Route path="/register" component={Register}/>
 
-                <Route path="/success-password" component={SucessMessagePassword}/>
-                <Route path="/success-register" component={SucessMessageRegister}/>
-                <Route path="/success-profile" component={SucessMessageProfile}/>
+                <Route path="/success-page" component={SuccessPage}/>
 
                 <PrivateRoute path="/main" component={Landing}  />
                 <PrivateRoute path="/perfil" component={Perfil} />
@@ -33,6 +29,7 @@ function Routes() {
                 <Route path='*'>
                     <Redirect to="/"/>
                 </Route>
+                
             </Switch>
         </BrowserRouter>
     )

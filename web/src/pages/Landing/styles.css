@@ -1,6 +1,6 @@
 #page-landing {
     width: 100vw;
-    height: 100vh;
+    height: 70vh;
 
     display: flex;
     justify-content: center;
@@ -9,6 +9,10 @@
 
     color: var(--color-text-in-primary);
     background: var(--color-primary);
+}
+
+#bottom {
+    height: 20vh;
 }
 
 #page-landing .data {
@@ -28,8 +32,8 @@
 }
 
 .profile img {
-    height: 6rem;
-    width: 6rem;
+    height: 7rem;
+    width: 7rem;
     border-radius: 50%;
 }
 
@@ -51,6 +55,7 @@
 
 .logoff img {
     color: #FFF;
+    width: 5rem;
 }
 
 .logo-container img {
@@ -144,13 +149,21 @@
 }
 
 @media(min-width: 1100px) {
+
     #page-landing-content {
         max-width: 1100px;
 
         display: grid;
-        grid-template-rows: 1fr 350px 1fr;
+        grid-template-rows: 1fr 350px;
         grid-template-columns: 2fr 1fr 1fr;
-        grid-template-areas:"profile profile profile" "logo hero hero" "buttons buttons total";
+        grid-template-areas: "profile profile profile" "logo hero hero";
+    }
+
+    #bottom {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-areas:"total buttons buttons ";
     }
 
     .data {
@@ -192,6 +205,7 @@
 
     .total-connections {
         grid-area: total;
-        justify-self: end;
+        justify-self: start;
+        margin-left: 40rem;
     }
 }

@@ -44,7 +44,13 @@ function ForgetPassword() {
 
                 if (valid) {
                     api.post("forgot_password", { email })
-                    history.push("success-password")
+
+                    history.push("success-page", { 
+                        title: "Redefinição enviada!",
+                        subtitle1: "Boa, agora é só checar o email que foi enviado para você",
+                        subtitle2: "redefinir sua senha e aproveitar os estudos.",
+                        messageButton: "Voltar ao login" 
+                    })
                 }
                 else {
                     console.log('Email invalido')

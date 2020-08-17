@@ -52,32 +52,38 @@ function Landing() {
 
     return (
 
-        <div id="page-landing">
+        <div>
+            <div id="page-landing">
 
-            <div id="page-landing-content" className="container">
+                <div id="page-landing-content" className="container">
 
-                <div className="data">
-                    <div className="profile">
-                        <a href="/perfil">
-                            <img src={avatar} alt={name}/>
-                            <p> {name} {surname} </p>
-                        </a>
+                    <div className="data">
+                        <div className="profile">
+                            <a href="/perfil">
+                                <img src={avatar} alt={name}/>
+                                <p> {name} {surname} </p>
+                            </a>
+                        </div>
+
+                        <div className="logoff">
+                            <button onClick={handleLogoff}>
+                                <img src={sair} alt="Logoff"/>
+                            </button>
+                        </div>
                     </div>
 
-                    <div className="logoff">
-                        <button onClick={handleLogoff}>
-                            <img src={sair} alt="Logoff"/>
-                        </button>
+                    <div className="logo-container">
+                        <img src={logoImg} alt="Proffy"/>
+                        <h2> Sua plataforma de estudos online </h2>
                     </div>
+
+                    <img src={landingImg} alt="Plataforma de estudos" className="hero-image"/>
+
                 </div>
 
-                <div className="logo-container">
-                    <img src={logoImg} alt="Proffy"/>
-                    <h2> Sua plataforma de estudos online </h2>
-                </div>
+            </div>
 
-                <img src={landingImg} alt="Plataforma de estudos" className="hero-image"/>
-
+            <div id="bottom">
                 <div className="buttons-container">
 
                     <Link to="/study" className="study">
@@ -94,9 +100,7 @@ function Landing() {
                 <span className="total-connections">
                     Total de {totalConnections} conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo"/>
                 </span>
-
             </div>
-
         </div>
     )
 }

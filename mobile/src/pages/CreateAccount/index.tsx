@@ -39,7 +39,7 @@ function CreateAccount () {
                             api.post("/users", { name, surname, email, password }).then(() => {
                                 
                                 navigate('SuccessPage', { title: "Cadastro concluído!",
-                                    subtitle: "Agora você faz parte da plataforma Proffy.",
+                                    subtitle: "Agora você faz parte da plataforma Proffy. Tenha uma ótima experiência",
                                     messageButton: "Fazer login" })
                             })
                         }

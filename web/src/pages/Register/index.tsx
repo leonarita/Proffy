@@ -56,7 +56,13 @@ function Register() {
 
                 if (response) {
                     api.post("/users", { name, surname, email, password }).then(() => {
-                        history.push("/success-register")
+                        
+                        history.push("/success-page", { 
+                            title: "Cadastro concluído!",
+                            subtitle1: "Agora você faz parte da plataforma Proffy.",
+                            subtitle2: "Tenha uma ótima experiência",
+                            messageButton: "Fazer login" 
+                        })
                     })
                 }
             })

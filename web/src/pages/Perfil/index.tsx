@@ -109,7 +109,13 @@ function Perfil() {
 
             api.post(`classes/${userId}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
             .then(() => { 
-                history.push("/success-profile")
+
+                history.push("/success-page", { 
+                    title: "Cadastro salvo!",
+                    subtitle1: "Tudo certo, seu cadastro está na lista de Proffys.",
+                    subtitle2: "Agora é só ficar de olho no seu WhatsApp.",
+                    messageButton: "Acessar" 
+                })
             })
             .catch(() => { alert('Erro no cadastro') })
 
