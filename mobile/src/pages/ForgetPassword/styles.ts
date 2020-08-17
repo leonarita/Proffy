@@ -33,39 +33,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#F0F0F7',
         marginTop: 20
     },
-
-    input: {
-        height: 54,
-        width: '80%',
-        backgroundColor: '#fafafc',
-        borderBottomLeftRadius: 8,
-        borderBottomRightRadius: 8,
-        borderTopLeftRadius: 8,
-        justifyContent: 'center',
-        alignSelf: 'center',
-        borderColor: '#E6E6F0',
-        borderWidth: 1,
-        paddingHorizontal: 16,
-        marginTop: 20
-    },
-
-    submitButton: {     
-        backgroundColor: '#04d361',
-        height: 56,
-        borderRadius: 8,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        width: '80%',
-        alignSelf: 'center',
-        marginTop: '8%',
-    },
-
-    submitButtonText: {
-        color: '#FFF',
-        fontFamily: 'Archivo_700Bold',
-        fontSize: 16,
-    },
 })
 
 export default styles

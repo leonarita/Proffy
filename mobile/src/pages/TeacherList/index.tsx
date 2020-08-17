@@ -11,6 +11,9 @@ import api from '../../services/api'
 import { useFocusEffect } from '@react-navigation/native'
 import { getId } from '../../services/token';
 import Teacher from '../../data/Teacher';
+import SelectSubject from '../../components/SelectSubject';
+import SelectWeekday from '../../components/SelectWeekday';
+import globalStyles from '../../styles/globalStyles'
 
 function TeacherList() {
 
@@ -117,33 +120,13 @@ function TeacherList() {
 
                     <View style={styles.searchForm}>
                         <Text style={styles.label}>Matérias</Text>
-                        <Picker style={styles.input} selectedValue={subject} onValueChange={(itemValue) => setSubject(itemValue)}>
-                            <Picker.Item label="Selecione" value="" />
-                            <Picker.Item label="Artes" value="Artes" />
-                            <Picker.Item label="Biologia" value="Biologia" />
-                            <Picker.Item label="Ciências" value="Ciências" />
-                            <Picker.Item label="Educação física" value="Educação física" />
-                            <Picker.Item label="Física" value="Física" />
-                            <Picker.Item label="Geografia" value="Geografia" />
-                            <Picker.Item label="História" value="História" />
-                            <Picker.Item label="Matemática" value="Matemática" />
-                            <Picker.Item label="Português" value="Português" />
-                            <Picker.Item label="Química" value="Química" />
-                        </Picker>
+                        <SelectSubject selectedValue={subject} onValueChange={(itemValue: string) => setSubject(itemValue)}
+                            style={styles.input} />
 
                         <View style={styles.inputGroup}>
                             <View style={styles.inputBlock}>
                                 <Text style={styles.label}>Dia da semana</Text>
-                                <Picker style={styles.input} selectedValue={week_day} onValueChange={text => setWeekDay(text)} >
-                                    <Picker.Item label="Selecione" value="" />
-                                    <Picker.Item label="Domingo" value="0" />
-                                    <Picker.Item label="Segunda-feira" value="1" />
-                                    <Picker.Item label="Terça-feira" value="2" />
-                                    <Picker.Item label="Quarta-feira" value="3" />
-                                    <Picker.Item label="Quinta-feira" value="4" />
-                                    <Picker.Item label="Sexta-feira" value="5" />
-                                    <Picker.Item label="Sábado" value="6" />
-                                </Picker>
+                                <SelectWeekday style={styles.input} selectedValue={week_day} onValueChange={(text: any) => setWeekDay(text)} />
                             </View>
 
                             <View style={styles.inputBlock}>
@@ -163,8 +146,8 @@ function TeacherList() {
                             </View>
                         </View>
 
-                        <RectButton onPress={handleFiltersSubmit} style={styles.submitButton}>
-                            <Text style={styles.submitButtonText}>
+                        <RectButton onPress={handleFiltersSubmit} style={globalStyles.submitButton}>
+                            <Text style={globalStyles.submitButtonText}>
                                 Filtrar
                             </Text>
                         </RectButton>

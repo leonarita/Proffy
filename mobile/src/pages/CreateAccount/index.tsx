@@ -6,6 +6,7 @@ import api from '../../services/api'
 import * as yup from 'yup';
 import { useNavigation } from '@react-navigation/native'
 import backIcon from '../../assets/images/icons/back.png'
+import globalStyles from '../../styles/globalStyles'
 
 const userSchema = yup.object().shape({
     email: yup.string().email().required(),
@@ -36,7 +37,10 @@ function CreateAccount () {
 
                         if (response) {
                             api.post("/users", { name, surname, email, password }).then(() => {
-                                navigate("SuccessRegister")
+                                
+                                navigate('SuccessPage', { title: "Cadastro concluído!",
+                                    subtitle: "Agora você faz parte da plataforma Proffy.",
+                                    messageButton: "Fazer login" })
                             })
                         }
                     })
@@ -79,15 +83,15 @@ function CreateAccount () {
                     <TextInput value={status === 0 ? name : email} 
                         onChangeText={status === 0 ? text => setName(text) : text => setEmail(text)} 
                         placeholder={status === 0 ? "Nome" : "Email"} placeholderTextColor="#c1bccc"
-                        style={styles.input1}/>
+                        style={[globalStyles.input, styles.input1]}/>
 
                     <TextInput value={status === 0 ? surname : password} 
                         onChangeText={status === 0 ? text => setSurname(text) : text => setPassword(text)} 
                         placeholder={status === 0 ? "Sobrenome" : "Senha"} placeholderTextColor="#c1bccc"
-                        style={styles.input2} secureTextEntry={status === 0 ? false : true}/>
+                        style={[globalStyles.input, styles.input2]} secureTextEntry={status === 0 ? false : true}/>
 
-                    <RectButton onPress={createAccount} style={styles.submitButton}>
-                        <Text style={styles.submitButtonText}>
+                    <RectButton onPress={createAccount} style={[globalStyles.submitButton, { margin: 40, marginHorizontal: 40 }]}>
+                        <Text style={globalStyles.submitButtonText}>
                             {
                                 status === 0 ? "Próximo" : "Concluir cadastro"
                             }

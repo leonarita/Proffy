@@ -11,6 +11,9 @@ import { BorderlessButton, RectButton } from 'react-native-gesture-handler'
 import { TextInput } from 'react-native-paper'
 import convertMinutesToHours from '../../utils/convertMinutesToHours';
 import ScheduleItem from '../../data/ScheduleItem'
+import SelectSubject from '../../components/SelectSubject'
+import SelectWeekday from '../../components/SelectWeekday'
+import globalStyles from '../../styles/globalStyles'
 
 function GiveClasses() {
     const [name, setName] = useState('')
@@ -96,7 +99,10 @@ function GiveClasses() {
 
                 api.post(`classes/${getId()}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
                 .then(() => { 
-                    navigate("SuccessProfile")
+                    
+                    navigate('SuccessPage', { title: "Cadastro salvo!",
+                        subtitle: "Tudo certo, seu cadastro está na lista de Proffys. Agora é só ficar de olho no seu WhatsApp.",
+                        messageButton: "Acessar" })
                 })
                 .catch(() => { console.log('Erro no cadastro') })
 
@@ -167,19 +173,8 @@ function GiveClasses() {
                         <View style={styles.inputBlock}>
                             <Text style={styles.label}>Matéria</Text>
                             
-                            <Picker style={styles.input} selectedValue={subject} onValueChange={(itemValue) => setSubject(itemValue)}>
-                                <Picker.Item label="Selecione" value="" />
-                                <Picker.Item label="Artes" value="Artes" />
-                                <Picker.Item label="Biologia" value="Biologia" />
-                                <Picker.Item label="Ciências" value="Ciências" />
-                                <Picker.Item label="Educação física" value="Educação física" />
-                                <Picker.Item label="Física" value="Física" />
-                                <Picker.Item label="Geografia" value="Geografia" />
-                                <Picker.Item label="História" value="História" />
-                                <Picker.Item label="Matemática" value="Matemática" />
-                                <Picker.Item label="Português" value="Português" />
-                                <Picker.Item label="Química" value="Química" />
-                            </Picker>
+                            <SelectSubject selectedValue={subject} onValueChange={(itemValue: string) => setSubject(itemValue)}
+                                style={styles.input} />
                         </View>
 
                         <View style={styles.inputBlock}>
@@ -202,21 +197,12 @@ function GiveClasses() {
 
                             return (
 
-                                <View style={{ marginBottom: 40 }}>
+                                <View key={index} style={{ marginBottom: 40 }}>
                                     <View style={styles.inputBlock}>
                                         <Text style={styles.label}>Dia da semana</Text>
                                         
-                                        <Picker style={styles.input} selectedValue={String(scheduleItem.week_day)} 
-                                        onValueChange={e => setScheduleItemValue(index, 'week_day', e)} >
-                                            <Picker.Item label="Selecione" value="" />
-                                            <Picker.Item label="Domingo" value="0" />
-                                            <Picker.Item label="Segunda-feira" value="1" />
-                                            <Picker.Item label="Terça-feira" value="2" />
-                                            <Picker.Item label="Quarta-feira" value="3" />
-                                            <Picker.Item label="Quinta-feira" value="4" />
-                                            <Picker.Item label="Sexta-feira" value="5" />
-                                            <Picker.Item label="Sábado" value="6" />
-                                        </Picker>
+                                        <SelectWeekday style={styles.input} selectedValue={String(scheduleItem.week_day)} 
+                                        onValueChange={(e: any) => setScheduleItemValue(index, 'week_day', e)} />
                                     </View>
         
                                     <View style={styles.time}>
@@ -240,8 +226,8 @@ function GiveClasses() {
 
                     </View>
 
-                    <RectButton onPress={handleCreateClass} style={styles.submitButton}>
-                        <Text style={styles.submitButtonText}>
+                    <RectButton onPress={handleCreateClass} style={globalStyles.submitButton}>
+                        <Text style={globalStyles.submitButtonText}>
                             Salvar alterações
                         </Text>
                     </RectButton>

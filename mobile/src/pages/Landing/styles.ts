@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     top: {
         backgroundColor: '#8257E5',
         padding: 40,
+        flex: 0.43
     },
 
     data: {
@@ -70,7 +71,8 @@ const styles = StyleSheet.create({
 
     bottom: {
         backgroundColor: '#E5E5E5',
-        paddingHorizontal: 40
+        paddingHorizontal: 40,
+        flex: 0.57
     },
 
     buttonsContainer: {

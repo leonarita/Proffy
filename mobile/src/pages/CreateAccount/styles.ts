@@ -62,32 +62,15 @@ const styles = StyleSheet.create({
         fontSize: 12,
         backgroundColor: '#F0F0F7',
     },
-
+    
     input1: {
-        height: 54,
-        width: '80%',
-        backgroundColor: '#fafafc',
         borderTopRightRadius: 8,
         borderTopLeftRadius: 8,
-        justifyContent: 'center',
-        alignSelf: 'center',
-        borderColor: '#E6E6F0',
-        borderWidth: 1,
-        paddingHorizontal: 16
     },
 
     input2: {
-        height: 54,
-        width: '80%',
-        backgroundColor: '#fafafc',
         borderBottomLeftRadius: 8,
         borderBottomRightRadius: 8,
-        borderTopLeftRadius: 8,
-        justifyContent: 'center',
-        alignSelf: 'center',
-        borderColor: '#E6E6F0',
-        borderWidth: 1,
-        paddingHorizontal: 16
     },
 
     buttonsExtras: {
@@ -114,24 +97,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 5,
         color: '#9C98A6'
-    },
-
-    submitButton: {     
-        backgroundColor: '#04d361',
-        height: 56,
-        borderRadius: 8,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        width: '80%',
-        alignSelf: 'center',
-        marginTop: '8%',
-    },
-
-    submitButtonText: {
-        color: '#FFF',
-        fontFamily: 'Archivo_700Bold',
-        fontSize: 16,
     },
 })
 

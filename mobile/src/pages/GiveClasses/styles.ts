@@ -161,22 +161,6 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         lineHeight: 20
     },
-
-    submitButton: {     
-        backgroundColor: '#04d361',
-        height: 56,
-        borderRadius: 8,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: 20
-    },
-
-    submitButtonText: {
-        color: '#FFF',
-        fontFamily: 'Archivo_700Bold',
-        fontSize: 16,
-    },
 })
 
 export default styles

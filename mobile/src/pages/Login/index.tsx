@@ -4,10 +4,11 @@ import { Checkbox } from 'react-native-paper';
 import styles from './styles'
 import { RectButton } from 'react-native-gesture-handler'
 import api from '../../services/api'
-import { useNavigation, Link } from '@react-navigation/native'
-import { setToken, setId, loginAsyncStorage, getDataAsyncStorage } from '../../services/token'
+import { useNavigation, Link, useFocusEffect } from '@react-navigation/native'
+import { setToken, setId, loginAsyncStorage, getDataAsyncStorage, getId } from '../../services/token'
 import Header from '../../components/Header';
 import AsyncStorage from '@react-native-community/async-storage';
+import globalStyles from '../../styles/globalStyles'
 
 function Login () {
 
@@ -21,6 +22,10 @@ function Login () {
         
         try {
             getDataAsyncStorage()
+
+            if(getId()) {
+                navigate('Landing')
+            }
 
             AsyncStorage.getItem('USER_ID').then(response => {
                 if(response) {
@@ -75,10 +80,10 @@ function Login () {
                 </View>
 
                 <TextInput value={email} onChangeText={text => setEmail(text)} placeholder="E-mail" placeholderTextColor="#c1bccc"
-                    style={styles.input1}/>
+                    style={[globalStyles.input, styles.input1]}/>
 
                 <TextInput value={password} onChangeText={text => setPassword(text)} placeholder="Senha" placeholderTextColor="#c1bccc"
-                    style={styles.input2} secureTextEntry={true}/>
+                    style={[globalStyles.input, styles.input2]} secureTextEntry={true}/>
 
                 <View style={styles.buttonsExtras}>
                     <View style={styles.check}>
@@ -91,8 +96,8 @@ function Login () {
                     </Link>
                 </View>
 
-                <RectButton onPress={handleLogin} style={styles.submitButton}>
-                    <Text style={styles.submitButtonText}>
+                <RectButton onPress={handleLogin} style={[globalStyles.submitButton, { margin: 20, marginHorizontal: 40 }]}>
+                    <Text style={globalStyles.submitButtonText}>
                         Entrar
                     </Text>
                 </RectButton>

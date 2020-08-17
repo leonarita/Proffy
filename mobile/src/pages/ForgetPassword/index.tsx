@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import Header from '../../components/Header';
 import backIcon from '../../assets/images/icons/back.png'
 import * as yup from 'yup';
+import globalStyles from '../../styles/globalStyles'
 
 const emailSchema = yup.object().shape({
     email: yup
@@ -28,7 +29,10 @@ function ForgetPassword () {
 
                 if (valid) {
                     api.post("forgot_password", { email }).then(() => {
-                        navigate('SuccessPassword')
+
+                        navigate('SuccessPage', { title: "Redefinição enviada!",
+                        subtitle: "Boa, agora é só checar o email que foi enviado para você redefinir sua senha e aproveitar os estudos.",
+                        messageButton: "Voltar ao login" })
                     })
                 }
             })
@@ -62,10 +66,10 @@ function ForgetPassword () {
                 </View>
 
                 <TextInput value={email} onChangeText={text => setEmail(text)} placeholder="E-mail" placeholderTextColor="#c1bccc"
-                    style={styles.input}/>
+                    style={[globalStyles.input, { borderRadius: 8 }]}/>
 
-                <RectButton onPress={handleRecoverPassword} style={styles.submitButton}>
-                    <Text style={styles.submitButtonText}>
+                <RectButton onPress={handleRecoverPassword} style={[globalStyles.submitButton, { margin: 20, marginHorizontal: 40 }]}>
+                    <Text style={globalStyles.submitButtonText}>
                         Enviar
                     </Text>
                 </RectButton>

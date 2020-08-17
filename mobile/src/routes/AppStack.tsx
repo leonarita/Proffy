@@ -7,11 +7,9 @@ import GiveClasses from '../pages/GiveClasses'
 import StudyTabs from './StudyTabs';
 import Login from '../pages/Login';
 import ForgetPassword from '../pages/ForgetPassword';
-import SuccessPassword from '../pages/SuccessPassword';
-import SuccessRegister from '../pages/SuccessRegister';
-import SuccessProfile from '../pages/SuccessProfile';
 import Profile from '../pages/Profile';
 import CreateAccount from '../pages/CreateAccount';
+import SuccessPage from '../components/SuccessPage';
 
 // Navegação em pilha
 
@@ -30,10 +28,7 @@ function AppStack() {
                 <Screen name="Study" component={StudyTabs} />
 
                 <Screen name="Profile" component={Profile} />
-
-                <Screen name="SuccessPassword" component={SuccessPassword} />
-                <Screen name="SuccessRegister" component={SuccessRegister} />
-                <Screen name="SuccessProfile" component={SuccessProfile} />
+                <Screen name="SuccessPage" component={SuccessPage} />
             </Navigator>
         </NavigationContainer>
     )

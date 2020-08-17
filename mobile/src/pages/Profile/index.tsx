@@ -14,6 +14,9 @@ import { TextInput } from 'react-native-paper'
 import { MaterialIcons } from '@expo/vector-icons'
 import convertMinutesToHours from '../../utils/convertMinutesToHours';
 import ScheduleItem from '../../data/ScheduleItem';
+import SelectSubject from '../../components/SelectSubject';
+import SelectWeekday from '../../components/SelectWeekday';
+import globalStyles from '../../styles/globalStyles'
 
 function Profile() {
     const [name, setName] = useState('')
@@ -109,7 +112,10 @@ function Profile() {
 
                 api.post(`classes/${getId()}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
                 .then(() => { 
-                    navigate("SuccessProfile")
+
+                    navigate('SuccessPage', { title: "Cadastro salvo!",
+                        subtitle: "Tudo certo, seu cadastro está na lista de Proffys. Agora é só ficar de olho no seu WhatsApp.",
+                        messageButton: "Acessar" })
                 })
                 .catch(() => { console.log('Erro no cadastro') })
 
@@ -181,31 +187,31 @@ function Profile() {
                         <View style={styles.inputBlock}>
                             <Text style={styles.label}>Nome</Text>
                             <TextInput value={name} onChangeText={text => setName(text)} 
-                                style={styles.input} placeholderTextColor="#6A6180"/>
+                                style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                         </View>
 
                         <View style={styles.inputBlock}>
                             <Text style={styles.label}>Sobrenome</Text>
                             <TextInput value={surname} onChangeText={text => setSurname(text)} 
-                                style={styles.input} placeholderTextColor="#6A6180"/>
+                                style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                         </View>
 
                         <View style={styles.inputBlock}>
                             <Text style={styles.label}>Email</Text>
                             <TextInput value={email} onChangeText={text => setEmail(text)} 
-                                style={styles.input} placeholderTextColor="#6A6180"/>
+                                style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                         </View>
 
                         <View style={styles.inputBlock}>
                             <Text style={styles.label}>Whatsapp</Text>
                             <TextInput value={whatsapp} onChangeText={text => setWhatsapp(text)}
-                                style={styles.input} placeholderTextColor="#6A6180"/>
+                                style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                         </View>
 
                         <View style={styles.inputBlock}>
                             <Text style={styles.label}>Biografia</Text>
                             <TextInput value={bio} onChangeText={text => setBio(text)}
-                                style={styles.input} placeholderTextColor="#6A6180" numberOfLines={4} multiline={true}/>
+                                style={[styles.input]} placeholderTextColor="#6A6180" numberOfLines={4} multiline={true}/>
                         </View>
 
                         
@@ -217,25 +223,14 @@ function Profile() {
                         <View style={styles.inputBlock}>
                             <Text style={styles.label}>Matéria</Text>
                             
-                            <Picker style={styles.input} selectedValue={subject} onValueChange={(itemValue) => setSubject(itemValue)}>
-                                <Picker.Item label="Selecione" value="" />
-                                <Picker.Item label="Artes" value="Artes" />
-                                <Picker.Item label="Biologia" value="Biologia" />
-                                <Picker.Item label="Ciências" value="Ciências" />
-                                <Picker.Item label="Educação física" value="Educação física" />
-                                <Picker.Item label="Física" value="Física" />
-                                <Picker.Item label="Geografia" value="Geografia" />
-                                <Picker.Item label="História" value="História" />
-                                <Picker.Item label="Matemática" value="Matemática" />
-                                <Picker.Item label="Português" value="Português" />
-                                <Picker.Item label="Química" value="Química" />
-                            </Picker>
+                            <SelectSubject selectedValue={subject} onValueChange={(itemValue: string) => setSubject(itemValue)}
+                                style={[globalStyles.input, { borderRadius: 8 }]} />
                         </View>
 
                         <View style={styles.inputBlock}>
                             <Text style={styles.label}>Custo</Text>
                             <TextInput value={String(cost)} onChangeText={text => setCost(text)}
-                                style={styles.input} placeholderTextColor="#6A6180"/>
+                                style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                         </View>
                     </View>
 
@@ -252,34 +247,25 @@ function Profile() {
 
                             return (
 
-                                <View style={{ marginBottom: 5 }}>
+                                <View key={index} style={{ marginBottom: 5 }}>
                                     <View style={styles.inputBlock}>
                                         <Text style={styles.label}>Dia da semana</Text>
                                         
-                                        <Picker style={styles.input} selectedValue={String(scheduleItem.week_day)} 
-                                        onValueChange={e => setScheduleItemValue(index, 'week_day', e)} >
-                                            <Picker.Item label="Selecione" value="" />
-                                            <Picker.Item label="Domingo" value="0" />
-                                            <Picker.Item label="Segunda-feira" value="1" />
-                                            <Picker.Item label="Terça-feira" value="2" />
-                                            <Picker.Item label="Quarta-feira" value="3" />
-                                            <Picker.Item label="Quinta-feira" value="4" />
-                                            <Picker.Item label="Sexta-feira" value="5" />
-                                            <Picker.Item label="Sábado" value="6" />
-                                        </Picker>
+                                        <SelectWeekday style={[globalStyles.input, { borderRadius: 8 }]} selectedValue={String(scheduleItem.week_day)} 
+                                        onValueChange={(e: any) => setScheduleItemValue(index, 'week_day', e)} />
                                     </View>
         
                                     <View style={styles.time}>
                                         <View style={styles.itemTime}>
                                             <Text style={styles.label}>Das</Text>
                                             <TextInput value={scheduleItem.from} onChangeText={e => setScheduleItemValue(index, 'from', e)}
-                                                style={styles.input} placeholderTextColor="#6A6180"/>
+                                                style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                                         </View>
 
                                         <View style={styles.itemTime}>
                                             <Text style={styles.label}>Até</Text>
                                             <TextInput value={scheduleItem.to} onChangeText={e => setScheduleItemValue(index, 'to', e)}
-                                                style={styles.input} placeholderTextColor="#6A6180"/>
+                                                style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                                         </View>
                                     </View>
 
@@ -300,8 +286,8 @@ function Profile() {
 
                     </View>
 
-                    <RectButton onPress={handleCreateClass} style={styles.submitButton}>
-                        <Text style={styles.submitButtonText}>
+                    <RectButton onPress={handleCreateClass} style={globalStyles.submitButton}>
+                        <Text style={globalStyles.submitButtonText}>
                             Salvar alterações
                         </Text>
                     </RectButton>
