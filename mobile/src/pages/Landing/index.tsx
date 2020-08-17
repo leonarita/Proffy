@@ -1,8 +1,7 @@
-import React, { Component, useState, useEffect } from 'react'
-import { Text, View, Image, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+import { Text, View, Image } from 'react-native'
 import styles from './styles'
-import { AntDesign } from '@expo/vector-icons';
-import { useNavigation, useRoute, Link, useFocusEffect } from '@react-navigation/native'
+import { useNavigation, Link, useFocusEffect } from '@react-navigation/native'
 import { RectButton } from 'react-native-gesture-handler'
 
 import landingImg from '../../assets/images/landing.png'

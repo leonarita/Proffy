@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react'
+import React, {  } from 'react'
 import { View, ImageBackground, Text, Image } from 'react-native'
 import giveClassesByImage from '../../assets/images/give-classes-background.png'
 import DoneIcon from '../../assets/images/icons/Feito.png'

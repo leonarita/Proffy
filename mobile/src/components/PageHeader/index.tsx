@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { Text, View, Image } from 'react-native'
 import styles from './styles'
 import { BorderlessButton } from 'react-native-gesture-handler'

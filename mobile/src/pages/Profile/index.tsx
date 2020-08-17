@@ -1,5 +1,5 @@
-import React, { useState, Component, useEffect, FormEvent } from 'react'
-import { View, ImageBackground, Image, Text, ScrollView, FlatList, Picker, TouchableOpacity, Alert } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, ImageBackground, Image, Text, ScrollView, Picker, TouchableOpacity, Alert } from 'react-native'
 import giveClassesByImage from '../../assets/images/give-classes-background.png'
 import { launchImageLibraryAsync } from 'expo-image-picker';
 import backIcon from '../../assets/images/icons/back.png'
@@ -7,18 +7,13 @@ import logoImg from '../../assets/images/logo.png'
 
 import styles from './styles'
 import api from '../../services/api'
-import { useNavigation, useFocusEffect } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import { getId } from '../../services/token'
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler'
 import { TextInput } from 'react-native-paper'
 import { MaterialIcons } from '@expo/vector-icons'
-
-interface ScheduleItem {
-    id: number, 
-    week_day: number,
-    to: string,
-    from: string
-}
+import convertMinutesToHours from '../../utils/convertMinutesToHours';
+import ScheduleItem from '../../data/ScheduleItem';
 
 function Profile() {
     const [name, setName] = useState('')
@@ -50,22 +45,7 @@ function Profile() {
                 setCost(response.data.cost)
             })
 
-            api.get(`classes/${getId()}`).then(response => {
-
-                response.data.map((d: ScheduleItem) => {
-                    d.from = convertMinutesToHours(d.from)
-                    d.to = convertMinutesToHours(d.to)
-                })
-
-                setScheduleItems(response.data)
-
-            }).catch(() => console.log('Ocorreu erro'))
-
-            if(scheduleItems.length > 1) {
-                scheduleItems.filter((d: ScheduleItem) => {
-                    return
-                })
-            }
+            bringDataSchedule()
         } catch (err) {
         }
         
@@ -86,30 +66,12 @@ function Profile() {
             }).catch(() => console.log('Ocorreu erro'))
 
             if(scheduleItems.length > 1) {
-                scheduleItems.filter((d: ScheduleItem) => {
+                scheduleItems.filter(() => {
                     return
                 })
             }
         } catch (err) {
         }
-    }
-
-    function convertMinutesToHours(time: string) {
-        const timeNumber = parseInt(time)
-        const hours = timeNumber / 60
-        const minutes = timeNumber - (hours * 60)
-
-        if (hours < 10 && minutes < 10) {
-            return `0${hours}:0${minutes}`.toString()
-        }
-        else if (minutes < 10) {
-            return `${hours}:0${minutes}`.toString()
-        }
-        else if (hours < 10) {
-            return `0${hours}:${minutes}`.toString()
-        }
-         
-        return `${hours}:${minutes}`.toString()
     }
 
     function addNewScheduleItem () {
@@ -255,7 +217,7 @@ function Profile() {
                         <View style={styles.inputBlock}>
                             <Text style={styles.label}>Matéria</Text>
                             
-                            <Picker style={styles.input} selectedValue={subject} onValueChange={(itemValue, itemIndex) => setSubject(itemValue)}>
+                            <Picker style={styles.input} selectedValue={subject} onValueChange={(itemValue) => setSubject(itemValue)}>
                                 <Picker.Item label="Selecione" value="" />
                                 <Picker.Item label="Artes" value="Artes" />
                                 <Picker.Item label="Biologia" value="Biologia" />

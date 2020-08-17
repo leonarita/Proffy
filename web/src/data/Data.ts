@@ -1,5 +1,3 @@
-import React from 'react'
-
 export interface Data {
 
     id: string,
@@ -18,10 +16,4 @@ export interface Data {
         from: string,
         to: string
     }]
-}
-
-export interface ScheduleItem {
-    week_day: number,
-    to: string,
-    from: string
 }

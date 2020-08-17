@@ -1,16 +1,16 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { Text, View, Picker, FlatList } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import styles from './styles'
 import PageHeader from '../../components/PageHeader'
-import TeacherItem, { Teacher } from '../../components/TeacherItem'
-import { ScrollView, TextInput, BorderlessButton, RectButton } from 'react-native-gesture-handler'
+import TeacherItem from '../../components/TeacherItem'
+import { BorderlessButton, RectButton } from 'react-native-gesture-handler'
 import api from '../../services/api'
-import AsyncStorage from '@react-native-community/async-storage'
 import { useFocusEffect } from '@react-navigation/native'
 import { getId } from '../../services/token';
+import Teacher from '../../data/Teacher';
 
 function TeacherList() {
 
@@ -117,7 +117,7 @@ function TeacherList() {
 
                     <View style={styles.searchForm}>
                         <Text style={styles.label}>Matérias</Text>
-                        <Picker style={styles.input} selectedValue={subject} onValueChange={(itemValue, itemIndex) => setSubject(itemValue)}>
+                        <Picker style={styles.input} selectedValue={subject} onValueChange={(itemValue) => setSubject(itemValue)}>
                             <Picker.Item label="Selecione" value="" />
                             <Picker.Item label="Artes" value="Artes" />
                             <Picker.Item label="Biologia" value="Biologia" />

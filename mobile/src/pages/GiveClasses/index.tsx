@@ -1,7 +1,5 @@
-import React, { useState, Component, useEffect, FormEvent } from 'react'
-import { View, ImageBackground, Image, Text, ScrollView, FlatList, Picker, TouchableOpacity, Alert } from 'react-native'
-import giveClassesByImage from '../../assets/images/give-classes-background.png'
-import { launchImageLibraryAsync } from 'expo-image-picker';
+import React, { useState, useEffect } from 'react'
+import { View, Image, Text, ScrollView, Picker } from 'react-native'
 import backIcon from '../../assets/images/icons/back.png'
 import logoImg from '../../assets/images/logo.png'
 
@@ -11,20 +9,13 @@ import { useNavigation } from '@react-navigation/native'
 import { getId } from '../../services/token'
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler'
 import { TextInput } from 'react-native-paper'
-import { MaterialIcons } from '@expo/vector-icons'
-
-interface ScheduleItem {
-    id: number, 
-    week_day: number,
-    to: string,
-    from: string
-}
+import convertMinutesToHours from '../../utils/convertMinutesToHours';
+import ScheduleItem from '../../data/ScheduleItem'
 
 function GiveClasses() {
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
-    const [email, setEmail] = useState('')
-    const [avatar, setAvatar] = useState<File>()
+    const [avatar] = useState<File>()
     const [photo, setPhoto] = useState('')
     const [whatsapp, setWhatsapp] = useState('')
     const [bio, setBio] = useState('')
@@ -43,7 +34,6 @@ function GiveClasses() {
                 setName(response.data.name)
                 setSurname(response.data.surname)
                 setPhoto(response.data.avatar)
-                setEmail(response.data.email)
                 setBio(response.data.bio)
                 setWhatsapp(response.data.whatsapp)
                 setSubject(response.data.subject)
@@ -62,7 +52,7 @@ function GiveClasses() {
             }).catch(() => console.log('Ocorreu erro'))
 
             if(scheduleItems.length > 1) {
-                scheduleItems.filter((d: ScheduleItem) => {
+                scheduleItems.filter(() => {
                     return
                 })
             }
@@ -70,47 +60,6 @@ function GiveClasses() {
         }
         
     }, [])
-
-    function bringDataSchedule() {
-        try {
-
-            api.get(`classes/${getId()}`).then(response => {
-
-                response.data.map((d: ScheduleItem) => {
-                    d.from = convertMinutesToHours(d.from)
-                    d.to = convertMinutesToHours(d.to)
-                })
-
-                setScheduleItems(response.data)
-
-            }).catch(() => console.log('Ocorreu erro'))
-
-            if(scheduleItems.length > 1) {
-                scheduleItems.filter((d: ScheduleItem) => {
-                    return
-                })
-            }
-        } catch (err) {
-        }
-    }
-
-    function convertMinutesToHours(time: string) {
-        const timeNumber = parseInt(time)
-        const hours = timeNumber / 60
-        const minutes = timeNumber - (hours * 60)
-
-        if (hours < 10 && minutes < 10) {
-            return `0${hours}:0${minutes}`.toString()
-        }
-        else if (minutes < 10) {
-            return `${hours}:0${minutes}`.toString()
-        }
-        else if (hours < 10) {
-            return `0${hours}:${minutes}`.toString()
-        }
-         
-        return `${hours}:${minutes}`.toString()
-    }
 
     function addNewScheduleItem () {
 
@@ -218,7 +167,7 @@ function GiveClasses() {
                         <View style={styles.inputBlock}>
                             <Text style={styles.label}>Matéria</Text>
                             
-                            <Picker style={styles.input} selectedValue={subject} onValueChange={(itemValue, itemIndex) => setSubject(itemValue)}>
+                            <Picker style={styles.input} selectedValue={subject} onValueChange={(itemValue) => setSubject(itemValue)}>
                                 <Picker.Item label="Selecione" value="" />
                                 <Picker.Item label="Artes" value="Artes" />
                                 <Picker.Item label="Biologia" value="Biologia" />

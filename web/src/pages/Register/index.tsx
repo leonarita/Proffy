@@ -1,12 +1,12 @@
 import React, { useState, FormEvent, useEffect } from 'react'
 import './styles.css'
 
-import logoImg from '../../assets/images/logo.svg'
 import backIcon from '../../assets/images/icons/back.svg'
 import { Link, useHistory } from 'react-router-dom'
 import api from '../../services/api'
 import * as yup from 'yup'
 import { hasTokenLocalStorage, getTokenLocalStorage } from '../../services/token'
+import BannerHeader from '../../components/BannerHeader'
 
 const userSchema = yup.object().shape({
     email: yup.string().email().required(),
@@ -69,12 +69,7 @@ function Register() {
     return (
         <div id="page-register">
 
-            <div className="banner">
-                <div className="logo-container">
-                    <img src={logoImg} alt="Proffy"/>
-                    <h2> Sua plataforma de <br/> estudos online </h2>
-                </div>
-            </div>
+            <BannerHeader />
 
             <div className="form">
 

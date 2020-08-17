@@ -1,16 +1,10 @@
-import React, { Component, useState } from 'react'
-import { Text, View, Image, ImageBackground, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
-import { Checkbox } from 'react-native-paper';
+import React, { useState } from 'react'
+import { Text, View, Image, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
 import styles from './styles'
-import logoIcon from '../../assets/images/logo.png'
-import giveClassesByImage from '../../assets/images/give-classes-background.png'
 import { RectButton, BorderlessButton } from 'react-native-gesture-handler'
 import api from '../../services/api'
-import AsyncStorage from '@react-native-community/async-storage'
-import { useNavigation, Link } from '@react-navigation/native'
-import { setToken } from '../../services/token'
+import { useNavigation } from '@react-navigation/native'
 import Header from '../../components/Header';
-import PageHeader from '../../components/PageHeader';
 import backIcon from '../../assets/images/icons/back.png'
 import * as yup from 'yup';
 

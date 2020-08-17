@@ -1,11 +1,11 @@
 import React, { FormEvent, useState, useEffect } from 'react';
 import './styles.css'
 
-import logoImg from '../../assets/images/logo.svg'
 import { useHistory } from 'react-router-dom';
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg'
 import api from '../../services/api';
 import { getTokenLocalStorage, hasTokenLocalStorage } from '../../services/token';
+import BannerHeader from '../../components/BannerHeader';
 
 function Login() {
 
@@ -71,12 +71,7 @@ function Login() {
     
         <div id="page-login">
 
-            <div className="banner">
-                <div className="logo-container">
-                    <img src={logoImg} alt="Proffy"/>
-                    <h2> Sua plataforma de <br/> estudos online </h2>
-                </div>
-            </div>
+            <BannerHeader />
 
             <div className="form">
 

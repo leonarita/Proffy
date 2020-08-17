@@ -3,19 +3,9 @@ import './styles.css'
 
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg'
 import api from '../../services/api';
-import { ScheduleItem } from '../../hooks/Data';
-import ConvertMinutesToHours from '../../hooks/ConvertMinutesToHours'
-
-export interface Teacher {
-    avatar: string,
-    bio: string,
-    cost: number,
-    id: number,
-    name: string,
-    surname: string,
-    subject: string,
-    whatsapp: string
-}
+import ConvertMinutesToHours from '../../utils/ConvertMinutesToHours'
+import Teacher from '../../data/Teacher';
+import { ScheduleItem } from '../../data/ScheduleItem';
 
 interface TeacherItemProps {
     teacher: Teacher

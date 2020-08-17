@@ -1,13 +1,12 @@
-import React, { Component, useState, useEffect } from 'react'
-import { Text, View, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, ScrollView } from 'react-native'
 
 import styles from './styles'
 import PageHeader from '../../components/PageHeader'
-import TeacherItem, { Teacher } from '../../components/TeacherItem'
-import AsyncStorage from '@react-native-community/async-storage'
-import { useFocusEffect } from '@react-navigation/native'
+import TeacherItem from '../../components/TeacherItem'
 import api from '../../services/api'
 import { getId } from '../../services/token'
+import Teacher from '../../data/Teacher'
 
 function Favorites() {
 

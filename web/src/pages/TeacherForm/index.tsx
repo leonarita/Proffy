@@ -8,8 +8,8 @@ import Select from '../../components/Select';
 import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../../services/token';
-import { ScheduleItem } from '../../hooks/Data';
-import ConvertMinutesToHours from '../../hooks/ConvertMinutesToHours'
+import ConvertMinutesToHours from '../../utils/ConvertMinutesToHours'
+import { ScheduleItem } from '../../data/ScheduleItem';
 
 function TeacherForm() {
 
@@ -88,7 +88,7 @@ function TeacherForm() {
 
         e.preventDefault()
 
-        const userId = localStorage.getItem('USER_ID')
+        const userId = sessionStorage.getItem('USER_ID')
 
         api.post(`classes/${userId}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
             .then(() => { 

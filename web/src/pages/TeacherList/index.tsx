@@ -1,12 +1,13 @@
 import React, { useState, FormEvent } from 'react';
 import PageHeader from '../../components/PageHeader';
 import './styles.css'
-import TeacherItem, { Teacher } from '../../components/TeacherItem';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
 import api from '../../services/api';
 import { logout } from '../../services/token';
 import { useHistory } from 'react-router-dom';
+import Teacher from '../../data/Teacher';
+import TeacherItem from '../../components/TeacherItem';
 
 function TeacherList() {
 

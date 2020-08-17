@@ -5,7 +5,7 @@ import styles from './styles'
 import { RectButton } from 'react-native-gesture-handler'
 import api from '../../services/api'
 import { useNavigation, Link } from '@react-navigation/native'
-import { setToken, setId, loginAsyncStorage, getDataAsyncStorage, getToken, getId } from '../../services/token'
+import { setToken, setId, loginAsyncStorage, getDataAsyncStorage } from '../../services/token'
 import Header from '../../components/Header';
 import AsyncStorage from '@react-native-community/async-storage';
 

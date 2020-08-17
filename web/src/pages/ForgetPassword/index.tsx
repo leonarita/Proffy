@@ -1,12 +1,12 @@
 import React, { useEffect, useState, FormEvent } from 'react'
 import './styles.css'
 
-import logoImg from '../../assets/images/logo.svg'
 import backIcon from '../../assets/images/icons/back.svg'
 import { Link, useHistory } from 'react-router-dom'
 import * as yup from 'yup';
 import { hasTokenLocalStorage, getTokenLocalStorage } from '../../services/token'
 import api from '../../services/api'
+import BannerHeader from '../../components/BannerHeader'
 
 const emailSchema = yup.object().shape({
     email: yup
@@ -58,12 +58,7 @@ function ForgetPassword() {
     return (
         <div id="page-forget-password">
 
-            <div className="banner">
-                <div className="logo-container">
-                    <img src={logoImg} alt="Proffy"/>
-                    <h2> Sua plataforma de <br/> estudos online </h2>
-                </div>
-            </div>
+            <BannerHeader />
             
             <div className="form">
 
