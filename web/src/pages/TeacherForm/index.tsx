@@ -4,12 +4,13 @@ import './styles.css'
 import Input from '../../components/Input';
 import warningIcon from '../../assets/images/icons/warning.svg'
 import Textarea from '../../components/Textarea';
-import Select from '../../components/Select';
 import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../../services/token';
 import ConvertMinutesToHours from '../../utils/ConvertMinutesToHours'
 import { ScheduleItem } from '../../data/ScheduleItem';
+import SelectSubject from '../../components/SelectSubject';
+import SelectWeekday from '../../components/SelectWeekday';
 
 function TeacherForm() {
 
@@ -53,7 +54,7 @@ function TeacherForm() {
             }).catch(() => console.log('Ocorreu erro'))
 
             if(scheduleItems.length > 1) {
-                scheduleItems.filter((d: ScheduleItem) => {
+                scheduleItems.filter(() => {
                     return
                 })
             }
@@ -134,19 +135,7 @@ function TeacherForm() {
 
                         <div className="class">
 
-                            <Select name="subject" label="Matéria" value={subject} onChange={(e) => { setSubject(e.target.value) }}
-                            options={[
-                                { value: 'Artes', label: 'Artes' },
-                                { value: 'Biologia', label: 'Biologia' },
-                                { value: 'Ciências', label: 'Ciências' },
-                                { value: 'Educação física', label: 'Educação física' },
-                                { value: 'Física', label: 'Física' },
-                                { value: 'Geografia', label: 'Geografia' },
-                                { value: 'História', label: 'História' },
-                                { value: 'Matemática', label: 'Matemática' },
-                                { value: 'Português', label: 'Português' },
-                                { value: 'Química', label: 'Química' },
-                            ]} />
+                            <SelectSubject value={subject} onChange={(e: any) => { setSubject(e.target.value) }} />
 
                             <Input name="cost" label="Custo da sua aula por hora" value={cost} onChange={(e) => { setCost(e.target.value) }} />
                         
@@ -164,18 +153,8 @@ function TeacherForm() {
                             return (
                                 <div key={scheduleItem.week_day} className="schedule-item">
 
-                                    <Select name="week_day" label="Dia da semana" value={scheduleItem.week_day}
-                                    onChange={e => setScheduleItemValue(index, 'week_day', e.target.value)}
-                                    
-                                        options={[
-                                        { value: '0', label: 'Domingo' },
-                                        { value: '1', label: 'Segunda-feira' },
-                                        { value: '2', label: 'Terça-feira' },
-                                        { value: '3', label: 'Quarta-feira' },
-                                        { value: '4', label: 'Quinta-feira' },
-                                        { value: '5', label: 'Sexta-feira' },
-                                        { value: '6', label: 'Sábado' }
-                                    ]} />
+                                    <SelectWeekday value={scheduleItem.week_day}
+                                    onChange={(e: any) => setScheduleItemValue(index, 'week_day', e.target.value)} />
 
                                     <Input name="from" label="Das" type="time" value={scheduleItem.from}
                                     onChange={e => setScheduleItemValue(index, 'from', e.target.value)}></Input>

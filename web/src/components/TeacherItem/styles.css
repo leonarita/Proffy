@@ -42,7 +42,7 @@
 
 .teacher-item .hours {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 }
 
 .teacher-item .hours .hour {
@@ -50,10 +50,14 @@
     border: 1px solid #E6E6F0;
     box-sizing: border-box;
     border-radius: 8px;
-    width: 8vw;
+    width: 60%;
     margin-left: 1rem;
     padding: 1rem;
     margin-top: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
 }
 
 .teacher-item .hours .hour p {
@@ -133,6 +137,15 @@
 
     .teacher-item > p {
         padding: 0 3.2rem;
+    }
+
+    .teacher-item .hours {
+        grid-template-rows: none;
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .teacher-item .hours .hour {
+        width: 8vw;
     }
 
     .teacher-item footer p strong {

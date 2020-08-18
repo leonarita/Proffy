@@ -78,11 +78,11 @@ function Login() {
                 <form action="">
                     <strong> Fazer login </strong>
 
-                    <div className="input-block-1">
+                    <div className="input-block input-1">
                         <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                     </div>
 
-                    <div className="input-block-2">
+                    <div className="input-block input-2">
                         <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                     </div>
 

@@ -115,16 +115,6 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
 
-    label: {
-        fontSize: 14,
-        lineHeight: 22,
-        color: '#9C98A6',
-        fontWeight: "normal",
-        fontFamily: 'Poppins_400Regular',
-        marginLeft: '10%',
-        marginTop: 10
-    },
-
     input: {
         borderRadius: 8,
         width: '80%',

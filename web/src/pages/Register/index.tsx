@@ -90,19 +90,19 @@ function Register() {
                         <strong> Cadastro </strong>
                         <p> Preencha os dados abaixo para começar. </p>
 
-                        <div className="input-block-1">
+                        <div className="input-block input-1">
                             <input type="text" placeholder="Nome" value={name} onChange={(e) => setName(e.target.value)} required/>
                         </div>
 
-                        <div className="input-block-2">
+                        <div className="input-block">
                             <input type="text" placeholder="Sobrenome" value={surname} onChange={(e) => setSurname(e.target.value)} required/>
                         </div>
 
-                        <div className="input-block-2">
+                        <div className="input-block">
                             <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                         </div>
 
-                        <div className="input-block-3">
+                        <div className="input-block input-2">
                             <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                         </div>
 

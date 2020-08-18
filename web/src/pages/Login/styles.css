@@ -4,9 +4,10 @@
 }
 
 #page-login .form {
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
+    padding: 3rem 5rem;
     padding-top: 6.4rem;
 }
 
@@ -16,32 +17,15 @@
     margin-bottom: 2rem;
 }
 
-#page-login .form .input-block-1,
-#page-login .form .input-block-2 {
+#page-login .form .input-block {
     position: relative;
 }
 
-#page-login .form .input-block-1 input {
-    width: 100%;
-    height: 5.6rem;
-    margin-top: 2.4rem;
-    border-radius: 0;
-    border-top-left-radius: 0.8rem;
-    border-top-right-radius: 0.8rem;
-    background: var(--color-input-background);
-    border: 1px solid var(--color-line-in-white);
-    outline: 0;
-    padding: 0 1.6rem;
-    font: 1.6rem Poppins;
-}
-
-#page-login .form .input-block-2 input {
+#page-login .form .input-block input {
     width: 100%;
     height: 5.6rem;
     margin-top: 0;
     border-radius: 0;
-    border-bottom-left-radius: 0.8rem;
-    border-bottom-right-radius: 0.8rem;
     background: var(--color-input-background);
     border: 1px solid var(--color-line-in-white);
     outline: 0;
@@ -49,8 +33,23 @@
     font: 1.6rem Poppins;
 }
 
-#page-login .form .input-block-1:focus-within::after,
-#page-login .form .input-block-2:focus-within::after {
+#page-login .form .input-block + .input-block {
+    margin-top: 0;
+}
+
+#page-login .form .input-1 input {
+    margin-top: 2.4rem;
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+}
+
+#page-login .form .input-2 input {
+    margin-top: 0;
+    border-bottom-left-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+}
+
+#page-login .form .input-block:focus-within::after {
     width: calc(100% - 3.2rem);
     height: 2px;
     content: '';
@@ -137,6 +136,8 @@
 
 #page-login .form footer .register p {
     color: var(--color-text-complement);
+    display: flex;
+    justify-content: center;
 }
 
 #page-login .form footer .register a {

@@ -15,55 +15,34 @@
     margin-top: 2.4rem;
 }
 
-#page-register .form .input-block-1,
-#page-register .form .input-block-2,
-#page-register .form .input-block-2 {
+#page-register .form .input-block {
     position: relative;
 }
 
-#page-register .form .input-block-1 input {
+#page-register .form .input-block input {
     width: 100%;
     height: 5.6rem;
-    margin-top: 3rem;
+    margin-top: -10rem;
     border-radius: 0;
+    background: var(--color-input-background);
+    border: 1px solid var(--color-line-in-white);
+    outline: 0;
+    padding: 0 1.6rem;
+    font: 1.6rem Poppins;
+}
+
+#page-register .form .input-1 input {
+    margin-top: 3rem;
     border-top-left-radius: 0.8rem;
     border-top-right-radius: 0.8rem;
-    background: var(--color-input-background);
-    border: 1px solid var(--color-line-in-white);
-    outline: 0;
-    padding: 0 1.6rem;
-    font: 1.6rem Poppins;
 }
 
-#page-register .form .input-block-2 input {
-    width: 100%;
-    height: 5.6rem;
-    margin-top: 0;
-    border-radius: 0;
-    background: var(--color-input-background);
-    border: 1px solid var(--color-line-in-white);
-    outline: 0;
-    padding: 0 1.6rem;
-    font: 1.6rem Poppins;
-}
-
-#page-register .form .input-block-3 input {
-    width: 100%;
-    height: 5.6rem;
-    margin-top: 0;
-    border-radius: 0;
+#page-register .form .input-2 input {
     border-bottom-left-radius: 0.8rem;
     border-bottom-right-radius: 0.8rem;
-    background: var(--color-input-background);
-    border: 1px solid var(--color-line-in-white);
-    outline: 0;
-    padding: 0 1.6rem;
-    font: 1.6rem Poppins;
 }
 
-#page-register .form .input-block-1:focus-within::after,
-#page-register .form .input-block-2:focus-within::after,
-#page-register .form .input-block-3:focus-within::after {
+#page-register .form .input-block:focus-within::after {
     width: calc(100% - 3.2rem);
     height: 2px;
     content: '';

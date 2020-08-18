@@ -2,6 +2,17 @@ import { StyleSheet } from 'react-native'
 import { Poppins_400Regular } from '@expo-google-fonts/poppins'
 
 const inputStyles = StyleSheet.create({
+
+    label: {
+        fontSize: 14,
+        lineHeight: 22,
+        color: '#9C98A6',
+        fontWeight: "normal",
+        fontFamily: 'Poppins_400Regular',
+        marginLeft: '10%',
+        marginTop: 10
+    },
+    
     input: {
         height: 54,
         width: '80%',

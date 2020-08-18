@@ -185,31 +185,31 @@ function Profile() {
                         <Text style={styles.title}>Seus dados</Text>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Nome</Text>
+                            <Text style={globalStyles.label}>Nome</Text>
                             <TextInput value={name} onChangeText={text => setName(text)} 
                                 style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                         </View>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Sobrenome</Text>
+                            <Text style={globalStyles.label}>Sobrenome</Text>
                             <TextInput value={surname} onChangeText={text => setSurname(text)} 
                                 style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                         </View>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Email</Text>
+                            <Text style={globalStyles.label}>Email</Text>
                             <TextInput value={email} onChangeText={text => setEmail(text)} 
                                 style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                         </View>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Whatsapp</Text>
+                            <Text style={globalStyles.label}>Whatsapp</Text>
                             <TextInput value={whatsapp} onChangeText={text => setWhatsapp(text)}
                                 style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                         </View>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Biografia</Text>
+                            <Text style={globalStyles.label}>Biografia</Text>
                             <TextInput value={bio} onChangeText={text => setBio(text)}
                                 style={[styles.input]} placeholderTextColor="#6A6180" numberOfLines={4} multiline={true}/>
                         </View>
@@ -221,14 +221,14 @@ function Profile() {
                         <Text style={styles.title}>Sobre a aula</Text>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Matéria</Text>
+                            <Text style={globalStyles.label}>Matéria</Text>
                             
                             <SelectSubject selectedValue={subject} onValueChange={(itemValue: string) => setSubject(itemValue)}
                                 style={[globalStyles.input, { borderRadius: 8 }]} />
                         </View>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Custo</Text>
+                            <Text style={globalStyles.label}>Custo</Text>
                             <TextInput value={String(cost)} onChangeText={text => setCost(text)}
                                 style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                         </View>
@@ -249,7 +249,7 @@ function Profile() {
 
                                 <View key={index} style={{ marginBottom: 5 }}>
                                     <View style={styles.inputBlock}>
-                                        <Text style={styles.label}>Dia da semana</Text>
+                                        <Text style={globalStyles.label}>Dia da semana</Text>
                                         
                                         <SelectWeekday style={[globalStyles.input, { borderRadius: 8 }]} selectedValue={String(scheduleItem.week_day)} 
                                         onValueChange={(e: any) => setScheduleItemValue(index, 'week_day', e)} />
@@ -257,13 +257,13 @@ function Profile() {
         
                                     <View style={styles.time}>
                                         <View style={styles.itemTime}>
-                                            <Text style={styles.label}>Das</Text>
+                                            <Text style={globalStyles.label}>Das</Text>
                                             <TextInput value={scheduleItem.from} onChangeText={e => setScheduleItemValue(index, 'from', e)}
                                                 style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                                         </View>
 
                                         <View style={styles.itemTime}>
-                                            <Text style={styles.label}>Até</Text>
+                                            <Text style={globalStyles.label}>Até</Text>
                                             <TextInput value={scheduleItem.to} onChangeText={e => setScheduleItemValue(index, 'to', e)}
                                                 style={[globalStyles.input, { borderRadius: 8 }]} placeholderTextColor="#6A6180"/>
                                         </View>

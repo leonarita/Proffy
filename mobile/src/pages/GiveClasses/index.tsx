@@ -153,13 +153,13 @@ function GiveClasses() {
                         </View>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Whatsapp</Text>
+                            <Text style={globalStyles.label}>Whatsapp</Text>
                             <TextInput value={whatsapp} onChangeText={text => setWhatsapp(text)}
                                 style={styles.input} placeholderTextColor="#6A6180"/>
                         </View>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Biografia</Text>
+                            <Text style={globalStyles.label}>Biografia</Text>
                             <TextInput value={bio} onChangeText={text => setBio(text)}
                                 style={styles.input} placeholderTextColor="#6A6180" numberOfLines={4} multiline={true}/>
                         </View>
@@ -171,14 +171,14 @@ function GiveClasses() {
                         <Text style={styles.title}>Sobre a aula</Text>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Matéria</Text>
+                            <Text style={globalStyles.label}>Matéria</Text>
                             
                             <SelectSubject selectedValue={subject} onValueChange={(itemValue: string) => setSubject(itemValue)}
                                 style={styles.input} />
                         </View>
 
                         <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Custo</Text>
+                            <Text style={globalStyles.label}>Custo</Text>
                             <TextInput value={String(cost)} onChangeText={text => setCost(text)}
                                 style={styles.input} placeholderTextColor="#6A6180"/>
                         </View>
@@ -199,7 +199,7 @@ function GiveClasses() {
 
                                 <View key={index} style={{ marginBottom: 40 }}>
                                     <View style={styles.inputBlock}>
-                                        <Text style={styles.label}>Dia da semana</Text>
+                                        <Text style={globalStyles.label}>Dia da semana</Text>
                                         
                                         <SelectWeekday style={styles.input} selectedValue={String(scheduleItem.week_day)} 
                                         onValueChange={(e: any) => setScheduleItemValue(index, 'week_day', e)} />
@@ -207,13 +207,13 @@ function GiveClasses() {
         
                                     <View style={styles.time}>
                                         <View style={styles.itemTime}>
-                                            <Text style={styles.label}>Das</Text>
+                                            <Text style={globalStyles.label}>Das</Text>
                                             <TextInput value={scheduleItem.from} onChangeText={e => setScheduleItemValue(index, 'from', e)}
                                                 style={styles.input} placeholderTextColor="#6A6180"/>
                                         </View>
 
                                         <View style={styles.itemTime}>
-                                            <Text style={styles.label}>Até</Text>
+                                            <Text style={globalStyles.label}>Até</Text>
                                             <TextInput value={scheduleItem.to} onChangeText={e => setScheduleItemValue(index, 'to', e)}
                                                 style={styles.input} placeholderTextColor="#6A6180"/>
                                         </View>
