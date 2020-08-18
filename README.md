@@ -143,6 +143,10 @@ npm test
 yarn test
 ```
 
+Por último, para que você consiga usufruir do projeto, deve alterar o IP gerado pelo expo no meu computador para o IP que o expo da sua máquina gerar. Deve-se também alterar as configurações de envio de email fazendo sua própria conta gratuíta no `mailtrap.io`.
+
+<br>
+
 <br>
 
 ## Contribuição
