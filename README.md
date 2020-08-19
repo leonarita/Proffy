@@ -147,7 +147,7 @@ Por último, para que você consiga usufruir do projeto, deve alterar o IP gerad
 
 <br>
 
-Agora rode a aplicação e use-a com sabedoria:
+Agora rode a aplicação nas pastas server, web e/ou mobile e use-a com sabedoria (lembrando de que as aplicações web e mobile dependem do server para funcionar totalmente):
 
 ```
 npm start
