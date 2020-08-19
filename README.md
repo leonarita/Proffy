@@ -147,6 +147,16 @@ Por último, para que você consiga usufruir do projeto, deve alterar o IP gerad
 
 <br>
 
+Agora rode a aplicação e use-a com sabedoria:
+
+```
+npm start
+[ou]
+yarn start
+```
+
+<br>
+
 ## Contribuição
 
 1. Faça o fork do projeto (https://github.com/leonarita/Proffy/fork);
