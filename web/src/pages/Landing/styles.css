@@ -49,13 +49,13 @@
     background-color: var(--color-primary);
     border: 0;
     width: 6rem;
-    height: 6rem;
+    height: 7rem;
     cursor: pointer;
 }
 
 .logoff img {
     color: #FFF;
-    width: 5rem;
+    width: 5.4rem;
 }
 
 .logo-container img {
