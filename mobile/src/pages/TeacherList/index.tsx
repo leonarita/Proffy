@@ -8,8 +8,8 @@ import PageHeader from '../../components/PageHeader'
 import TeacherItem from '../../components/TeacherItem'
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler'
 import api from '../../services/api'
-import { useFocusEffect } from '@react-navigation/native'
-import { getId } from '../../services/token';
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { getId, logout } from '../../services/token';
 import Teacher from '../../data/Teacher';
 import SelectSubject from '../../components/SelectSubject';
 import SelectWeekday from '../../components/SelectWeekday';
@@ -34,16 +34,24 @@ function TeacherList() {
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
 
+    const { navigate } = useNavigation()
+
     useFocusEffect(() => loadFavorites())
 
     function loadFavorites() {
 
         api.get(`favorites/${getId()}`).then(response => {
 
+            if(response.status === 401) {
+                logout()
+                navigate("Login")
+            }
+
             if(response) {
                 const favoritedTeachersIds = response.data.map((data: any) => {
                     return data['proffy_id']
                 })
+
                 setFavorites(favoritedTeachersIds)
             }
         })

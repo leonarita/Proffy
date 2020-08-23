@@ -11,8 +11,8 @@ import heartOutlineIcon from '../../assets/images/icons/heart-outline.png'
 import unFavoriteIcon from '../../assets/images/icons/unfavorite.png'
 import whatsappIcon from '../../assets/images/icons/whatsapp.png'
 import api from '../../services/api'
-import { useFocusEffect } from '@react-navigation/native'
-import { getId } from '../../services/token'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { getId, logout } from '../../services/token'
 import convertMinutesToHours from '../../utils/convertMinutesToHours'
 import ScheduleItem from '../../data/ScheduleItem'
 import Teacher from '../../data/Teacher'
@@ -29,12 +29,20 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
 
     const weekdays = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta']
 
+    const { navigate } = useNavigation()
+
     useFocusEffect(() => loadFavorites())
 
     useEffect(() => {
         try {
 
             api.get(`/classes/${teacher.id}`).then((response) => {
+
+                if(response.status === 401) {
+                    logout()
+                    navigate("Login")
+                }
+
                 setScheduleItems(response.data)
             })
         }
@@ -49,6 +57,11 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
 
     function loadFavorites() {
         api.get(`favorites/${getId()}`).then(response => {
+
+            if(response.status === 401) {
+                logout()
+                navigate("Login")
+            }
 
             var ok = false
 

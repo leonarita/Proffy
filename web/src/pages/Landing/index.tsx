@@ -27,12 +27,23 @@ function Landing() {
         try {
             api.get(`users/${userId}`).then(response => {
 
+                if(response.status === 401) {
+                    logout()
+                    history.push("/")
+                }
+
                 setName(response.data.name)
                 setSurname(response.data.surname)
                 setAvatar(response.data.avatar)
             })
 
             api.get('connections').then(response => {
+
+                if(response.status === 401) {
+                    logout()
+                    history.push("/")
+                }
+                
                 const { total } = response.data
                 setTotalConnections(total)
             })

@@ -33,6 +33,11 @@ function TeacherForm() {
 
             api.get(`users/${userId}`).then(response => {
 
+                if(response.status === 401) {
+                    logout()
+                    history.push("/")
+                }
+
                 setName(response.data.name)
                 setSurname(response.data.surname)
                 setAvatar(response.data.avatar)
@@ -43,6 +48,11 @@ function TeacherForm() {
             })
 
             api.get(`classes/${userId}`).then(response => {
+
+                if(response.status === 401) {
+                    logout()
+                    history.push("/")
+                }
 
                 response.data.map((d: ScheduleItem) => {
                     d.from = ConvertMinutesToHours(d.from)

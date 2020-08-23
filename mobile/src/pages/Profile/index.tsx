@@ -8,7 +8,7 @@ import logoImg from '../../assets/images/logo.png'
 import styles from './styles'
 import api from '../../services/api'
 import { useNavigation } from '@react-navigation/native'
-import { getId } from '../../services/token'
+import { getId, logout } from '../../services/token'
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler'
 import { TextInput } from 'react-native-paper'
 import { MaterialIcons } from '@expo/vector-icons'
@@ -38,6 +38,11 @@ function Profile() {
 
             api.get(`users/${getId()}`).then(response => {
 
+                if(response.status === 401) {
+                    logout()
+                    navigate("Login")
+                }
+
                 setName(response.data.name)
                 setSurname(response.data.surname)
                 setPhoto(response.data.avatar)
@@ -58,6 +63,11 @@ function Profile() {
         try {
 
             api.get(`classes/${getId()}`).then(response => {
+
+                if(response.status === 401) {
+                    logout()
+                    navigate("Login")
+                }
 
                 response.data.map((d: ScheduleItem) => {
                     d.from = convertMinutesToHours(d.from)

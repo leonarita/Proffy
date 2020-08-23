@@ -6,6 +6,8 @@ import api from '../../services/api';
 import ConvertMinutesToHours from '../../utils/ConvertMinutesToHours'
 import Teacher from '../../data/Teacher';
 import { ScheduleItem } from '../../data/ScheduleItem';
+import { logout } from '../../services/token';
+import { useHistory } from 'react-router-dom';
 
 interface TeacherItemProps {
     teacher: Teacher
@@ -17,10 +19,18 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
 
     const weekdays = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta']
 
+    const history = useHistory()
+
     useEffect(() => {
         try {
 
             api.get(`/classes/${teacher.id}`).then((response) => {
+
+                if(response.status === 401) {
+                    logout()
+                    history.push("/")
+                }
+                
                 setScheduleItems(response.data)
             })
         }

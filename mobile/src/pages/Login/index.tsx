@@ -5,7 +5,7 @@ import styles from './styles'
 import { RectButton } from 'react-native-gesture-handler'
 import api from '../../services/api'
 import { useNavigation, Link, useFocusEffect } from '@react-navigation/native'
-import { setToken, setId, loginAsyncStorage, getDataAsyncStorage, getId } from '../../services/token'
+import { setToken, setId, loginAsyncStorage, getDataAsyncStorage, getId, logout } from '../../services/token'
 import Header from '../../components/Header';
 import AsyncStorage from '@react-native-community/async-storage';
 import globalStyles from '../../styles/globalStyles'
@@ -46,6 +46,11 @@ function Login () {
 
         try {
             const response = await api.post("/login", { email, password });
+
+            if(response.status === 401) {
+                logout()
+                navigate("Login")
+            }
 
             setToken(response.data.token)
             setId(response.data.data_user.id)

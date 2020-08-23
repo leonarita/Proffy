@@ -5,16 +5,24 @@ import styles from './styles'
 import PageHeader from '../../components/PageHeader'
 import TeacherItem from '../../components/TeacherItem'
 import api from '../../services/api'
-import { getId } from '../../services/token'
+import { getId, logout } from '../../services/token'
 import Teacher from '../../data/Teacher'
+import { useNavigation } from '@react-navigation/native'
 
 function Favorites() {
 
     const [favorites, setFavorites] = useState([])
 
+    const { navigate } = useNavigation()
+
     function loadFavorites() {
 
         api.get(`favoritesAll/${getId()}`).then(response => {
+
+            if(response.status === 401) {
+                logout()
+                navigate("Login")
+            }
 
             if(response) {
                 setFavorites(response.data)

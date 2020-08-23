@@ -37,6 +37,11 @@ function Perfil() {
 
             api.get(`users/${userId}`).then(response => {
 
+                if(response.status === 401) {
+                    logout()
+                    history.push("/")
+                }
+
                 setName(response.data.name)
                 setSurname(response.data.surname)
                 setPhoto(response.data.avatar)
@@ -48,6 +53,11 @@ function Perfil() {
             })
 
             api.get(`classes/${userId}`).then(response => {
+
+                if(response.status === 401) {
+                    logout()
+                    history.push("/")
+                }
 
                 response.data.map((d: ScheduleItem) => {
                     d.from = convertMinutesToHours(d.from)
@@ -108,7 +118,7 @@ function Perfil() {
         
         api.post(`profile/${userId}`, data).then(() => {
 
-            api.post(`classes/${userId}`, {  whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
+            api.post(`classes/${userId}`, { whatsapp, bio, subject, cost: Number(cost), schedule: scheduleItems })
             .then(() => { 
 
                 history.push("/success-page", { 

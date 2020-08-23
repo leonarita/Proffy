@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import PageHeader from '../../components/PageHeader';
 import './styles.css'
 import Input from '../../components/Input';
@@ -30,6 +30,16 @@ function TeacherList() {
         loadTeachers()
     }
 
+    useEffect(() => {
+        api.get(`users/${sessionStorage.getItem('USER_ID')}`).then(response => {
+
+            if(response.status === 401) {
+                logout()
+                history.push("/")
+            }
+        })
+    }, [])
+
     const loadTeachers = async (page=1) => {
 
         try {
@@ -41,6 +51,11 @@ function TeacherList() {
                     time
                 }
             })
+
+            if(response.status === 401) {
+                logout()
+                history.push("/")
+            }
 
             setIsLoadedData(true)
             setPage(page)
