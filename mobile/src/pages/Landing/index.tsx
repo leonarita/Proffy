@@ -21,8 +21,6 @@ function Landing() {
     const [surname, setSurname] = useState('')
     const [avatar, setAvatar] = useState('')
 
-    console.log(getToken())
-
     useFocusEffect(() => bringData())
 
     function bringData() {
@@ -44,7 +42,8 @@ function Landing() {
                 const { total } = response.data
                 setTotalConnections(total)
             })
-            .catch(() => {
+            .catch(err => {
+                console.log(err.response)
                 logout()
                 navigate("Login")
             })

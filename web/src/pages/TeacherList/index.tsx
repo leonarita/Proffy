@@ -30,32 +30,27 @@ function TeacherList() {
         loadTeachers()
     }
 
-    useEffect(() => {
-        api.get(`users/${sessionStorage.getItem('USER_ID')}`).then(response => {
-
-            if(response.status === 401) {
-                logout()
-                history.push("/")
-            }
-        })
-    }, [])
-
     const loadTeachers = async (page=1) => {
 
         try {
 
-            const response = await api.get(`classesPag?page=${page}`, {
-                params: {
-                    subject,
-                    week_day,
-                    time
-                }
-            })
-            
-            setIsLoadedData(true)
-            setPage(page)
-            
-            setTeachers(response.data)
+            if (subject !== '' && week_day !== '' && time !== '') {
+                const response = await api.get(`classesPag?page=${page}`, {
+                    params: {
+                        subject,
+                        week_day,
+                        time
+                    }
+                })
+                
+                setIsLoadedData(true)
+                setPage(page)
+                
+                setTeachers(response.data)
+            }
+            else {
+                alert("Preencha todos os campos!")
+            }
         } catch (err) {
             logout()
             history.push("/")

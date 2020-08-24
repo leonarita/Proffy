@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, Picker, FlatList } from 'react-native'
+import { Text, View, ToastAndroid, FlatList } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
@@ -63,22 +63,32 @@ function TeacherList() {
     async function handleFiltersSubmit() {
         loadFavorites()
 
-        setTimeString(`${time.getHours()}:${time.getMinutes()}`.toString())
+        if (subject !== '' && subject !== "") {
 
-        const response = await api.get('classesPag', {
-            params: {
-                subject,
-                week_day,
-                time: timeString
-            }
-        })
+            setTimeString(`${time.getHours()}:${time.getMinutes()}`.toString())
 
-        setTotal(response.headers['x-total-count'])
-        setPage(page+1)
+            const response = await api.get('classesPag', {
+                params: {
+                    subject,
+                    week_day,
+                    time: timeString
+                }
+            })
 
-        setIsLoadedData(true)
-        setIsFiltersVisible(false)
-        setTeachers(response.data)
+            setTotal(response.headers['x-total-count'])
+            setPage(page+1)
+
+            setIsLoadedData(true)
+            setIsFiltersVisible(false)
+            setTeachers(response.data)
+        }
+        else {
+            ToastAndroid.showWithGravity(
+                "Preencha todos os campos!",
+                ToastAndroid.LONG,
+                ToastAndroid.BOTTOM
+            );
+        }
     }
 
     async function loadTeachers() {
