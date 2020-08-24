@@ -38,12 +38,11 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
 
             api.get(`/classes/${teacher.id}`).then((response) => {
 
-                if(response.status === 401) {
-                    logout()
-                    navigate("Login")
-                }
-
                 setScheduleItems(response.data)
+            })
+            .catch(() => {
+                logout()
+                navigate("Login")
             })
         }
         catch (err) {
@@ -58,11 +57,6 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
     function loadFavorites() {
         api.get(`favorites/${getId()}`).then(response => {
 
-            if(response.status === 401) {
-                logout()
-                navigate("Login")
-            }
-
             var ok = false
 
             if(response) {
@@ -73,6 +67,10 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
             }
 
             setisFavorited(ok)
+        })
+        .catch(() => {
+            logout()
+            navigate("Login")
         })
     }
 

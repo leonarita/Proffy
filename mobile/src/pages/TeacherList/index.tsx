@@ -42,11 +42,6 @@ function TeacherList() {
 
         api.get(`favorites/${getId()}`).then(response => {
 
-            if(response.status === 401) {
-                logout()
-                navigate("Login")
-            }
-
             if(response) {
                 const favoritedTeachersIds = response.data.map((data: any) => {
                     return data['proffy_id']
@@ -54,6 +49,10 @@ function TeacherList() {
 
                 setFavorites(favoritedTeachersIds)
             }
+        })
+        .catch(() => {
+            logout()
+            navigate("Login")
         })
     }
 

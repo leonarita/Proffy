@@ -27,26 +27,27 @@ function Landing() {
         try {
             api.get(`users/${userId}`).then(response => {
 
-                if(response.status === 401) {
-                    logout()
-                    history.push("/")
-                }
+                console.log(response)
 
                 setName(response.data.name)
                 setSurname(response.data.surname)
                 setAvatar(response.data.avatar)
             })
+            .catch(() => {
+                logout()
+                history.push("/")
+            })
 
             api.get('connections').then(response => {
-
-                if(response.status === 401) {
-                    logout()
-                    history.push("/")
-                }
                 
                 const { total } = response.data
                 setTotalConnections(total)
             })
+            .catch(() => {
+                logout()
+                history.push("/")
+            })
+            
         } catch (err) {
             logout()
             history.push("/")

@@ -34,11 +34,6 @@ function GiveClasses() {
 
             api.get(`users/${getId()}`).then(response => {
 
-                if(response.status === 401) {
-                    logout()
-                    navigate("Login")
-                }
-
                 setName(response.data.name)
                 setSurname(response.data.surname)
                 setPhoto(response.data.avatar)
@@ -47,13 +42,12 @@ function GiveClasses() {
                 setSubject(response.data.subject)
                 setCost(response.data.cost)
             })
+            .catch(() => {
+                logout()
+                navigate("Login")
+            })
 
             api.get(`classes/${getId()}`).then(response => {
-
-                if(response.status === 401) {
-                    logout()
-                    navigate("Login")
-                }
 
                 response.data.map((d: ScheduleItem) => {
                     d.from = convertMinutesToHours(d.from)
@@ -62,7 +56,11 @@ function GiveClasses() {
 
                 setScheduleItems(response.data)
 
-            }).catch(() => console.log('Ocorreu erro'))
+            })
+            .catch(() => {
+                logout()
+                navigate("Login")
+            })
 
             if(scheduleItems.length > 1) {
                 scheduleItems.filter(() => {

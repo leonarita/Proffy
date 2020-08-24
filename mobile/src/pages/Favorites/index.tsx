@@ -19,14 +19,13 @@ function Favorites() {
 
         api.get(`favoritesAll/${getId()}`).then(response => {
 
-            if(response.status === 401) {
-                logout()
-                navigate("Login")
-            }
-
             if(response) {
                 setFavorites(response.data)
             }
+        })
+        .catch(() => {
+            logout()
+            navigate("Login")
         })
     }
 

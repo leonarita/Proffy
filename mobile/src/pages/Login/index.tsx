@@ -47,11 +47,6 @@ function Login () {
         try {
             const response = await api.post("/login", { email, password });
 
-            if(response.status === 401) {
-                logout()
-                navigate("Login")
-            }
-
             setToken(response.data.token)
             setId(response.data.data_user.id)
 

@@ -51,12 +51,7 @@ function TeacherList() {
                     time
                 }
             })
-
-            if(response.status === 401) {
-                logout()
-                history.push("/")
-            }
-
+            
             setIsLoadedData(true)
             setPage(page)
             

@@ -25,13 +25,12 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
         try {
 
             api.get(`/classes/${teacher.id}`).then((response) => {
-
-                if(response.status === 401) {
-                    logout()
-                    history.push("/")
-                }
                 
                 setScheduleItems(response.data)
+            })
+            .catch(() => {
+                logout()
+                history.push("/")
             })
         }
         catch (err) {

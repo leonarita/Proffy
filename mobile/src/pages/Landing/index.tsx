@@ -30,25 +30,23 @@ function Landing() {
         try {
             api.get(`users/${getId()}`).then(response => {
 
-                if(response.status === 401) {
-                    logout()
-                    navigate("Login")
-                }
-
                 setName(response.data.name)
                 setSurname(response.data.surname)
                 setAvatar(response.data.avatar)
             })
+            .catch(() => {
+                logout()
+                navigate("Login")
+            })
 
             api.get('connections').then(response => {
-
-                if(response.status === 401) {
-                    logout()
-                    navigate("Login")
-                }
                 
                 const { total } = response.data
                 setTotalConnections(total)
+            })
+            .catch(() => {
+                logout()
+                navigate("Login")
             })
         }
         catch {

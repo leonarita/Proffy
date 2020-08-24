@@ -33,11 +33,6 @@ function TeacherForm() {
 
             api.get(`users/${userId}`).then(response => {
 
-                if(response.status === 401) {
-                    logout()
-                    history.push("/")
-                }
-
                 setName(response.data.name)
                 setSurname(response.data.surname)
                 setAvatar(response.data.avatar)
@@ -46,13 +41,12 @@ function TeacherForm() {
                 setSubject(response.data.subject)
                 setCost(response.data.cost)
             })
+            .catch(() => {
+                logout()
+                history.push("/")
+            })
 
             api.get(`classes/${userId}`).then(response => {
-
-                if(response.status === 401) {
-                    logout()
-                    history.push("/")
-                }
 
                 response.data.map((d: ScheduleItem) => {
                     d.from = ConvertMinutesToHours(d.from)
@@ -61,7 +55,11 @@ function TeacherForm() {
 
                 setScheduleItems(scheduleItems => scheduleItems.concat(response.data))
 
-            }).catch(() => console.log('Ocorreu erro'))
+            })
+            .catch(() => {
+                logout()
+                history.push("/")
+            })
 
             if(scheduleItems.length > 1) {
                 scheduleItems.filter(() => {
