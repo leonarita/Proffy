@@ -121,7 +121,7 @@
 #page-login .form .buttons-extras a {
     display: flex;
     align-self: center;
-    margin-top: 1rem;
+    margin-top: 4rem;
 }
 
 #page-login .form footer {
@@ -152,7 +152,7 @@
     color: var(--color-text-complement);
     font: 1.4rem Poppins;
     font-size: 1.4rem;
-    margin-top: 1.2rem;
+    margin-top: 4.8rem;
     align-self: center;
     display: flex;
     justify-self: center;
@@ -180,6 +180,10 @@
         margin-top: 24px;
     }
 
+    #page-login .form .buttons-extras a {
+        margin-top: 1rem;
+    }
+
     #page-login .banner .logo-container img {
         margin: 0;
         width: auto;
@@ -199,6 +203,10 @@
         margin-top: 0;
         display: block;
         justify-content: start;
+    }
+
+    #page-login .form footer .free {
+        margin-top: 1.2rem;
     }
 }
 

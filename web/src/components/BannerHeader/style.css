@@ -3,7 +3,7 @@
     color: var(--color-text-in-primary);
     background-image: url(../../assets/images/success-background.svg);
     width: 100%;
-    height: 77vh;
+    height: 54vh;
 
     display: flex;
     align-items: center;

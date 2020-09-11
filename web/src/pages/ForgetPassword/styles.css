@@ -6,6 +6,8 @@
 #page-forget-password .help strong {
     font: 700 3.6rem Archivo;
     line-height: 4.2rem;
+    display: flex;
+    margin-top: 6rem;
 }
 
 #page-forget-password .help p {
@@ -79,6 +81,10 @@
         height: 100%;
         display: flex;
         align-items: center;
+    }
+
+    #page-forget-password .help strong {
+        margin-top: 0;
     }
 
     #page-forget-password .banner {

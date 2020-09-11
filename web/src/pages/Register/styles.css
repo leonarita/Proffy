@@ -6,6 +6,8 @@
 #page-register .form strong {
     font: 700 3.6rem Archivo;
     line-height: 4.2rem;
+    display: flex;
+    margin-top: 6rem;
 }
 
 #page-register .form p {
@@ -83,6 +85,10 @@
     #page-register .form {
         grid-area: form;
         margin: 0 12rem;
+    }
+
+    #page-register .form strong {
+        margin: 0;
     }
 
     #page-register .form .register {
