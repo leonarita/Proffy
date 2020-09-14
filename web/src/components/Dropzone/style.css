@@ -1,18 +1,25 @@
 .dropzone {
-    height: 200px;
+    height: 4rem;
+    width: 4rem;
     background: #E1FAEC;
-    border-radius: 10px;
+    border-radius: 50%;
   
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 12px;
     outline: 0;
+    background-color: #04D361;
+
+    margin-top: -5rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-self: end;
+    margin-left: 16rem;
   }
   
   .dropzone img {
-    width: 100%;
-    height: 100%; 
+    width: 50%;
+    height: 50%; 
     object-fit: cover;
   }
   

@@ -12,6 +12,7 @@
     flex-direction: column;
     align-self: center;
     justify-content: center;
+    margin: 0 10rem;
 }
 
 #page-teacher-form .page-header .header-top .photo {
@@ -64,7 +65,6 @@
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
     margin-bottom: 2rem;
-    margin-top: 4rem;
 }
 
 #page-teacher-form main fieldset .names .input-block + .input-block {
@@ -72,7 +72,7 @@
 }
 
 #page-teacher-form main fieldset .header {
-    display: block;
+    display: flex;
     margin-bottom: 4rem;
 }
 

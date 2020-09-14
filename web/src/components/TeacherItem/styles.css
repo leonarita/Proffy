@@ -69,8 +69,8 @@
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
-    line-height: 20px;
+    font-size: 1.5rem;
+    line-height: 2rem;
     color: #9C98A6;
 }
 
@@ -83,8 +83,8 @@
     font-family: Archivo;
     font-style: normal;
     font-weight: bold;
-    font-size: 14px;
-    line-height: 26px;
+    font-size: 1.8rem;
+    line-height: 4rem;
 
     color: #6A6180;
 }
@@ -146,6 +146,14 @@
 
     .teacher-item .hours .hour {
         width: 8vw;
+    }
+
+    .teacher-item .hours .hour p {
+        font-size: 1.2rem;
+    }
+
+    .teacher-item .hours .hour h4 {
+        font-size: 1.4rem;
     }
 
     .teacher-item footer p strong {

@@ -140,6 +140,7 @@ function Perfil() {
             <PageHeader>
                 <div className="header-top">
                     <img className="photo" src={photo} alt={name}/>
+                    <Dropzone onFileUploaded={setAvatar} />
 
                     <strong> {name} {surname} </strong>
                     <h2> {subject} </h2>
@@ -152,8 +153,6 @@ function Perfil() {
 
                     <fieldset>
                         <legend> Seus dados </legend>
-
-                        <Dropzone onFileUploaded={setAvatar} />
 
                         <div className="names">
                             
@@ -196,8 +195,8 @@ function Perfil() {
 
                         { scheduleItems.map((scheduleItem, index) => {
                             return (
-                                <div className="item">
-                                    <div key={scheduleItem.id} className="schedule-item">
+                                <div key={scheduleItem.id} className="item">
+                                    <div className="schedule-item">
 
                                         <SelectWeekday value={scheduleItem.week_day}
                                         onChange={(e: any) => setScheduleItemValue(index, 'week_day', e.target.value)} />

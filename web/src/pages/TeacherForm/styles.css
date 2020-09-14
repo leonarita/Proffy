@@ -51,6 +51,7 @@
 
 #page-teacher-form main fieldset .header .input-block {
     width: 35%;
+    margin-top: 0 !important;
 }
 
 #page-teacher-form main fieldset legend {

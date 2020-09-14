@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
-import { FiUpload } from 'react-icons/fi'
+import photoIcon from '../../assets/images/icons/Camera.svg'
 import './style.css'
 
 interface Props {
@@ -24,16 +24,7 @@ const Dropzone: React.FC<Props> = ({ onFileUploaded }) => {
         <div className="dropzone" {...getRootProps()}>
             <input {...getInputProps()} accept='image/*' />
 
-            {
-                selectedFileUrl ?
-                <img src={selectedFileUrl} alt="Point thumbnail"/> : (
-
-                <p> 
-                    <FiUpload />
-                    Atualize sua foto
-                </p>
-                )
-            }
+            <img src={photoIcon} alt="Point thumbnail"/> 
 
         </div>
     )
